@@ -235,11 +235,18 @@ class FenokReportGenerator:
                 EC.presence_of_element_located((By.XPATH, "//input[@placeholder=\"What's the title?\"]"))
             )
 
-            # Report Title 입력
-            report_title_input.clear()
-            report_title_input.send_keys(report_title)
+            # Report Title 입력 (Ctrl+V 시뮬레이션)
+            report_title_input.click() # 필드 클릭하여 포커스
+            pyperclip.copy(report_title) # 클립보드에 복사
+            ActionChains(self.driver).key_down(Keys.CONTROL).send_keys('v').key_up(Keys.CONTROL).perform() # Ctrl+V
+            print("Report Title 입력 완료.")
+            time.sleep(0.5) # 짧은 대기
 
-            # Report Reference Date 입력 (contenteditable div 사용)
+            # Report Reference Date 입력 (contenteditable div 및 보조 input 사용)
+            start_date_parts = ref_date_start_str.split('-')
+            end_date_parts = ref_date_end_str.split('-')
+
+            # contenteditable div에 입력
             # 시작일 (월, 일, 년)
             start_month_input = WebDriverWait(self.driver, 10).until(
                 EC.element_to_be_clickable((By.XPATH, "//div[@aria-label='월, 시작일, ' and @contenteditable='true']"))
@@ -252,52 +259,79 @@ class FenokReportGenerator:
             end_day_input = self.driver.find_element(By.XPATH, "//div[@aria-label='일, 종료일, ' and @contenteditable='true']")
             end_year_input = self.driver.find_element(By.XPATH, "//div[@aria-label='년, 종료일, ' and @contenteditable='true']")
 
-            # 날짜 파싱 (YYYY-MM-DD -> MM, DD, YYYY)
-            start_date_parts = ref_date_start_str.split('-')
-            end_date_parts = ref_date_end_str.split('-')
-
             # 시작일 입력
             start_month_input.click()
-            start_month_input.send_keys(start_date_parts[1]) # 월
+            pyperclip.copy(start_date_parts[1])
+            ActionChains(self.driver).key_down(Keys.CONTROL).send_keys('v').key_up(Keys.CONTROL).perform()
             start_day_input.click()
-            start_day_input.send_keys(start_date_parts[2]) # 일
+            pyperclip.copy(start_date_parts[2])
+            ActionChains(self.driver).key_down(Keys.CONTROL).send_keys('v').key_up(Keys.CONTROL).perform()
             start_year_input.click()
-            start_year_input.send_keys(start_date_parts[0]) # 년
+            pyperclip.copy(start_date_parts[0])
+            ActionChains(self.driver).key_down(Keys.CONTROL).send_keys('v').key_up(Keys.CONTROL).perform()
 
             # 종료일 입력
             end_month_input.click()
-            end_month_input.send_keys(end_date_parts[1]) # 월
+            pyperclip.copy(end_date_parts[1])
+            ActionChains(self.driver).key_down(Keys.CONTROL).send_keys('v').key_up(Keys.CONTROL).perform()
             end_day_input.click()
-            end_day_input.send_keys(end_date_parts[2]) # 일
+            pyperclip.copy(end_date_parts[2])
+            ActionChains(self.driver).key_down(Keys.CONTROL).send_keys('v').key_up(Keys.CONTROL).perform()
             end_year_input.click()
-            end_year_input.send_keys(end_date_parts[0]) # 년
+            pyperclip.copy(end_date_parts[0])
+            ActionChains(self.driver).key_down(Keys.CONTROL).send_keys('v').key_up(Keys.CONTROL).perform()
+            
+            # 보조: 숨겨진 input[type="text"]에도 값 주입 (Generate 버튼 활성화에 도움될 수 있음)
+            self.driver.execute_script(f"""
+                const fullInput = document.querySelector('input[placeholder*="mm/dd/yyyy"]');
+                if (fullInput) {{
+                    fullInput.focus(); // 포커스
+                    fullInput.value = '{start_date_parts[1]}/{start_date_parts[2]}/{start_date_parts[0]} - {end_date_parts[1]}/{end_date_parts[2]}/{end_date_parts[0]}';
+                    fullInput.dispatchEvent(new Event('input', {{ bubbles: true }}));
+                    fullInput.dispatchEvent(new Event('blur', {{ bubbles: true }})); // 블러
+                }}
+            """)
+            print("Report Reference Date 입력 완료.")
+            time.sleep(0.5) # 짧은 대기
 
             # Upload Sample Report
-            # input[type="file"] 요소를 찾아서 파일 경로를 send_keys로 전달
-            # placeholder="file-input" 속성을 가진 input 태그 중 max="1"인 것을 찾음
             upload_sample_input = self.driver.find_element(By.XPATH, "//input[@type='file' and @placeholder='file-input' and @max='1']")
             upload_sample_input.send_keys(source_pdf_file)
             print(f"Upload Sample Report: {source_pdf_file} 업로드 시도.")
+            time.sleep(2) # 파일 업로드 후 내부 처리 대기
 
             # Add your Own Sources
-            # placeholder="file-input" 속성을 가진 input 태그 중 multiple=""인 것을 찾음
             add_sources_input = self.driver.find_element(By.XPATH, "//input[@type='file' and @placeholder='file-input' and @multiple='']")
-            
-            # 여러 파일을 한 번에 send_keys로 전달 (쉼표로 구분)
-            add_sources_input.send_keys(f"{source_pdf_file}\n{prompt_pdf_file}") # \n으로 구분하여 여러 파일 전달
+            add_sources_input.send_keys(f"{source_pdf_file}\n{prompt_pdf_file}")
             print(f"Add your Own Sources: {source_pdf_file}, {prompt_pdf_file} 업로드 시도.")
+            time.sleep(2) # 파일 업로드 후 내부 처리 대기
 
-            # Prompt 입력 (JavaScript 사용)
+            # Prompt 입력 (Ctrl+V 시뮬레이션)
             prompt_textarea = self.driver.find_element(By.XPATH, "//textarea[@placeholder='Outline, topic, notes, or anything you have in mind that you want the Agent to consider when analyzing data and creating research.']")
-            self.driver.execute_script("arguments[0].value = arguments[1];", prompt_textarea, prompt_content)
+            prompt_textarea.click() # 필드 클릭하여 포커스
+            pyperclip.copy(prompt_content) # 클립보드에 복사
+            ActionChains(self.driver).key_down(Keys.CONTROL).send_keys('v').key_up(Keys.CONTROL).perform() # Ctrl+V
             print("Prompt 입력 완료.")
+            time.sleep(0.5) # 짧은 대기
 
+            # Generate 버튼 활성화 확인 (디버깅용)
+            generate_button_element = self.driver.find_element(By.XPATH, "//button[contains(., 'Generate')]")
+            print(f"Generate 버튼 초기 disabled 상태: {generate_button_element.get_attribute('disabled')}")
+            
             # Generate 버튼 클릭 (활성화될 때까지 대기)
-            generate_button = WebDriverWait(self.driver, 10).until(
-                EC.element_to_be_clickable((By.XPATH, "//button[contains(., 'Generate')]"))
+            # disabled 속성이 사라질 때까지 기다림
+            generate_button = WebDriverWait(self.driver, 30).until(
+                EC.element_to_be_clickable((By.XPATH, "//button[contains(., 'Generate') and not(@disabled)]"))
             )
+            print("Generate 버튼 활성화 확인.")
+            print(f"Generate 버튼 최종 disabled 상태: {generate_button.get_attribute('disabled')}") # None이 출력되어야 함
+            
             generate_button.click()
             print("Generate 버튼 클릭. 보고서 생성 대기 중...")
+
+            # Generate 버튼 클릭 후 보고서 생성 대기 (1분)
+            print("보고서 생성 백엔드 처리 대기 중 (최대 1분)...")
+            time.sleep(60) # 1분 대기
 
             # 산출물 URL 대기 (최대 15분)
             WebDriverWait(self.driver, 900).until( # 15분 = 900초
