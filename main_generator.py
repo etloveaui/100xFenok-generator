@@ -25,7 +25,7 @@ class FenokReportGenerator:
         self.secrets_file = os.path.join(self.base_dir, 'secrets', 'my_sensitive_data.md')
         self.generated_html_dir = os.path.join(self.project_dir, 'generated_html')
         self.generated_json_dir = os.path.join(self.project_dir, 'generated_json')
-        self.input_data_dir = os.path.join(self.base_dir, 'scratchpad', 'inputdata')
+        self.input_data_dir = os.path.join(self.project_dir, 'input_data')
         self.lexi_convert_dir = os.path.join(self.base_dir, 'projects', 'Python_Lexi_Convert')
         self.integrated_json_instruction_file = os.path.join(self.base_dir, 'scratchpad', '통합JSON', 'Instruction_Json.md')
         self.template_html_path = os.path.join(self.base_dir, 'projects', '100xFenok', '100x', 'daily-wrap', '100x-daily-wrap-template.html')
