@@ -8,6 +8,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.action_chains import ActionChains
+import pyperclip
 
 # BeautifulSoup 및 Jinja2는 필요시 동적으로 임포트
 # from bs4 import BeautifulSoup
@@ -27,7 +30,7 @@ class FenokReportGenerator:
         self.generated_json_dir = os.path.join(self.project_dir, 'generated_json')
         self.input_data_dir = os.path.join(self.project_dir, 'input_data')
         self.lexi_convert_dir = os.path.join(self.base_dir, 'projects', 'Python_Lexi_Convert')
-        self.integrated_json_instruction_file = os.path.join(self.base_dir, 'scratchpad', '통합JSON', 'Instruction_Json.md')
+        self.integrated_json_instruction_file = os.path.join(self.project_dir, 'docs', 'Instruction_Json.md')
         self.template_html_path = os.path.join(self.base_dir, 'projects', '100xFenok', '100x', 'daily-wrap', '100x-daily-wrap-template.html')
         self.output_daily_wrap_dir = os.path.join(self.base_dir, 'projects', '100xFenok', '100x', 'daily-wrap')
         self.main_html_path = os.path.join(self.base_dir, 'projects', '100xFenok', 'main.html')
@@ -198,6 +201,66 @@ class FenokReportGenerator:
             print(f"로그인 중 오류 발생: {e}")
             return False
 
+    def _select_date_from_calendar(self, date_str, calendar_button_xpath):
+        """
+        캘린더 다이얼로그를 열어 날짜를 선택합니다.
+        date_str: YYYY-MM-DD 형식의 날짜 문자열
+        calendar_button_xpath: 캘린더를 여는 버튼의 XPath
+        """
+        date_obj = datetime.strptime(date_str, '%Y-%m-%d')
+        target_day = date_obj.day
+        target_month = date_obj.month
+        target_year = date_obj.year
+
+        try:
+            calendar_button = WebDriverWait(self.driver, 10).until(
+                EC.element_to_be_clickable((By.XPATH, calendar_button_xpath))
+            )
+            calendar_button.click()
+            print(f"캘린더 버튼 클릭 완료 ({date_str}).")
+            time.sleep(1)
+
+            # 월 이동 (필요시)
+            while True:
+                current_month_year_element = WebDriverWait(self.driver, 5).until(
+                    EC.presence_of_element_located((By.XPATH, "//header[@data-slot='header']/span[@data-slot='title']"))
+                )
+                current_month_year_text = current_month_year_element.text
+                # 예: "July 2025" -> "July", "2025"
+                current_month_str, current_year_str = current_month_year_text.split(' ')
+                current_month = datetime.strptime(current_month_str, '%B').month # 예: July -> 7
+                current_year = int(current_year_str)
+
+                if current_year == target_year and current_month == target_month:
+                    break # 목표 월에 도달
+                elif date_obj < datetime(current_year, current_month, 1):
+                    # 이전 달로 이동
+                    prev_button = WebDriverWait(self.driver, 5).until(
+                        EC.element_to_be_clickable((By.XPATH, "//button[@data-slot='prev-button']"))
+                    )
+                    prev_button.click()
+                else:
+                    # 다음 달로 이동
+                    next_button = WebDriverWait(self.driver, 5).until(
+                        EC.element_to_be_clickable((By.XPATH, "//button[@data-slot='next-button']"))
+                    )
+                    next_button.click()
+                time.sleep(0.5)
+
+            # 날짜 선택
+            date_xpath = f"//span[@role='button' and contains(@aria-label, '{target_day}일')]"
+            target_day_element = WebDriverWait(self.driver, 10).until(
+                EC.element_to_be_clickable((By.XPATH, date_xpath))
+            )
+            target_day_element.click()
+            print(f"날짜 {date_str} 선택 완료.")
+            time.sleep(0.5)
+
+        except TimeoutException:
+            print(f"오류: 캘린더에서 날짜 {date_str}를 선택하는 데 타임아웃이 발생했습니다.")
+        except Exception as e:
+            print(f"오류: 캘린더에서 날짜 {date_str}를 선택하는 중 예외 발생: {e}")
+
     def generate_report_html(self, part_type, report_index, report_date_str, ref_date_start_str, ref_date_end_str):
         """
         TerminalX에서 보고서를 생성하고 HTML을 추출합니다.
@@ -211,11 +274,11 @@ class FenokReportGenerator:
         report_title = f"{report_date_str} 100x Daily Wrap {part_type}"
         
         # Prompt 파일 경로
-        prompt_file = os.path.join(self.input_data_dir, f"21_100x_Daily_Wrap_Prompt_{'1' if part_type == 'Part1' else '2'}_20250708.md")
+        prompt_file = os.path.join(self.input_data_dir, f"21_100x_Daily_Wrap_Prompt_{'1' if part_type == 'Part1' else '2'}_{report_date_str}.md")
         # Source PDF 파일 경로
-        source_pdf_file = os.path.join(self.input_data_dir, f"10_100x_Daily_Wrap_My_Sources_{'1' if part_type == 'Part1' else '2'}_20250709.pdf")
+        source_pdf_file = os.path.join(self.input_data_dir, f"10_100x_Daily_Wrap_My_Sources_{'1' if part_type == 'Part1' else '2'}_{report_date_str}.pdf")
         # Add your Own Sources의 두 번째 PDF 파일 경로 (Prompt PDF 버전)
-        prompt_pdf_file = os.path.join(self.input_data_dir, f"21_100x_Daily_Wrap_Prompt_{'1' if part_type == 'Part1' else '2'}_20250708.pdf")
+        prompt_pdf_file = os.path.join(self.input_data_dir, f"21_100x_Daily_Wrap_Prompt_{'1' if part_type == 'Part1' else '2'}_{report_date_str}.pdf")
 
         # Prompt 내용 로드
         try:
@@ -237,60 +300,21 @@ class FenokReportGenerator:
 
             # Report Title 입력 (Ctrl+V 시뮬레이션)
             report_title_input.click() # 필드 클릭하여 포커스
-            pyperclip.copy(report_title) # 클립보드에 복사
-            ActionChains(self.driver).key_down(Keys.CONTROL).send_keys('v').key_up(Keys.CONTROL).perform() # Ctrl+V
+            report_title_input.send_keys(report_title)
+            report_title_input.send_keys(Keys.TAB)
             print("Report Title 입력 완료.")
             time.sleep(0.5) # 짧은 대기
 
-            # Report Reference Date 입력 (contenteditable div 및 보조 input 사용)
-            start_date_parts = ref_date_start_str.split('-')
-            end_date_parts = ref_date_end_str.split('-')
+            # Report Reference Date 입력 (캘린더 다이얼로그 사용)
+            # Report Reference Date 입력 (캘린더 다이얼로그 사용)
+            # 시작 날짜 캘린더 버튼 클릭
+            start_date_calendar_button_xpath = "//button[@data-slot='selector-button' and @aria-label='달력'][1]" # 첫 번째 달력 버튼
+            self._select_date_from_calendar(ref_date_start_str, start_date_calendar_button_xpath) # 시작 날짜 선택
 
-            # contenteditable div에 입력
-            # 시작일 (월, 일, 년)
-            start_month_input = WebDriverWait(self.driver, 10).until(
-                EC.element_to_be_clickable((By.XPATH, "//div[@aria-label='월, 시작일, ' and @contenteditable='true']"))
-            )
-            start_day_input = self.driver.find_element(By.XPATH, "//div[@aria-label='일, 시작일, ' and @contenteditable='true']")
-            start_year_input = self.driver.find_element(By.XPATH, "//div[@aria-label='년, 시작일, ' and @contenteditable='true']")
+            # 종료 날짜 캘린더 버튼 클릭
+            end_date_calendar_button_xpath = "//button[@data-slot='selector-button' and @aria-label='달력'][2]" # 두 번째 달력 버튼
+            self._select_date_from_calendar(ref_date_end_str, end_date_calendar_button_xpath) # 종료 날짜 선택
 
-            # 종료일 (월, 일, 년)
-            end_month_input = self.driver.find_element(By.XPATH, "//div[@aria-label='월, 종료일, ' and @contenteditable='true']")
-            end_day_input = self.driver.find_element(By.XPATH, "//div[@aria-label='일, 종료일, ' and @contenteditable='true']")
-            end_year_input = self.driver.find_element(By.XPATH, "//div[@aria-label='년, 종료일, ' and @contenteditable='true']")
-
-            # 시작일 입력
-            start_month_input.click()
-            pyperclip.copy(start_date_parts[1])
-            ActionChains(self.driver).key_down(Keys.CONTROL).send_keys('v').key_up(Keys.CONTROL).perform()
-            start_day_input.click()
-            pyperclip.copy(start_date_parts[2])
-            ActionChains(self.driver).key_down(Keys.CONTROL).send_keys('v').key_up(Keys.CONTROL).perform()
-            start_year_input.click()
-            pyperclip.copy(start_date_parts[0])
-            ActionChains(self.driver).key_down(Keys.CONTROL).send_keys('v').key_up(Keys.CONTROL).perform()
-
-            # 종료일 입력
-            end_month_input.click()
-            pyperclip.copy(end_date_parts[1])
-            ActionChains(self.driver).key_down(Keys.CONTROL).send_keys('v').key_up(Keys.CONTROL).perform()
-            end_day_input.click()
-            pyperclip.copy(end_date_parts[2])
-            ActionChains(self.driver).key_down(Keys.CONTROL).send_keys('v').key_up(Keys.CONTROL).perform()
-            end_year_input.click()
-            pyperclip.copy(end_date_parts[0])
-            ActionChains(self.driver).key_down(Keys.CONTROL).send_keys('v').key_up(Keys.CONTROL).perform()
-            
-            # 보조: 숨겨진 input[type="text"]에도 값 주입 (Generate 버튼 활성화에 도움될 수 있음)
-            self.driver.execute_script(f"""
-                const fullInput = document.querySelector('input[placeholder*="mm/dd/yyyy"]');
-                if (fullInput) {{
-                    fullInput.focus(); // 포커스
-                    fullInput.value = '{start_date_parts[1]}/{start_date_parts[2]}/{start_date_parts[0]} - {end_date_parts[1]}/{end_date_parts[2]}/{end_date_parts[0]}';
-                    fullInput.dispatchEvent(new Event('input', {{ bubbles: true }}));
-                    fullInput.dispatchEvent(new Event('blur', {{ bubbles: true }})); // 블러
-                }}
-            """)
             print("Report Reference Date 입력 완료.")
             time.sleep(0.5) # 짧은 대기
 
