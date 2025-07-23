@@ -201,65 +201,33 @@ class FenokReportGenerator:
             print(f"로그인 중 오류 발생: {e}")
             return False
 
-    def _select_date_from_calendar(self, date_str, calendar_button_xpath):
+    
+
+    def _input_date_directly(self, date_str: str, is_start: bool):
         """
-        캘린더 다이얼로그를 열어 날짜를 선택합니다.
-        date_str: YYYY-MM-DD 형식의 날짜 문자열
-        calendar_button_xpath: 캘린더를 여는 버튼의 XPath
+        Hybrid V2: contenteditable 세그먼트에 직접 입력.
+        is_start=True => 시작일, False => 종료일
         """
-        date_obj = datetime.strptime(date_str, '%Y-%m-%d')
-        target_day = date_obj.day
-        target_month = date_obj.month
-        target_year = date_obj.year
+        dt = datetime.strptime(date_str, "%Y-%m-%d")
+        seg_css = "[contenteditable='true'][aria-label*='시작일']" if is_start \
+                  else "[contenteditable='true'][aria-label*='종료일']"
 
-        try:
-            calendar_button = WebDriverWait(self.driver, 10).until(
-                EC.element_to_be_clickable((By.XPATH, calendar_button_xpath))
-            )
-            calendar_button.click()
-            print(f"캘린더 버튼 클릭 완료 ({date_str}).")
-            time.sleep(1)
+        wait   = WebDriverWait(self.driver, 10)
+        fields = wait.until(EC.visibility_of_all_elements_located((By.CSS_SELECTOR, seg_css)))
+        fields.sort(key=lambda e: e.location['x'])   # 월·일·년 순 정렬
 
-            # 월 이동 (필요시)
-            while True:
-                current_month_year_element = WebDriverWait(self.driver, 5).until(
-                    EC.presence_of_element_located((By.XPATH, "//header[@data-slot='header']/span[@data-slot='title']"))
-                )
-                current_month_year_text = current_month_year_element.text
-                # 예: "July 2025" -> "July", "2025"
-                current_month_str, current_year_str = current_month_year_text.split(' ')
-                current_month = datetime.strptime(current_month_str, '%B').month # 예: July -> 7
-                current_year = int(current_year_str)
+        for elm, txt in zip(fields, (dt.strftime("%m"), dt.strftime("%d"), dt.strftime("%Y"))):
+            elm.click(); time.sleep(0.05)
+            elm.send_keys(Keys.CONTROL, 'a', Keys.DELETE, txt, Keys.TAB)
 
-                if current_year == target_year and current_month == target_month:
-                    break # 목표 월에 도달
-                elif date_obj < datetime(current_year, current_month, 1):
-                    # 이전 달로 이동
-                    prev_button = WebDriverWait(self.driver, 5).until(
-                        EC.element_to_be_clickable((By.XPATH, "//button[@data-slot='prev-button']"))
-                    )
-                    prev_button.click()
-                else:
-                    # 다음 달로 이동
-                    next_button = WebDriverWait(self.driver, 5).until(
-                        EC.element_to_be_clickable((By.XPATH, "//button[@data-slot='next-button']"))
-                    )
-                    next_button.click()
-                time.sleep(0.5)
-
-            # 날짜 선택
-            date_xpath = f"//span[@role='button' and contains(@aria-label, '{target_day}일')]"
-            target_day_element = WebDriverWait(self.driver, 10).until(
-                EC.element_to_be_clickable((By.XPATH, date_xpath))
-            )
-            target_day_element.click()
-            print(f"날짜 {date_str} 선택 완료.")
-            time.sleep(0.5)
-
-        except TimeoutException:
-            print(f"오류: 캘린더에서 날짜 {date_str}를 선택하는 데 타임아웃이 발생했습니다.")
-        except Exception as e:
-            print(f"오류: 캘린더에서 날짜 {date_str}를 선택하는 중 예외 발생: {e}")
+        # 숨은 input동기화백업
+        self.driver.execute_script("""
+            const n=arguments[2]?'start-date-hidden':'end-date-hidden';
+            const h=document.querySelector(`input[name='${n}']`);
+            if(h){h.value=arguments[0];
+                 h.dispatchEvent(new Event('input',{bubbles:true}));
+                 h.dispatchEvent(new Event('change',{bubbles:true}));}
+        """, date_str, None, is_start)
 
     def generate_report_html(self, part_type, report_index, report_date_str, ref_date_start_str, ref_date_end_str):
         """
@@ -305,18 +273,11 @@ class FenokReportGenerator:
             print("Report Title 입력 완료.")
             time.sleep(0.5) # 짧은 대기
 
-            # Report Reference Date 입력 (캘린더 다이얼로그 사용)
-            # Report Reference Date 입력 (캘린더 다이얼로그 사용)
-            # 시작 날짜 캘린더 버튼 클릭
-            start_date_calendar_button_xpath = "//button[@data-slot='selector-button' and @aria-label='달력'][1]" # 첫 번째 달력 버튼
-            self._select_date_from_calendar(ref_date_start_str, start_date_calendar_button_xpath) # 시작 날짜 선택
-
-            # 종료 날짜 캘린더 버튼 클릭
-            end_date_calendar_button_xpath = "//button[@data-slot='selector-button' and @aria-label='달력'][2]" # 두 번째 달력 버튼
-            self._select_date_from_calendar(ref_date_end_str, end_date_calendar_button_xpath) # 종료 날짜 선택
+            # Report Reference Date 입력 (Hybrid V2 방식)
+            self._input_date_directly(ref_date_start_str, True)
+            self._input_date_directly(ref_date_end_str,  False)
 
             print("Report Reference Date 입력 완료.")
-            time.sleep(0.5) # 짧은 대기
 
             # Upload Sample Report
             upload_sample_input = self.driver.find_element(By.XPATH, "//input[@type='file' and @placeholder='file-input' and @max='1']")
@@ -336,7 +297,6 @@ class FenokReportGenerator:
             pyperclip.copy(prompt_content) # 클립보드에 복사
             ActionChains(self.driver).key_down(Keys.CONTROL).send_keys('v').key_up(Keys.CONTROL).perform() # Ctrl+V
             print("Prompt 입력 완료.")
-            time.sleep(0.5) # 짧은 대기
 
             # Generate 버튼 활성화 확인 (디버깅용)
             generate_button_element = self.driver.find_element(By.XPATH, "//button[contains(., 'Generate')]")
@@ -351,34 +311,24 @@ class FenokReportGenerator:
             print(f"Generate 버튼 최종 disabled 상태: {generate_button.get_attribute('disabled')}") # None이 출력되어야 함
             
             generate_button.click()
-            print("Generate 버튼 클릭. 보고서 생성 대기 중...")
+            print("Generate 버튼 클릭. 보고서 생성 시작 대기 중...")
 
-            # Generate 버튼 클릭 후 보고서 생성 대기 (1분)
-            print("보고서 생성 백엔드 처리 대기 중 (최대 1분)...")
-            time.sleep(60) # 1분 대기
-
-            # 산출물 URL 대기 (최대 15분)
-            WebDriverWait(self.driver, 900).until( # 15분 = 900초
+            # 1단계: 산출물 URL 대기 (최대 20분 = 1200초)
+            print("  - 산출물 URL 변경 대기 중 (최대 20분)...")
+            WebDriverWait(self.driver, 1200).until(
                 EC.url_matches(r"https://theterminalx.com/agent/enterprise/report/\d+")
             )
             generated_report_url = self.driver.current_url
-            print(f"보고서 생성 완료. URL: {generated_report_url}")
+            print(f"  - 보고서 URL 확인 완료: {generated_report_url}")
 
-            # HTML 추출 및 저장
-            # 사용자 요청: .text-[#121212] 클래스를 가진 div 요소의 HTML만 가져오기
-            try:
-                target_div = self.driver.find_element(By.CSS_SELECTOR, "div.text-\[\\#121212\]")
-                report_html_content = target_div.get_attribute('outerHTML')
-            except NoSuchElementException:
-                print("오류: 'text-[#121212]' 클래스를 가진 div를 찾을 수 없습니다. 전체 페이지 HTML을 저장합니다.")
-                report_html_content = self.driver.page_source
-
-            output_html_filename = f"{report_date_str}_{part_type.lower()}_{report_index:02d}.html"
-            output_html_path = os.path.join(self.generated_html_dir, output_html_filename)
-            with open(output_html_path, 'w', encoding='utf-8') as f:
-                f.write(report_html_content)
-            print(f"생성된 HTML 저장 완료: {output_html_path}")
-            return output_html_path
+            # 2단계: "Generating..." 메시지 등장 대기 (리포트 생성 시작 확인)
+            print("  - 'Generating your report' 메시지 등장 대기 중...")
+            WebDriverWait(self.driver, 60).until(
+                EC.presence_of_element_located((By.XPATH, "//div[contains(text(), 'Generating your report (it may take up to 5 minutes).')]"))
+            )
+            print("  - 'Generating your report' 메시지 등장 확인. 리포트 생성 시작됨.")
+            
+            return generated_report_url, report_title # URL과 제목 반환
 
         except TimeoutException:
             print("보고서 생성 또는 HTML 추출 타임아웃.")
@@ -392,8 +342,8 @@ class FenokReportGenerator:
         print(f"HTML을 JSON으로 변환 중: {html_file_path}")
         # html_to_json 함수를 동적으로 임포트
         import sys
-        sys.path.append(os.path.join(self.lexi_convert_dir, 'converters'))
-        from html_converter import html_to_json # pylint: disable=import-outside-toplevel
+        sys.path.append(self.lexi_convert_dir) # Python_Lexi_Convert 프로젝트의 루트 디렉터리를 추가
+        from converters.html_converter import html_to_json # 이제 'converters' 패키지 내의 모듈로 임포트
         
         data, error = html_to_json(html_file_path)
         if error:
@@ -534,6 +484,74 @@ class FenokReportGenerator:
         except Exception as e:
             print(f"version.js 업데이트 중 오류 발생: {e}")
 
+    def _wait_for_report_status(self, report_title: str, target_status: str, timeout: int = 1200, retry_attempts: int = 3):
+        """
+        아카이브 페이지에서 특정 리포트의 상태가 될 때까지 대기합니다.
+        'Failed' 상태 감지 시 재시도 로직을 포함합니다.
+
+        Args:
+            report_title (str): 확인할 리포트의 제목.
+            target_status (str): 목표 상태 ('Generated' 또는 'Completed').
+            timeout (int): 상태 대기 최대 시간 (초).
+            retry_attempts (int): 'Failed' 상태 시 재시도 횟수.
+        Returns:
+            bool: 목표 상태에 도달했으면 True, 실패했으면 False.
+        """
+        print(f"  - 리포트 '{report_title}'의 상태 '{target_status}' 대기 중 (최대 {timeout/60}분)...")
+        current_attempt = 0
+        while current_attempt < retry_attempts:
+            self.driver.get("https://theterminalx.com/agent/enterprise/report/archive")
+            start_time = time.time()
+            
+            while time.time() - start_time < timeout:
+                try:
+                    # 리포트 제목으로 해당 행 찾기 (가장 최근 리포트가 아닐 수 있으므로 제목으로 찾음)
+                    report_row_xpath = f"//table/tbody/tr[contains(., '{report_title}')]"
+                    report_status_element_xpath = f"{report_row_xpath}/td[4]"
+
+                    WebDriverWait(self.driver, 10).until(
+                        EC.presence_of_element_located((By.XPATH, report_status_element_xpath))
+                    )
+                    current_status = self.driver.find_element(By.XPATH, report_status_element_xpath).text
+                    print(f"    - 현재 상태: {current_status}")
+
+                    if current_status == target_status:
+                        print(f"  - 리포트 '{report_title}' 상태 '{target_status}' 확인 완료.")
+                        return True
+                    elif current_status == "Failed":
+                        print(f"  - 경고: 리포트 '{report_title}' 생성 실패 (Failed 상태). 재시도합니다.")
+                        break # 현재 대기 루프를 빠져나가 재시도 시도
+                    elif current_status == "Generating":
+                        time.sleep(30) # Generating 중이면 30초마다 다시 확인
+                    else: # Generated 등 다른 상태
+                        time.sleep(10) # 10초마다 다시 확인
+
+                    # 주기적인 새로고침 (1분마다)
+                    if (time.time() - start_time) % 60 < 5: # 1분 주기로 새로고침
+                        print("    - 주기적인 새로고침...")
+                        self.driver.refresh()
+                        time.sleep(5) # 새로고침 후 대기
+
+                except TimeoutException:
+                    print("    - 아카이브 페이지에서 리포트 상태 요소 찾기 타임아웃. 페이지 새로고침.")
+                    self.driver.refresh() # 페이지 새로고침
+                    time.sleep(5) # 새로고침 후 대기
+                except NoSuchElementException:
+                    print("    - 아카이브 페이지에서 리포트 제목을 찾을 수 없습니다. 새로고침.")
+                    self.driver.refresh()
+                    time.sleep(5)
+                except Exception as e:
+                    print(f"    - 상태 확인 중 예외 발생: {e}. 새로고침.")
+                    self.driver.refresh()
+                    time.sleep(5)
+            
+            current_attempt += 1
+            print(f"  - 리포트 '{report_title}' 상태 대기 타임아웃. 재시도 횟수: {current_attempt}/{retry_attempts}")
+            time.sleep(10) # 재시도 전 잠시 대기
+
+        print(f"  - 오류: 리포트 '{report_title}'가 '{target_status}' 상태에 도달하지 못했습니다. 자동화를 중단합니다.")
+        return False
+
     def run_full_automation(self):
         """전체 자동화 워크플로우를 실행합니다."""
         print("--- 100xFenok Report Generation Automation Start ---")
@@ -560,42 +578,71 @@ class FenokReportGenerator:
             print("리포트 폼 페이지 로드 타임아웃. 자동화를 중단합니다.")
             return
 
-        generated_html_paths = []
-        
-        # 2. TerminalX 보고서 생성 자동화 (10회 반복)
+        generated_reports_info = [] # (url, title) 튜플 저장
+
+        # 2. TerminalX 보고서 생성 자동화 (Part1)
         today = datetime.now()
-        # 화요일 리포트 (예시: 07-20-2025 ~ 07-22-2025)
-        # 실제 날짜 계산 로직은 사용자님의 시차 및 요일 기준에 따라 구현 필요
+        weekday = today.weekday() # 0:월, 1:화, ..., 6:일
+
+        if weekday == 1: # 화요일
+            delta_days = 2
+        else: # 수,목,금,토,일,월
+            delta_days = 1
+
         report_date_str = today.strftime('%Y%m%d')
-        ref_date_start = (today - timedelta(days=2)).strftime('%Y-%m-%d') # 예시
+        ref_date_start = (today - timedelta(days=delta_days)).strftime('%Y-%m-%d')
         ref_date_end = today.strftime('%Y-%m-%d')
 
-        for i in range(1, 6): # PART1 5회
-            try:
-                html_path = self.generate_report_html('Part1', i, report_date_str, ref_date_start, ref_date_end)
-                if html_path:
-                    generated_html_paths.append(html_path)
-                time.sleep(5) # 다음 보고서 생성 전 잠시 대기
-            except Exception as e:
-                print(f"PART1 보고서 생성 중 예외 발생 (인덱스: {i}): {e}")
+        # Part1 리포트 생성 시작
+        print("\n--- Part1 리포트 생성 시작 ---")
+        part1_url, part1_title = self.generate_report_html('Part1', 1, report_date_str, ref_date_start, ref_date_end)
+        if part1_url:
+            generated_reports_info.append({'url': part1_url, 'title': part1_title, 'part_type': 'Part1'})
+        
+        # Part2 리포트 생성 시작
+        print("\n--- Part2 리포트 생성 시작 ---")
+        part2_url, part2_title = self.generate_report_html('Part2', 1, report_date_str, ref_date_start, ref_date_end)
+        if part2_url:
+            generated_reports_info.append({'url': part2_url, 'title': part2_title, 'part_type': 'Part2'})
 
-        # PART2는 입력이 같다고 하셨으므로, PART1과 동일한 날짜 및 참조 날짜 사용
-        for i in range(1, 6): # PART2 5회
-            try:
-                html_path = self.generate_report_html('Part2', i, report_date_str, ref_date_start, ref_date_end)
-                if html_path:
-                    generated_html_paths.append(html_path)
-                time.sleep(5) # 다음 보고서 생성 전 잠시 대기
-            except Exception as e:
-                print(f"PART2 보고서 생성 중 예외 발생 (인덱스: {i}): {e}")
-
-        if not generated_html_paths:
-            print("생성된 HTML 보고서가 없습니다. 자동화를 중단합니다.")
+        if not generated_reports_info:
+            print("생성된 리포트가 없습니다. 자동화를 중단합니다.")
             return
 
-        # 3. HTML to JSON 변환
+        # 3. 아카이브 페이지에서 리포트 상태 대기 및 최종 HTML 추출
+        print("\n--- 아카이브 페이지에서 리포트 상태 확인 및 HTML 추출 ---")
+        final_html_paths = []
+        for report_info in generated_reports_info:
+            report_url = report_info['url']
+            report_title = report_info['title']
+            part_type = report_info['part_type']
+            report_index = 1 # 현재는 각 Part당 1개씩만 생성하므로 인덱스 1로 고정
+
+            # 리포트가 'Generated' 상태가 될 때까지 대기
+            if self._wait_for_report_status(report_title, "Generated"):
+                print(f"  - 리포트 '{report_title}'가 'Generated' 상태 확인. HTML 추출을 위해 페이지로 이동.")
+                self.driver.get(report_url)
+                
+                # HTML 추출
+                report_html_content = self.driver.page_source
+                print(f"  - '{report_title}' 페이지 전체 HTML 추출 완료.")
+
+                output_html_filename = f"{report_date_str}_{part_type.lower()}_{report_index:02d}.html"
+                output_html_path = os.path.join(self.generated_html_dir, output_html_filename)
+                with open(output_html_path, 'w', encoding='utf-8') as f:
+                    f.write(report_html_content)
+                print(f"생성된 HTML 저장 완료: {output_html_path}")
+                final_html_paths.append(output_html_path)
+            else:
+                print(f"  - 오류: 리포트 '{report_title}'가 'Generated' 상태에 도달하지 못했습니다. HTML 추출을 건너뜁니다.")
+
+        if not final_html_paths:
+            print("최종 HTML 보고서가 없습니다. 자동화를 중단합니다.")
+            return
+
+        # 4. HTML to JSON 변환
         generated_json_paths = []
-        for html_path in generated_html_paths:
+        for html_path in final_html_paths:
             json_path = self.convert_html_to_json(html_path)
             if json_path:
                 generated_json_paths.append(json_path)
@@ -604,17 +651,18 @@ class FenokReportGenerator:
             print("변환된 JSON 파일이 없습니다. 자동화를 중단합니다.")
             return
 
-        # 4. JSON 데이터 가공 및 통합
+        # 5. JSON 데이터 가공 및 통합
         integrated_part1_json, integrated_part2_json = self.integrate_json_data(generated_json_paths)
 
-        # 5. 최종 데일리랩 HTML 빌드
+        # 6. 최종 데일리랩 HTML 빌드
         final_daily_wrap_html_path = self.build_final_html(integrated_part1_json, integrated_part2_json)
 
-        # 6. main.html 및 version.js 업데이트
+        # 7. main.html 및 version.js 업데이트
         self.update_main_html_and_version_js(today.strftime('%Y-%m-%d'))
 
-        # 7. Git 커밋 및 푸시 (이 부분은 스크립트 외부에서 수동으로 실행하거나, 별도의 Git 자동화 모듈 필요)
-        print("\n--- 자동화 완료 ---")
+        # 8. Git 커밋 및 푸시 (이 부분은 스크립트 외부에서 수동으로 실행하거나, 별도의 Git 자동화 모듈 필요)
+        print("
+--- 자동화 완료 ---")
         print("main.html 및 version.js가 업데이트되었습니다. Git 커밋 및 푸시를 수동으로 실행해주세요.")
         print("Git 명령 예시:")
         print("git add projects/100xFenok/main.html projects/100xFenok/version.js")

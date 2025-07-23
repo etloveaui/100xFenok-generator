@@ -3,15 +3,19 @@ echo.
 echo [100xFenok-generator] Dependency Installation Script
 echo.
 
-REM Check if virtual environment exists
+REM Check if virtual environment exists, create if not.
 IF NOT EXIST .\venv\Scripts\activate (
-    echo Error: Virtual environment not found.
-    echo Please run 'python -m venv venv' first to create it.
-    echo.
-    pause
-    exit /b
+    echo Virtual environment not found. Creating it now...
+    python -m venv venv
+    IF ERRORLEVEL 1 (
+        echo Failed to create virtual environment. Please check your Python installation.
+        pause
+        exit /b
+    )
+    echo Virtual environment created successfully.
 )
 
+echo.
 echo Activating virtual environment...
 call .\venv\Scripts\activate
 
