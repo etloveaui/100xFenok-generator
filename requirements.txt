@@ -1,0 +1,4 @@
+selenium
+pyperclip
+beautifulsoup4
+Jinja2
