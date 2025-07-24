@@ -12,19 +12,14 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 import pyperclip
 
-# BeautifulSoup 및 Jinja2는 필요시 동적으로 임포트
-# from bs4 import BeautifulSoup
-# from jinja2 import Environment, FileSystemLoader
-
-# Python_Lexi_Convert 도구의 html_to_json 함수 임포트 (경로 조정 필요)
-# import sys
-# sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'Python_Lexi_Convert', 'converters')))
-# from common import file_to_json
+from report_manager import Report, ReportBatchManager
 
 class FenokReportGenerator:
     def __init__(self):
-        self.base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
-        self.project_dir = os.path.join(self.base_dir, 'projects', '100xFenok-generator')
+        # 1. 경로 표준화: 스크립트 위치를 기준으로 모든 경로를 설정
+        self.project_dir = os.path.dirname(os.path.abspath(__file__))
+        self.base_dir = os.path.abspath(os.path.join(self.project_dir, '..', '..'))
+        
         self.secrets_file = os.path.join(self.base_dir, 'secrets', 'my_sensitive_data.md')
         self.generated_html_dir = os.path.join(self.project_dir, 'generated_html')
         self.generated_json_dir = os.path.join(self.project_dir, 'generated_json')
@@ -35,6 +30,7 @@ class FenokReportGenerator:
         self.output_daily_wrap_dir = os.path.join(self.base_dir, 'projects', '100xFenok', '100x', 'daily-wrap')
         self.main_html_path = os.path.join(self.base_dir, 'projects', '100xFenok', 'main.html')
         self.version_js_path = os.path.join(self.base_dir, 'projects', '100xFenok', 'version.js')
+        self.chromedriver_path = os.path.join(self.project_dir, 'chromedriver.exe') # Chromedriver 경로 명시
 
         self.driver = None
         self.terminalx_username = None
@@ -72,7 +68,8 @@ class FenokReportGenerator:
     def _setup_webdriver(self):
         """Selenium WebDriver를 설정합니다."""
         try:
-            service = Service(executable_path=os.path.join(self.project_dir, 'chromedriver.exe'))
+            # 2. Chromedriver 경로 수정: 명시적으로 정의된 경로 사용
+            service = Service(executable_path=self.chromedriver_path)
             options = webdriver.ChromeOptions()
             # headless 모드 (백그라운드 실행)
             # options.add_argument('--headless')
@@ -201,8 +198,6 @@ class FenokReportGenerator:
             print(f"로그인 중 오류 발생: {e}")
             return False
 
-    
-
     def _input_date_directly(self, date_str: str, is_start: bool):
         """
         Hybrid V2: contenteditable 세그먼트에 직접 입력.
@@ -220,7 +215,8 @@ class FenokReportGenerator:
             elm.click(); time.sleep(0.05)
             elm.send_keys(Keys.CONTROL, 'a', Keys.DELETE, txt, Keys.TAB)
 
-        # 숨은 input동기화백업
+        # 3. 버그 수정: 주석의 특수문자 제거
+        # 숨은 input 동기화 백업
         self.driver.execute_script("""
             const n=arguments[2]?'start-date-hidden':'end-date-hidden';
             const h=document.querySelector(`input[name='${n}']`);
@@ -229,24 +225,18 @@ class FenokReportGenerator:
                  h.dispatchEvent(new Event('change',{bubbles:true}));}
         """, date_str, None, is_start)
 
-    def generate_report_html(self, part_type, report_index, report_date_str, ref_date_start_str, ref_date_end_str):
+    def generate_report_html(self, report: Report, report_date_str: str, ref_date_start_str: str, ref_date_end_str: str):
         """
-        TerminalX에서 보고서를 생성하고 HTML을 추출합니다.
-        part_type: 'Part1' 또는 'Part2'
-        report_index: 1부터 5까지의 인덱스
-        report_date_str: YYYYMMDD 형식의 보고서 날짜 (예: 20250722)
-        ref_date_start_str: YYYY-MM-DD 형식의 Report Reference Date 시작일
-        ref_date_end_str: YYYY-MM-DD 형식의 Report Reference Date 종료일
+        TerminalX에서 보고서를 생성하고, 생성 요청 후 URL과 제목을 반환합니다.
         """
-        print(f"\n--- {part_type} 보고서 생성 시작 (인덱스: {report_index}) ---")
-        report_title = f"{report_date_str} 100x Daily Wrap {part_type}"
+        print(f"\n--- {report.part_type} 보고서 생성 요청 시작 ---")
         
         # Prompt 파일 경로
-        prompt_file = os.path.join(self.input_data_dir, f"21_100x_Daily_Wrap_Prompt_{'1' if part_type == 'Part1' else '2'}_{report_date_str}.md")
+        prompt_file = os.path.join(self.input_data_dir, f"21_100x_Daily_Wrap_Prompt_{'1' if report.part_type == 'Part1' else '2'}_{report_date_str}.md")
         # Source PDF 파일 경로
-        source_pdf_file = os.path.join(self.input_data_dir, f"10_100x_Daily_Wrap_My_Sources_{'1' if part_type == 'Part1' else '2'}_{report_date_str}.pdf")
+        source_pdf_file = os.path.join(self.input_data_dir, f"10_100x_Daily_Wrap_My_Sources_{'1' if report.part_type == 'Part1' else '2'}_{report_date_str}.pdf")
         # Add your Own Sources의 두 번째 PDF 파일 경로 (Prompt PDF 버전)
-        prompt_pdf_file = os.path.join(self.input_data_dir, f"21_100x_Daily_Wrap_Prompt_{'1' if part_type == 'Part1' else '2'}_{report_date_str}.pdf")
+        prompt_pdf_file = os.path.join(self.input_data_dir, f"21_100x_Daily_Wrap_Prompt_{'1' if report.part_type == 'Part1' else '2'}_{report_date_str}.pdf")
 
         # Prompt 내용 로드
         try:
@@ -254,7 +244,7 @@ class FenokReportGenerator:
                 prompt_content = f.read()
         except FileNotFoundError:
             print(f"오류: 프롬프트 파일 {prompt_file}을 찾을 수 없습니다.")
-            return None
+            return False
         
         # 템플릿 ID를 10으로 고정하여 바로 진입
         report_form_url = "https://theterminalx.com/agent/enterprise/report/form/10"
@@ -268,7 +258,7 @@ class FenokReportGenerator:
 
             # Report Title 입력 (Ctrl+V 시뮬레이션)
             report_title_input.click() # 필드 클릭하여 포커스
-            report_title_input.send_keys(report_title)
+            report_title_input.send_keys(report.title)
             report_title_input.send_keys(Keys.TAB)
             print("Report Title 입력 완료.")
             time.sleep(0.5) # 짧은 대기
@@ -328,14 +318,16 @@ class FenokReportGenerator:
             )
             print("  - 'Generating your report' 메시지 등장 확인. 리포트 생성 시작됨.")
             
-            return generated_report_url, report_title # URL과 제목 반환
+            report.url = generated_report_url
+            report.status = "GENERATING"
+            return True
 
         except TimeoutException:
-            print("보고서 생성 또는 HTML 추출 타임아웃.")
-            return None
+            print("보고서 생성 요청 타임아웃.")
+            return False
         except Exception as e:
-            print(f"보고서 생성 중 오류 발생: {e}")
-            return None
+            print(f"보고서 생성 요청 중 오류 발생: {e}")
+            return False
 
     def convert_html_to_json(self, html_file_path):
         """Python_Lexi_Convert 도구를 사용하여 HTML을 JSON으로 변환합니다."""
@@ -359,8 +351,7 @@ class FenokReportGenerator:
         return output_json_path
 
     def integrate_json_data(self, json_file_paths):
-        """
-        통합JSON Instruction_Json.md 지침에 따라 JSON 데이터를 가공하고 통합합니다.
+        """통합JSON Instruction_Json.md 지침에 따라 JSON 데이터를 가공하고 통합합니다.
         이 부분은 Instruction_Json.md의 복잡한 로직을 구현해야 하므로,
         여기서는 뼈대만 제공하고 실제 구현은 Instruction_Json.md를 참조하여 진행해야 합니다.
         """
@@ -484,157 +475,74 @@ class FenokReportGenerator:
         except Exception as e:
             print(f"version.js 업데이트 중 오류 발생: {e}")
 
-    def _wait_for_report_status(self, report_title: str, target_status: str, timeout: int = 1200, retry_attempts: int = 3):
-        """
-        아카이브 페이지에서 특정 리포트의 상태가 될 때까지 대기합니다.
-        'Failed' 상태 감지 시 재시도 로직을 포함합니다.
-
-        Args:
-            report_title (str): 확인할 리포트의 제목.
-            target_status (str): 목표 상태 ('Generated' 또는 'Completed').
-            timeout (int): 상태 대기 최대 시간 (초).
-            retry_attempts (int): 'Failed' 상태 시 재시도 횟수.
-        Returns:
-            bool: 목표 상태에 도달했으면 True, 실패했으면 False.
-        """
-        print(f"  - 리포트 '{report_title}'의 상태 '{target_status}' 대기 중 (최대 {timeout/60}분)...")
-        current_attempt = 0
-        while current_attempt < retry_attempts:
-            self.driver.get("https://theterminalx.com/agent/enterprise/report/archive")
-            start_time = time.time()
-            
-            while time.time() - start_time < timeout:
-                try:
-                    # 리포트 제목으로 해당 행 찾기 (가장 최근 리포트가 아닐 수 있으므로 제목으로 찾음)
-                    report_row_xpath = f"//table/tbody/tr[contains(., '{report_title}')]"
-                    report_status_element_xpath = f"{report_row_xpath}/td[4]"
-
-                    WebDriverWait(self.driver, 10).until(
-                        EC.presence_of_element_located((By.XPATH, report_status_element_xpath))
-                    )
-                    current_status = self.driver.find_element(By.XPATH, report_status_element_xpath).text
-                    print(f"    - 현재 상태: {current_status}")
-
-                    if current_status == target_status:
-                        print(f"  - 리포트 '{report_title}' 상태 '{target_status}' 확인 완료.")
-                        return True
-                    elif current_status == "Failed":
-                        print(f"  - 경고: 리포트 '{report_title}' 생성 실패 (Failed 상태). 재시도합니다.")
-                        break # 현재 대기 루프를 빠져나가 재시도 시도
-                    elif current_status == "Generating":
-                        time.sleep(30) # Generating 중이면 30초마다 다시 확인
-                    else: # Generated 등 다른 상태
-                        time.sleep(10) # 10초마다 다시 확인
-
-                    # 주기적인 새로고침 (1분마다)
-                    if (time.time() - start_time) % 60 < 5: # 1분 주기로 새로고침
-                        print("    - 주기적인 새로고침...")
-                        self.driver.refresh()
-                        time.sleep(5) # 새로고침 후 대기
-
-                except TimeoutException:
-                    print("    - 아카이브 페이지에서 리포트 상태 요소 찾기 타임아웃. 페이지 새로고침.")
-                    self.driver.refresh() # 페이지 새로고침
-                    time.sleep(5) # 새로고침 후 대기
-                except NoSuchElementException:
-                    print("    - 아카이브 페이지에서 리포트 제목을 찾을 수 없습니다. 새로고침.")
-                    self.driver.refresh()
-                    time.sleep(5)
-                except Exception as e:
-                    print(f"    - 상태 확인 중 예외 발생: {e}. 새로고침.")
-                    self.driver.refresh()
-                    time.sleep(5)
-            
-            current_attempt += 1
-            print(f"  - 리포트 '{report_title}' 상태 대기 타임아웃. 재시도 횟수: {current_attempt}/{retry_attempts}")
-            time.sleep(10) # 재시도 전 잠시 대기
-
-        print(f"  - 오류: 리포트 '{report_title}'가 '{target_status}' 상태에 도달하지 못했습니다. 자동화를 중단합니다.")
-        return False
-
     def run_full_automation(self):
         """전체 자동화 워크플로우를 실행합니다."""
         print("--- 100xFenok Report Generation Automation Start ---")
         
-        # 1. TerminalX 로그인
         if not self._login_terminalx():
             print("로그인 실패. 자동화를 중단합니다.")
             return
 
-        # 로그인 성공 후 현재 URL 출력 (디버깅용)
-        print(f"로그인 후 현재 URL: {self.driver.current_url}")
-        print("잠시 대기합니다. 브라우저에서 로그인 후 페이지를 확인해주세요. (5초 후 자동 진행)")
-        time.sleep(5) # 사용자 확인을 위한 5초 대기
+        batch_manager = ReportBatchManager(self.driver)
 
-        # 로그인 성공 후 리포트 폼 페이지로 직접 이동
-        self.driver.get("https://theterminalx.com/agent/enterprise/report/form/10")
-        try:
-            # 리포트 폼 페이지 로드를 위해 더 긴 시간 대기
-            WebDriverWait(self.driver, 30).until( # 대기 시간을 30초로 늘림
-                EC.presence_of_element_located((By.XPATH, "//input[@placeholder=\"What's the title?\"]")) # reportTitle 대신 placeholder로 찾기
-            )
-            print("리포트 폼 페이지 로드 완료.")
-        except TimeoutException:
-            print("리포트 폼 페이지 로드 타임아웃. 자동화를 중단합니다.")
-            return
-
-        generated_reports_info = [] # (url, title) 튜플 저장
-
-        # 2. TerminalX 보고서 생성 자동화 (Part1)
         today = datetime.now()
-        weekday = today.weekday() # 0:월, 1:화, ..., 6:일
-
-        if weekday == 1: # 화요일
-            delta_days = 2
-        else: # 수,목,금,토,일,월
-            delta_days = 1
-
+        weekday = today.weekday()
+        delta_days = 2 if weekday == 1 else 1
         report_date_str = today.strftime('%Y%m%d')
         ref_date_start = (today - timedelta(days=delta_days)).strftime('%Y-%m-%d')
         ref_date_end = today.strftime('%Y-%m-%d')
 
-        # Part1 리포트 생성 시작
-        print("\n--- Part1 리포트 생성 시작 ---")
-        part1_url, part1_title = self.generate_report_html('Part1', 1, report_date_str, ref_date_start, ref_date_end)
-        if part1_url:
-            generated_reports_info.append({'url': part1_url, 'title': part1_title, 'part_type': 'Part1'})
+        # Phase 1: Fire-and-Forget - 모든 리포트 생성 요청
+        print("\n--- Phase 1: 리포트 생성 요청 시작 ---")
+        for part_type in ["Part1", "Part2"]:
+            title = f"{report_date_str} 100x Daily Wrap {part_type}"
+            batch_manager.add_report(part_type, title)
         
-        # Part2 리포트 생성 시작
-        print("\n--- Part2 리포트 생성 시작 ---")
-        part2_url, part2_title = self.generate_report_html('Part2', 1, report_date_str, ref_date_start, ref_date_end)
-        if part2_url:
-            generated_reports_info.append({'url': part2_url, 'title': part2_title, 'part_type': 'Part2'})
+        for report in batch_manager.reports:
+            self.generate_report_html(report, report_date_str, ref_date_start, ref_date_end)
 
-        if not generated_reports_info:
-            print("생성된 리포트가 없습니다. 자동화를 중단합니다.")
+        # Phase 2: Monitor & Retry - 모든 리포트가 완료될 때까지 모니터링
+        print("\n--- Phase 2: 아카이브 페이지에서 상태 모니터링 시작 ---")
+        success = batch_manager.monitor_and_retry()
+        
+        # Phase 2.5: 실패한 리포트 재시도 로직 (main_generator에서 처리)
+        failed_reports_after_monitor = [r for r in batch_manager.reports if r.status == "FAILED" and r.retry_count <= batch_manager.max_retries_per_report]
+        if failed_reports_after_monitor:
+            print("\n--- Phase 2.5: 실패한 리포트 재시도 시작 ---")
+            for report in failed_reports_after_monitor:
+                print(f"재시도: {report.title} (시도 {report.retry_count}/{batch_manager.max_retries_per_report})")
+                # generate_report_html을 다시 호출하여 리포트 재생성 시도
+                self.generate_report_html(report, report_date_str, ref_date_start, ref_date_end)
+                # 재시도 후 상태는 다시 GENERATING으로 변경될 것이므로, 다음 모니터링 주기에서 다시 확인됨
+            
+            # 재시도 후 다시 모니터링을 시작하여 최종 상태 확인
+            print("\n--- Phase 2.5: 재시도 후 최종 상태 모니터링 ---")
+            success = batch_manager.monitor_and_retry() # 재시도된 리포트의 최종 상태를 확인
+
+        if not success:
+            print("오류: 리포트 생성에 최종 실패하여 자동화를 중단합니다.")
             return
 
-        # 3. 아카이브 페이지에서 리포트 상태 대기 및 최종 HTML 추출
-        print("\n--- 아카이브 페이지에서 리포트 상태 확인 및 HTML 추출 ---")
+        # Phase 3: Extract & Process - 성공한 리포트 데이터 처리
+        print("\n--- Phase 3: 데이터 추출 및 처리 시작 ---")
         final_html_paths = []
-        for report_info in generated_reports_info:
-            report_url = report_info['url']
-            report_title = report_info['title']
-            part_type = report_info['part_type']
-            report_index = 1 # 현재는 각 Part당 1개씩만 생성하므로 인덱스 1로 고정
-
-            # 리포트가 'Generated' 상태가 될 때까지 대기
-            if self._wait_for_report_status(report_title, "Generated"):
-                print(f"  - 리포트 '{report_title}'가 'Generated' 상태 확인. HTML 추출을 위해 페이지로 이동.")
-                self.driver.get(report_url)
+        for report in batch_manager.reports:
+            if report.status == "GENERATED":
+                print(f"  - 리포트 '{report.title}'가 'Generated' 상태 확인. HTML 추출을 위해 페이지로 이동.")
+                self.driver.get(report.url)
                 
                 # HTML 추출
                 report_html_content = self.driver.page_source
-                print(f"  - '{report_title}' 페이지 전체 HTML 추출 완료.")
+                print(f"  - '{report.title}' 페이지 전체 HTML 추출 완료.")
 
-                output_html_filename = f"{report_date_str}_{part_type.lower()}_{report_index:02d}.html"
+                output_html_filename = f"{report_date_str}_{report.part_type.lower()}.html"
                 output_html_path = os.path.join(self.generated_html_dir, output_html_filename)
                 with open(output_html_path, 'w', encoding='utf-8') as f:
                     f.write(report_html_content)
                 print(f"생성된 HTML 저장 완료: {output_html_path}")
                 final_html_paths.append(output_html_path)
             else:
-                print(f"  - 오류: 리포트 '{report_title}'가 'Generated' 상태에 도달하지 못했습니다. HTML 추출을 건너뜁니다.")
+                print(f"  - 오류: 리포트 '{report.title}'가 'Generated' 상태에 도달하지 못했습니다. HTML 추출을 건너뜁니다.")
 
         if not final_html_paths:
             print("최종 HTML 보고서가 없습니다. 자동화를 중단합니다.")
@@ -661,8 +569,7 @@ class FenokReportGenerator:
         self.update_main_html_and_version_js(today.strftime('%Y-%m-%d'))
 
         # 8. Git 커밋 및 푸시 (이 부분은 스크립트 외부에서 수동으로 실행하거나, 별도의 Git 자동화 모듈 필요)
-        print("
---- 자동화 완료 ---")
+        print("\n--- 자동화 완료 ---")
         print("main.html 및 version.js가 업데이트되었습니다. Git 커밋 및 푸시를 수동으로 실행해주세요.")
         print("Git 명령 예시:")
         print("git add projects/100xFenok/main.html projects/100xFenok/version.js")
