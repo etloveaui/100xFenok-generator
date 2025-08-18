@@ -229,79 +229,139 @@ class FenokReportGenerator:
         """
         TerminalX에서 보고서를 생성하고, 생성 요청 후 URL과 제목을 반환합니다.
         """
-        print(f"\n--- {report.part_type} 보고서 생성 요청 시작 ---")
+        print(f"\n=== generate_report_html 함수 시작 ===")
+        print(f"--- {report.part_type} 보고서 생성 요청 시작 ---")
+        print(f"Report: {report.title}")
+        print(f"Date: {report_date_str}, Range: {ref_date_start_str} ~ {ref_date_end_str}")
         
-        # Prompt 파일 경로
-        prompt_file = os.path.join(self.input_data_dir, f"21_100x_Daily_Wrap_Prompt_{'1' if report.part_type == 'Part1' else '2'}_{report_date_str}.md")
-        # Source PDF 파일 경로
-        source_pdf_file = os.path.join(self.input_data_dir, f"10_100x_Daily_Wrap_My_Sources_{'1' if report.part_type == 'Part1' else '2'}_{report_date_str}.pdf")
-        # Add your Own Sources의 두 번째 PDF 파일 경로 (Prompt PDF 버전)
-        prompt_pdf_file = os.path.join(self.input_data_dir, f"21_100x_Daily_Wrap_Prompt_{'1' if report.part_type == 'Part1' else '2'}_{report_date_str}.pdf")
+        # 템플릿 파일들 - 고정된 날짜 사용 (템플릿이므로 매번 같은 파일 사용)
+        template_date = "20250723"  # Part1용 템플릿
+        template_date_part2 = "20250709"  # Part2용 템플릿
+        
+        if report.part_type == "Part1":
+            prompt_file = os.path.join(self.input_data_dir, f"21_100x_Daily_Wrap_Prompt_1_{template_date}.md")
+            source_pdf_file = os.path.join(self.input_data_dir, f"10_100x_Daily_Wrap_My_Sources_1_{template_date}.pdf")
+            prompt_pdf_file = os.path.join(self.input_data_dir, f"21_100x_Daily_Wrap_Prompt_1_{template_date}.pdf")
+        else:  # Part2
+            prompt_file = os.path.join(self.input_data_dir, f"21_100x_Daily_Wrap_Prompt_2_20250708.md")
+            source_pdf_file = os.path.join(self.input_data_dir, f"10_100x_Daily_Wrap_My_Sources_2_20250709.pdf")
+            prompt_pdf_file = os.path.join(self.input_data_dir, f"21_100x_Daily_Wrap_Prompt_2_20250708.pdf")
+
+        # 필요한 파일들 존재 여부 확인
+        print(f"파일 존재 확인:")
+        print(f"  - Prompt 파일: {prompt_file} ({'존재' if os.path.exists(prompt_file) else '없음'})")
+        print(f"  - Source PDF: {source_pdf_file} ({'존재' if os.path.exists(source_pdf_file) else '없음'})")
+        print(f"  - Prompt PDF: {prompt_pdf_file} ({'존재' if os.path.exists(prompt_pdf_file) else '없음'})")
 
         # Prompt 내용 로드
         try:
             with open(prompt_file, 'r', encoding='utf-8') as f:
                 prompt_content = f.read()
+            print(f"Prompt 파일 로드 성공 (길이: {len(prompt_content)}자)")
         except FileNotFoundError:
-            print(f"오류: 프롬프트 파일 {prompt_file}을 찾을 수 없습니다.")
+            print(f"[ERROR] 오류: 프롬프트 파일 {prompt_file}을 찾을 수 없습니다.")
+            report.status = "FAILED"
             return False
         
         # 템플릿 ID를 10으로 고정하여 바로 진입
         report_form_url = "https://theterminalx.com/agent/enterprise/report/form/10"
+        
+        # 디버깅: 리다이렉션 추적을 위한 로깅
+        print(f"  - 리포트 폼 URL로 이동 시도: {report_form_url}")
         self.driver.get(report_form_url)
+        
+        # 실제 도착한 URL 확인 및 디버깅  
+        time.sleep(3)  # 리다이렉션 완료 대기
+        current_url = self.driver.current_url
+        print(f"  - 실제 도착한 URL: {current_url}")
+        
+        # 아카이브 페이지로 리다이렉션된 경우 처리
+        if "archive" in current_url:
+            print("  - 아카이브 페이지로 리다이렉션됨. 다시 폼으로 이동 시도...")
+            
+            # 방법 1: 직접 재시도
+            time.sleep(2)
+            self.driver.get(report_form_url)
+            time.sleep(3)
+            current_url_retry = self.driver.current_url
+            print(f"  - 재시도 후 URL: {current_url_retry}")
+            
+            # 여전히 아카이브 페이지라면 다른 방법 시도
+            if "archive" in current_url_retry:
+                print("  - 직접 접근 실패. 아카이브에서 '새 리포트' 버튼 접근 시도...")
+                try:
+                    # 아카이브 페이지에서 "새 리포트" 버튼 찾아서 클릭
+                    new_report_button = WebDriverWait(self.driver, 5).until(
+                        EC.element_to_be_clickable((By.XPATH, "//a[contains(@href, 'report/form') or contains(text(), '새') or contains(text(), 'New')]"))
+                    )
+                    new_report_button.click()
+                    time.sleep(3)
+                    final_url = self.driver.current_url
+                    print(f"  - '새 리포트' 버튼 클릭 후 URL: {final_url}")
+                except TimeoutException:
+                    print("  - '새 리포트' 버튼을 찾을 수 없음. 폼 페이지 접근 실패.")
+                    report.status = "FAILED"
+                    return False
 
         try:
             # 페이지 로드 대기 (Report Title 입력 필드 기준으로)
+            print("  - Report Title 입력 필드 찾는 중...")
             report_title_input = WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, "//input[@placeholder=\"What's the title?\"]"))
             )
+            print("  - Report Title 입력 필드 발견됨!")
 
             # Report Title 입력 (Ctrl+V 시뮬레이션)
+            print(f"  - Report Title 입력 중: '{report.title}'")
             report_title_input.click() # 필드 클릭하여 포커스
             report_title_input.send_keys(report.title)
             report_title_input.send_keys(Keys.TAB)
-            print("Report Title 입력 완료.")
+            print("  - Report Title 입력 완료!")
             time.sleep(0.5) # 짧은 대기
 
             # Report Reference Date 입력 (Hybrid V2 방식)
+            print(f"  - Reference Date 입력 중: {ref_date_start_str} ~ {ref_date_end_str}")
             self._input_date_directly(ref_date_start_str, True)
             self._input_date_directly(ref_date_end_str,  False)
+            print("  - Report Reference Date 입력 완료!")
 
-            print("Report Reference Date 입력 완료.")
-
-            # Upload Sample Report
+            # Upload Sample Report  
+            print(f"  - Sample Report 업로드 중: {source_pdf_file}")
             upload_sample_input = self.driver.find_element(By.XPATH, "//input[@type='file' and @placeholder='file-input' and @max='1']")
             upload_sample_input.send_keys(source_pdf_file)
-            print(f"Upload Sample Report: {source_pdf_file} 업로드 시도.")
+            print(f"  - Sample Report 업로드 완료!")
             time.sleep(2) # 파일 업로드 후 내부 처리 대기
 
             # Add your Own Sources
+            print(f"  - Own Sources 업로드 중: {source_pdf_file}, {prompt_pdf_file}")
             add_sources_input = self.driver.find_element(By.XPATH, "//input[@type='file' and @placeholder='file-input' and @multiple='']")
             add_sources_input.send_keys(f"{source_pdf_file}\n{prompt_pdf_file}")
-            print(f"Add your Own Sources: {source_pdf_file}, {prompt_pdf_file} 업로드 시도.")
+            print(f"  - Own Sources 업로드 완료!")
             time.sleep(2) # 파일 업로드 후 내부 처리 대기
 
             # Prompt 입력 (Ctrl+V 시뮬레이션)
+            print(f"  - Prompt 입력 중... (길이: {len(prompt_content)}자)")
             prompt_textarea = self.driver.find_element(By.XPATH, "//textarea[@placeholder='Outline, topic, notes, or anything you have in mind that you want the Agent to consider when analyzing data and creating research.']")
             prompt_textarea.click() # 필드 클릭하여 포커스
             pyperclip.copy(prompt_content) # 클립보드에 복사
             ActionChains(self.driver).key_down(Keys.CONTROL).send_keys('v').key_up(Keys.CONTROL).perform() # Ctrl+V
-            print("Prompt 입력 완료.")
+            print("  - Prompt 입력 완료!")
 
             # Generate 버튼 활성화 확인 (디버깅용)
+            print("  - Generate 버튼 활성화 대기 중...")
             generate_button_element = self.driver.find_element(By.XPATH, "//button[contains(., 'Generate')]")
-            print(f"Generate 버튼 초기 disabled 상태: {generate_button_element.get_attribute('disabled')}")
+            print(f"  - Generate 버튼 초기 disabled 상태: {generate_button_element.get_attribute('disabled')}")
             
             # Generate 버튼 클릭 (활성화될 때까지 대기)
             # disabled 속성이 사라질 때까지 기다림
             generate_button = WebDriverWait(self.driver, 30).until(
                 EC.element_to_be_clickable((By.XPATH, "//button[contains(., 'Generate') and not(@disabled)]"))
             )
-            print("Generate 버튼 활성화 확인.")
-            print(f"Generate 버튼 최종 disabled 상태: {generate_button.get_attribute('disabled')}") # None이 출력되어야 함
+            print("  - Generate 버튼 활성화 확인!")
+            print(f"  - Generate 버튼 최종 disabled 상태: {generate_button.get_attribute('disabled')}") # None이 출력되어야 함
             
             generate_button.click()
-            print("Generate 버튼 클릭. 보고서 생성 시작 대기 중...")
+            print("  - Generate 버튼 클릭! 보고서 생성 시작 대기 중...")
 
             # 1단계: 산출물 URL 대기 (최대 20분 = 1200초)
             print("  - 산출물 URL 변경 대기 중 (최대 20분)...")
@@ -322,11 +382,22 @@ class FenokReportGenerator:
             report.status = "GENERATING"
             return True
 
-        except TimeoutException:
-            print("보고서 생성 요청 타임아웃.")
+        except TimeoutException as e:
+            print(f"보고서 생성 요청 타임아웃: {e}")
+            print(f"  - 현재 URL: {self.driver.current_url}")
+            print(f"  - 페이지 제목: {self.driver.title}")
+            print("  - 디버깅용 페이지 소스 일부:")
+            try:
+                page_source_sample = self.driver.page_source[:1000] + "..."
+                print(f"  - 페이지 소스 샘플: {page_source_sample}")
+            except:
+                print("  - 페이지 소스 확인 불가")
+            report.status = "FAILED"
             return False
         except Exception as e:
             print(f"보고서 생성 요청 중 오류 발생: {e}")
+            print(f"  - 현재 URL: {self.driver.current_url}")
+            report.status = "FAILED"
             return False
 
     def convert_html_to_json(self, html_file_path):
@@ -582,9 +653,54 @@ class FenokReportGenerator:
             self.driver.quit()
             print("WebDriver 종료.")
 
+    def test_login_and_redirect_debug(self):
+        """로그인 및 리다이렉션 문제 디버깅 전용 테스트"""
+        print("=== 디버깅 테스트: 로그인 및 리다이렉션 확인 ===")
+        
+        if not self._login_terminalx():
+            print("로그인 실패. 테스트 중단.")
+            return False
+            
+        print("로그인 성공. 폼 페이지 접근 테스트 시작...")
+        
+        # 리다이렉션 추적 테스트
+        report_form_url = "https://theterminalx.com/agent/enterprise/report/form/10"
+        print(f"폼 URL로 이동: {report_form_url}")
+        self.driver.get(report_form_url)
+        
+        time.sleep(3)
+        current_url = self.driver.current_url
+        print(f"도착한 URL: {current_url}")
+        
+        if "archive" in current_url:
+            print("[ERROR] 아카이브 페이지로 리다이렉션됨 - 문제 확인")
+            return False
+        elif "form" in current_url:
+            print("[SUCCESS] 폼 페이지 접근 성공")
+            # Report Title 필드 존재 확인
+            try:
+                title_field = WebDriverWait(self.driver, 5).until(
+                    EC.presence_of_element_located((By.XPATH, "//input[@placeholder=\"What's the title?\"]"))
+                )
+                print("[SUCCESS] Report Title 필드 발견")
+                return True
+            except TimeoutException:
+                print("[ERROR] Report Title 필드를 찾을 수 없음")
+                return False
+        else:
+            print(f"[WARNING] 예상치 못한 페이지: {current_url}")
+            return False
+
 if __name__ == "__main__":
+    import sys
+    
     generator = FenokReportGenerator()
     try:
-        generator.run_full_automation()
+        if len(sys.argv) > 1 and sys.argv[1] == "--debug":
+            # 디버깅 모드
+            generator.test_login_and_redirect_debug()
+        else:
+            # 일반 실행 모드
+            generator.run_full_automation()
     finally:
         generator.close()
