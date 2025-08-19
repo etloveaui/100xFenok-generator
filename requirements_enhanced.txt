@@ -1,0 +1,14 @@
+# 기존 의존성
+selenium
+pyperclip
+beautifulsoup4
+Jinja2
+
+# 새로운 자동화 의존성
+requests
+pathlib
+subprocess-run
+
+# HTML → JSON 변환 (Python_Lexi_Convert 대체)
+lxml
+html2text

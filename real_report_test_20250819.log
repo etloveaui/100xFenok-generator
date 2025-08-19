@@ -1,0 +1,15 @@
+2025-08-19 23:50:01,318 - INFO - 보고서 생성 건너뛰기 - 기존 파일들로 테스트
+2025-08-19 23:50:01,319 - INFO - TerminalX 자격 증명 로드 완료
+2025-08-19 23:50:01,319 - INFO - 리포트 1/6 처리 중: file://C:\Users\etlov\multi-agent-workspace\communication\shared\100xfenok\002_terminalx\part1_01.html
+2025-08-19 23:50:01,319 - ERROR - 리포트 1 처리 중 오류: 'NoneType' object has no attribute 'get'
+2025-08-19 23:50:01,319 - INFO - 리포트 2/6 처리 중: file://C:\Users\etlov\multi-agent-workspace\communication\shared\100xfenok\002_terminalx\part1_02.html
+2025-08-19 23:50:01,320 - ERROR - 리포트 2 처리 중 오류: 'NoneType' object has no attribute 'get'
+2025-08-19 23:50:01,320 - INFO - 리포트 3/6 처리 중: file://C:\Users\etlov\multi-agent-workspace\communication\shared\100xfenok\002_terminalx\part1_03.html
+2025-08-19 23:50:01,320 - ERROR - 리포트 3 처리 중 오류: 'NoneType' object has no attribute 'get'
+2025-08-19 23:50:01,320 - INFO - 리포트 4/6 처리 중: file://C:\Users\etlov\multi-agent-workspace\communication\shared\100xfenok\002_terminalx\part2_01.html
+2025-08-19 23:50:01,320 - ERROR - 리포트 4 처리 중 오류: 'NoneType' object has no attribute 'get'
+2025-08-19 23:50:01,320 - INFO - 리포트 5/6 처리 중: file://C:\Users\etlov\multi-agent-workspace\communication\shared\100xfenok\002_terminalx\part2_02.html
+2025-08-19 23:50:01,320 - ERROR - 리포트 5 처리 중 오류: 'NoneType' object has no attribute 'get'
+2025-08-19 23:50:01,320 - INFO - 리포트 6/6 처리 중: file://C:\Users\etlov\multi-agent-workspace\communication\shared\100xfenok\002_terminalx\part2_03.html
+2025-08-19 23:50:01,320 - ERROR - 리포트 6 처리 중 오류: 'NoneType' object has no attribute 'get'
+2025-08-19 23:50:01,320 - INFO - 🔍 HTML 추출 완료: 0개 파일
