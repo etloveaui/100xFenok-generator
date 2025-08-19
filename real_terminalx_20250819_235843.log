@@ -1,0 +1,31 @@
+2025-08-19 23:58:43,776 - INFO - TerminalX 자격 증명 로드 완료
+2025-08-19 23:58:43,777 - INFO - === 진짜 TerminalX 완전 파이프라인 시작 ===
+2025-08-19 23:58:44,941 - INFO - Chrome 브라우저 설정 완료
+2025-08-19 23:58:44,941 - INFO - === TerminalX 실제 로그인 시작 ===
+2025-08-19 23:58:44,941 - INFO - 1. TerminalX 메인 페이지 접근...
+2025-08-19 23:58:50,738 - ERROR - TerminalX 로그인 실패: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=139.0.7258.128)
+Stacktrace:
+	GetHandleVerifier [0x0x7ff6fb79e965+77845]
+	GetHandleVerifier [0x0x7ff6fb79e9c0+77936]
+	(No symbol) [0x0x7ff6fb559cda]
+	(No symbol) [0x0x7ff6fb5321a1]
+	(No symbol) [0x0x7ff6fb5dfc6e]
+	(No symbol) [0x0x7ff6fb600432]
+	(No symbol) [0x0x7ff6fb5d86a3]
+	(No symbol) [0x0x7ff6fb5a1791]
+	(No symbol) [0x0x7ff6fb5a2523]
+	GetHandleVerifier [0x0x7ff6fba7687d+3059501]
+	GetHandleVerifier [0x0x7ff6fba70c3d+3035885]
+	GetHandleVerifier [0x0x7ff6fba90430+3164896]
+	GetHandleVerifier [0x0x7ff6fb7b8c6e+185118]
+	GetHandleVerifier [0x0x7ff6fb7c057f+216111]
+	GetHandleVerifier [0x0x7ff6fb7a7314+113092]
+	GetHandleVerifier [0x0x7ff6fb7a74c9+113529]
+	GetHandleVerifier [0x0x7ff6fb78e2c8+10616]
+	BaseThreadInitThunk [0x0x7ffabd327374+20]
+	RtlUserThreadStart [0x0x7ffabd4fcc91+33]
+
+2025-08-19 23:58:50,739 - ERROR - TerminalX 로그인 실패
+2025-08-19 23:58:50,739 - INFO - 브라우저를 5분간 열어둡니다 (수동 확인용)
