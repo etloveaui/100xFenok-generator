@@ -368,35 +368,37 @@ class RealTerminalXGenerator:
             logger.warning(f"파일 업로드 실패: {e}")
     
     def check_archive_status(self):
-        """아카이브에서 보고서 상태 확인"""
-        logger.info("=== 아카이브에서 보고서 상태 확인 ===")
+        """아카이브에서 보고서 상태 확인 - 최상단 6줄 체크"""
+        logger.info("=== 아카이브에서 보고서 상태 확인 (올바른 버전) ===")
         
         try:
             # 아카이브 페이지로 이동
-            archive_url = "https://theterminalx.com/agent/enterprise/report/archive"
+            archive_url = "https://theterminalx.com/agent/archive"
             self.driver.get(archive_url)
             time.sleep(5)
             
             logger.info("아카이브 페이지 접근 완료")
             
             # 보고서 목록 확인
-            max_checks = 30  # 최대 15분 대기 (30 * 30초)
+            max_checks = 60  # 최대 30분 대기 (60 * 30초)
             check_count = 0
             
             while check_count < max_checks:
                 try:
-                    logger.info(f"보고서 상태 확인 {check_count + 1}/{max_checks}...")
+                    logger.info(f"📊 보고서 상태 확인 {check_count + 1}/{max_checks} (경과: {check_count*0.5:.1f}분)")
                     
                     # 페이지 새로고침
                     self.driver.refresh()
                     time.sleep(5)
                     
-                    # 완료된 보고서 찾기
-                    completed_reports = self._find_completed_reports()
+                    # 최상단 6개 보고서 상태 확인
+                    status_results = self._check_top_6_reports()
                     
-                    if completed_reports:
-                        logger.info(f"✅ 완료된 보고서 발견: {len(completed_reports)}개")
-                        return completed_reports
+                    if status_results['all_generated']:
+                        logger.info("✅ 최상단 6개 보고서 모두 Generated 완료!")
+                        return status_results['completed_reports']
+                    
+                    logger.info(f"🔄 Generated: {status_results['generated_count']}/6, Generating: {status_results['generating_count']}/6")
                     
                     check_count += 1
                     time.sleep(30)  # 30초 대기
@@ -413,40 +415,72 @@ class RealTerminalXGenerator:
             logger.error(f"아카이브 상태 확인 실패: {e}")
             return []
     
-    def _find_completed_reports(self):
-        """완료된 보고서 찾기"""
+    def _check_top_6_reports(self):
+        """최상단 6개 보고서 상태 확인 (newest first)"""
         try:
-            completed_reports = []
+            results = {
+                'all_generated': False,
+                'generated_count': 0,
+                'generating_count': 0,
+                'completed_reports': []
+            }
             
-            # 보고서 목록에서 상태가 "Complete" 또는 "완료"인 항목 찾기
-            report_elements = self.driver.find_elements(By.XPATH, "//div[contains(@class, 'report') or contains(@class, 'item')]")
+            # 테이블에서 최상단 6개 행 확인
+            table_rows = self.driver.find_elements(By.CSS_SELECTOR, "tbody tr")
             
-            for element in report_elements:
+            if len(table_rows) < 6:
+                logger.warning(f"테이블 행 수 부족: {len(table_rows)}/6")
+                return results
+            
+            for i in range(6):
                 try:
-                    # 상태 텍스트 확인
-                    status_text = element.text.lower()
+                    row = table_rows[i]
                     
-                    if any(keyword in status_text for keyword in ["generated", "complete", "completed", "done", "finished", "완료"]):
-                        # 보고서 링크 찾기
-                        link = element.find_element(By.XPATH, ".//a[contains(@href, '/report/')]")
+                    # 제목 추출 (2번째 컬럼)
+                    title_cell = row.find_element(By.CSS_SELECTOR, "td:nth-child(2)")
+                    title = title_cell.text.strip()
+                    
+                    # 상태 추출 (3번째 컬럼)
+                    status_cell = row.find_element(By.CSS_SELECTOR, "td:nth-child(3)")
+                    status = status_cell.text.strip().lower()
+                    
+                    # 링크 추출 (보고서 URL)
+                    try:
+                        link = row.find_element(By.CSS_SELECTOR, "a")
                         report_url = link.get_attribute('href')
-                        
-                        completed_reports.append({
-                            "url": report_url,
-                            "title": element.text.strip(),
-                            "element": element
-                        })
-                        
-                        logger.info(f"완료된 보고서: {report_url}")
+                    except:
+                        report_url = None
+                    
+                    logger.info(f"[{i+1}/6] {title}: {status}")
+                    
+                    if "generated" in status:
+                        results['generated_count'] += 1
+                        if report_url:
+                            results['completed_reports'].append({
+                                "url": report_url,
+                                "title": title,
+                                "status": status
+                            })
+                    elif "generating" in status:
+                        results['generating_count'] += 1
                         
                 except Exception as e:
+                    logger.warning(f"행 {i+1} 파싱 실패: {e}")
                     continue
             
-            return completed_reports
+            # 모든 보고서가 Generated 상태인지 확인
+            results['all_generated'] = (results['generated_count'] >= 6)
+            
+            return results
             
         except Exception as e:
-            logger.error(f"완료된 보고서 검색 실패: {e}")
-            return []
+            logger.error(f"최상단 6개 보고서 확인 실패: {e}")
+            return {
+                'all_generated': False,
+                'generated_count': 0,
+                'generating_count': 0,
+                'completed_reports': []
+            }
     
     def extract_reports_with_f12(self, completed_reports):
         """완료된 보고서에서 F12로 HTML 추출"""
@@ -525,32 +559,32 @@ class RealTerminalXGenerator:
             return None
     
     def create_additional_reports(self):
-        """부차적 6개 보고서 생성"""
-        logger.info("=== 부차적 6개 보고서 생성 ===")
+        """부차적 6개 보고서 생성 - Enterprise 메인 페이지에서"""
+        logger.info("=== 부차적 6개 보고서 생성 (올바른 방법) ===")
         
         additional_configs = [
-            {"title": "Top Gainers & Losers Analysis", "prompt": "3.1_3.2"},
-            {"title": "Fixed Income Market Update", "prompt": "3.3"},
-            {"title": "Major Investment Bank Updates", "prompt": "5.1"},
-            {"title": "Dark Pool & Political Flows", "prompt": "6.3"},
-            {"title": "11 GICS Sector Analysis", "prompt": "7.1"},
-            {"title": "12 Key Tickers Performance", "prompt": "8.1"}
+            {"title": "Last session US dark pool block trades", "query": "Last session US dark pool block trades and if available the political flows"},
+            {"title": "Top gainers and losers analysis", "query": "Top gainers and losers from yesterday with detailed analysis"},
+            {"title": "Fixed income market update", "query": "Fixed income market update from last trading session"},
+            {"title": "Major investment bank updates", "query": "Major investment bank updates and recommendations from yesterday"},
+            {"title": "11 GICS sector performance", "query": "11 GICS sector performance analysis from last session"},
+            {"title": "12 key tickers analysis", "query": "Performance analysis of 12 key market tickers from yesterday"}
         ]
         
         for i, config in enumerate(additional_configs, 1):
             try:
                 logger.info(f"--- 부차적 보고서 {i}/6 생성: {config['title']} ---")
                 
-                # 간단한 보고서 생성 (Past Day 설정)
-                success = self._create_additional_report(config)
+                # Enterprise 메인 페이지에서 텍스트 입력으로 생성
+                success = self._create_additional_report_real(config)
                 
                 if success:
                     logger.info(f"✅ 부차적 보고서 {i} 생성 성공")
-                    self.report_status["additional_reports"].append(config["prompt"])
+                    self.report_status["additional_reports"].append(config["title"])
                 else:
                     logger.error(f"❌ 부차적 보고서 {i} 생성 실패")
                 
-                time.sleep(3)
+                time.sleep(5)  # 각 보고서 간 대기 시간 증가
                 
             except Exception as e:
                 logger.error(f"부차적 보고서 {i} 생성 중 오류: {e}")
@@ -558,22 +592,56 @@ class RealTerminalXGenerator:
         logger.info(f"=== 부차적 보고서 생성 완료: {len(self.report_status['additional_reports'])}/6개 ===")
         return len(self.report_status["additional_reports"]) > 0
     
-    def _create_additional_report(self, config):
-        """부차적 보고서 생성 (간단 버전)"""
+    def _create_additional_report_real(self, config):
+        """부차적 보고서 실제 생성 - Enterprise 메인 페이지 텍스트 입력"""
         try:
             # Enterprise 메인 페이지로 이동
             main_url = "https://theterminalx.com/agent/enterprise"
             self.driver.get(main_url)
             time.sleep(5)
             
-            # Past Day 설정으로 간단한 쿼리 실행
-            # 실제 구현은 TerminalX UI에 맞게 조정 필요
+            logger.info(f"Enterprise 메인 페이지 접근: {main_url}")
             
-            logger.info(f"부차적 보고서 생성 시뮬레이션: {config['title']}")
-            return True  # 임시로 성공 처리
+            # "Ask Anything..." 입력창 찾기
+            ask_input = WebDriverWait(self.driver, 15).until(
+                EC.element_to_be_clickable((By.XPATH, "//textarea[contains(@placeholder, 'Ask Anything') or contains(@placeholder, 'Ask anything')]"))
+            )
+            
+            # 입력창 클릭하고 쿼리 입력
+            ask_input.click()
+            ask_input.clear()
+            ask_input.send_keys(config["query"])
+            
+            logger.info(f"쿼리 입력 완료: {config['query']}")
+            
+            # Enter 또는 전송 버튼 클릭
+            ask_input.send_keys(Keys.RETURN)
+            
+            # 또는 전송 버튼이 있다면 클릭
+            try:
+                send_button = self.driver.find_element(By.XPATH, "//button[contains(@class, 'send') or contains(., '→')]")
+                send_button.click()
+                logger.info("전송 버튼 클릭")
+            except:
+                logger.info("Enter 키로 전송")
+            
+            # 결과 페이지로의 리다이렉션 대기
+            time.sleep(10)
+            
+            current_url = self.driver.current_url
+            logger.info(f"부차 보고서 생성 후 URL: {current_url}")
+            
+            # URL이 길어진 경우 (성공적으로 생성된 경우)
+            if len(current_url) > len(main_url) + 20:
+                logger.info(f"✅ 부차 보고서 생성 성공: {config['title']}")
+                self.report_status["generated_urls"].append(current_url)
+                return True
+            else:
+                logger.warning(f"부차 보고서 생성 확인 안됨: {config['title']}")
+                return False
             
         except Exception as e:
-            logger.error(f"부차적 보고서 생성 실패: {e}")
+            logger.error(f"부차 보고서 생성 실패: {e}")
             return False
     
     def run_complete_pipeline(self):
