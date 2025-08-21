@@ -1,0 +1,135 @@
+2025-08-21 11:22:28,038 - INFO - TerminalX 자격 증명 로드 완료
+2025-08-21 11:22:28,040 - INFO - 🚀 TerminalX 웹사이트 완전 탐구 시작!
+2025-08-21 11:22:29,536 - INFO - 🌐 Chrome 브라우저 시작 완료
+2025-08-21 11:22:29,537 - INFO - 🔐 TerminalX 자동 로그인 시작
+2025-08-21 11:22:29,537 - INFO - 🔄 페이지 이동: https://theterminalx.com/agent/enterprise
+2025-08-21 11:22:35,159 - INFO - 
+📍 현재 URL: https://theterminalx.com/agent/enterprise
+📄 페이지 제목: Terminal X
+⏰ 시간: 11:22:35
+
+2025-08-21 11:22:35,159 - INFO - 메인 페이지 접근 결과: 
+📍 현재 URL: https://theterminalx.com/agent/enterprise
+📄 페이지 제목: Terminal X
+⏰ 시간: 11:22:35
+
+2025-08-21 11:22:35,159 - INFO - 🖱️ 요소 클릭: //button[contains(., 'Log in')]
+2025-08-21 11:22:36,290 - INFO - ✅ 요소 클릭 성공
+2025-08-21 11:22:38,291 - INFO - 로그인 버튼 클릭 결과: 클릭 성공
+2025-08-21 11:22:41,292 - INFO - ⌨️ 텍스트 입력:  meanstomakemewealthy@naver.com
+2025-08-21 11:22:41,663 - INFO - ✅ 텍스트 입력 성공
+2025-08-21 11:22:41,663 - INFO - 이메일 입력 결과: 텍스트 입력 성공
+2025-08-21 11:22:41,663 - INFO - ⌨️ 텍스트 입력:  !00baggers
+2025-08-21 11:22:41,851 - INFO - ✅ 텍스트 입력 성공
+2025-08-21 11:22:41,851 - INFO - 비밀번호 입력 결과: 텍스트 입력 성공
+2025-08-21 11:22:41,851 - INFO - 🖱️ 요소 클릭: //button[contains(., 'Log In')]
+2025-08-21 11:22:41,929 - INFO - ✅ 요소 클릭 성공
+2025-08-21 11:22:43,931 - INFO - 로그인 실행 결과: 클릭 성공
+2025-08-21 11:22:48,937 - INFO - 
+📍 현재 URL: https://theterminalx.com/agent/enterprise
+📄 페이지 제목: Terminal X
+⏰ 시간: 11:22:48
+
+2025-08-21 11:22:48,937 - INFO - ✅ TerminalX 로그인 성공!
+2025-08-21 11:22:48,937 - INFO - ✅ 탐구 준비 완료!
+2025-08-21 11:22:48,937 - INFO - 🌐 전체 페이지 탐구 시작!
+2025-08-21 11:22:48,937 - INFO - 🔄 페이지 이동: https://theterminalx.com/agent/enterprise
+2025-08-21 11:22:52,678 - INFO - 
+📍 현재 URL: https://theterminalx.com/agent/enterprise
+📄 페이지 제목: Terminal X
+⏰ 시간: 11:22:52
+
+2025-08-21 11:22:54,679 - INFO - 🔍 https://theterminalx.com에서 모든 링크 발견 중...
+2025-08-21 11:22:54,680 - INFO - 🔍 요소 검색: //a[@href]
+2025-08-21 11:22:54,853 - INFO - 발견된 요소 16개:
+[0] Terminal X
+[1] New Session
+[2] Subscriptions
+[3] Entitlements
+[4] Profile
+Pro
+[5] 
+[6] Live Research
+[7] 32 min | Citi
+Improve 2Q; Already Thriving in the New Tariff Environment
+[8] 1 hr | Citi
+Estee Lauder Inc (EL) | Neutral
+[9] 2 hrs | Citi
+Entegris Inc (ENTG.Q) | Buy Adding Upside 30-Day Catalyst Watch
+2025-08-21 11:22:54,853 - INFO - ✅ 총 0개 새로운 링크 발견
+2025-08-21 11:22:54,853 - INFO - 🔄 페이지 이동: https://theterminalx.com/agent/archive
+2025-08-21 11:22:59,405 - INFO - 
+📍 현재 URL: https://theterminalx.com/agent/enterprise
+📄 페이지 제목: Terminal X
+⏰ 시간: 11:22:59
+
+2025-08-21 11:23:01,406 - INFO - 🔍 https://theterminalx.com에서 모든 링크 발견 중...
+2025-08-21 11:23:01,406 - INFO - 🔍 요소 검색: //a[@href]
+2025-08-21 11:23:01,564 - INFO - 발견된 요소 16개:
+[0] Terminal X
+[1] New Session
+[2] Subscriptions
+[3] Entitlements
+[4] Profile
+Pro
+[5] 
+[6] Live Research
+[7] 32 min | Citi
+Improve 2Q; Already Thriving in the New Tariff Environment
+[8] 1 hr | Citi
+Estee Lauder Inc (EL) | Neutral
+[9] 2 hrs | Citi
+Entegris Inc (ENTG.Q) | Buy Adding Upside 30-Day Catalyst Watch
+2025-08-21 11:23:01,564 - INFO - ✅ 총 0개 새로운 링크 발견
+2025-08-21 11:23:01,564 - INFO - 🔄 페이지 이동: https://theterminalx.com/agent/dashboard
+2025-08-21 11:23:05,556 - INFO - 
+📍 현재 URL: https://theterminalx.com/agent/enterprise
+📄 페이지 제목: Terminal X
+⏰ 시간: 11:23:05
+
+2025-08-21 11:23:07,557 - INFO - 🔍 https://theterminalx.com에서 모든 링크 발견 중...
+2025-08-21 11:23:07,557 - INFO - 🔍 요소 검색: //a[@href]
+2025-08-21 11:23:07,639 - INFO - 발견된 요소 16개:
+[0] Terminal X
+[1] New Session
+[2] Subscriptions
+[3] Entitlements
+[4] Profile
+Pro
+[5] 
+[6] Live Research
+[7] 33 min | Citi
+Improve 2Q; Already Thriving in the New Tariff Environment
+[8] 1 hr | Citi
+Estee Lauder Inc (EL) | Neutral
+[9] 2 hrs | Citi
+Entegris Inc (ENTG.Q) | Buy Adding Upside 30-Day Catalyst Watch
+2025-08-21 11:23:07,639 - INFO - ✅ 총 0개 새로운 링크 발견
+2025-08-21 11:23:07,639 - INFO - 🔄 페이지 이동: https://theterminalx.com/
+2025-08-21 11:23:13,087 - INFO - 
+📍 현재 URL: https://theterminalx.com/
+📄 페이지 제목: Terminal X - AI Financial Research & Analysis
+⏰ 시간: 11:23:13
+
+2025-08-21 11:23:15,088 - INFO - 🔍 https://theterminalx.com에서 모든 링크 발견 중...
+2025-08-21 11:23:15,088 - INFO - 🔍 요소 검색: //a[@href]
+2025-08-21 11:23:15,172 - INFO - 발견된 요소 12개:
+[0] Terminal 
+X
+[1] Careers
+[2] Enterprise
+[3] User Login
+[4] Enterprise Terminal
+[5] 
+[6] 
+[7] Terminal X User Guide
+[8] Data Security
+[9] Custom Report Builder
+2025-08-21 11:23:15,173 - INFO - ✅ 총 0개 새로운 링크 발견
+2025-08-21 11:23:15,173 - INFO - 📊 총 0개 페이지 분석 시작
+2025-08-21 11:23:15,173 - INFO - ✅ 전체 페이지 탐구 완료!
+2025-08-21 11:23:15,173 - INFO - 🗺️ 사이트 맵 생성 중...
+2025-08-21 11:23:15,173 - INFO - 💾 분석 결과 저장 중...
+2025-08-21 11:23:15,177 - INFO - ✅ 분석 결과 저장 완료: C:\Users\eunta\multi-agent-workspace\projects\100xFenok-generator\terminalx_analysis
+2025-08-21 11:23:15,177 - INFO - 🔒 브라우저 종료
+2025-08-21 11:23:17,498 - INFO - 🏁 TerminalX 탐구 완료!

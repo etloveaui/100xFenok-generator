@@ -1,0 +1,158 @@
+2025-08-21 11:19:28,296 - INFO - TerminalX 자격 증명 로드 완료
+2025-08-21 11:19:29,527 - INFO - 🌐 Chrome 브라우저 시작 완료
+2025-08-21 11:19:29,527 - INFO - 🔐 TerminalX 자동 로그인 시작
+2025-08-21 11:19:29,528 - INFO - 🔄 페이지 이동: https://theterminalx.com/agent/enterprise
+2025-08-21 11:19:34,262 - INFO - 
+📍 현재 URL: https://theterminalx.com/agent/enterprise
+📄 페이지 제목: Terminal X
+⏰ 시간: 11:19:34
+
+2025-08-21 11:19:34,263 - INFO - 메인 페이지 접근 결과: 
+📍 현재 URL: https://theterminalx.com/agent/enterprise
+📄 페이지 제목: Terminal X
+⏰ 시간: 11:19:34
+
+2025-08-21 11:19:34,264 - INFO - 🖱️ 요소 클릭: //button[contains(., 'Log in')]
+2025-08-21 11:19:35,169 - INFO - ✅ 요소 클릭 성공
+2025-08-21 11:19:37,169 - INFO - 로그인 버튼 클릭 결과: 클릭 성공
+2025-08-21 11:19:40,170 - INFO - ⌨️ 텍스트 입력:  meanstomakemewealthy@naver.com
+2025-08-21 11:19:40,374 - INFO - ✅ 텍스트 입력 성공
+2025-08-21 11:19:40,374 - INFO - 이메일 입력 결과: 텍스트 입력 성공
+2025-08-21 11:19:40,374 - INFO - ⌨️ 텍스트 입력:  !00baggers
+2025-08-21 11:19:40,494 - INFO - ✅ 텍스트 입력 성공
+2025-08-21 11:19:40,494 - INFO - 비밀번호 입력 결과: 텍스트 입력 성공
+2025-08-21 11:19:40,494 - INFO - 🖱️ 요소 클릭: //button[contains(., 'Log In')]
+2025-08-21 11:19:40,574 - INFO - ✅ 요소 클릭 성공
+2025-08-21 11:19:42,575 - INFO - 로그인 실행 결과: 클릭 성공
+2025-08-21 11:19:47,582 - INFO - 
+📍 현재 URL: https://theterminalx.com/agent/enterprise
+📄 페이지 제목: Terminal X
+⏰ 시간: 11:19:47
+
+2025-08-21 11:19:47,582 - INFO - ✅ TerminalX 로그인 성공!
+2025-08-21 11:19:47,583 - INFO - 🖱️ 요소 클릭: //a[contains(text(), "Archive")]
+2025-08-21 11:19:57,756 - ERROR - 요소 클릭 실패: Message: 
+Stacktrace:
+	GetHandleVerifier [0x0x7ff6fc48e965+77845]
+	GetHandleVerifier [0x0x7ff6fc48e9c0+77936]
+	(No symbol) [0x0x7ff6fc249cda]
+	(No symbol) [0x0x7ff6fc2a06aa]
+	(No symbol) [0x0x7ff6fc2a095c]
+	(No symbol) [0x0x7ff6fc2f3d07]
+	(No symbol) [0x0x7ff6fc2c890f]
+	(No symbol) [0x0x7ff6fc2f0b07]
+	(No symbol) [0x0x7ff6fc2c86a3]
+	(No symbol) [0x0x7ff6fc291791]
+	(No symbol) [0x0x7ff6fc292523]
+	GetHandleVerifier [0x0x7ff6fc76687d+3059501]
+	GetHandleVerifier [0x0x7ff6fc760c3d+3035885]
+	GetHandleVerifier [0x0x7ff6fc780430+3164896]
+	GetHandleVerifier [0x0x7ff6fc4a8c6e+185118]
+	GetHandleVerifier [0x0x7ff6fc4b057f+216111]
+	GetHandleVerifier [0x0x7ff6fc497314+113092]
+	GetHandleVerifier [0x0x7ff6fc4974c9+113529]
+	GetHandleVerifier [0x0x7ff6fc47e2c8+10616]
+	BaseThreadInitThunk [0x0x7fffc93a7374+20]
+	RtlUserThreadStart [0x0x7fffca67cc91+33]
+
+2025-08-21 11:19:59,764 - INFO - 
+📍 현재 URL: https://theterminalx.com/agent/enterprise
+📄 페이지 제목: Terminal X
+⏰ 시간: 11:19:59
+
+2025-08-21 11:19:59,764 - INFO - 🖱️ 요소 클릭: //a[@href="/agent/archive"]
+2025-08-21 11:20:09,914 - ERROR - 요소 클릭 실패: Message: 
+Stacktrace:
+	GetHandleVerifier [0x0x7ff6fc48e965+77845]
+	GetHandleVerifier [0x0x7ff6fc48e9c0+77936]
+	(No symbol) [0x0x7ff6fc249cda]
+	(No symbol) [0x0x7ff6fc2a06aa]
+	(No symbol) [0x0x7ff6fc2a095c]
+	(No symbol) [0x0x7ff6fc2f3d07]
+	(No symbol) [0x0x7ff6fc2c890f]
+	(No symbol) [0x0x7ff6fc2f0b07]
+	(No symbol) [0x0x7ff6fc2c86a3]
+	(No symbol) [0x0x7ff6fc291791]
+	(No symbol) [0x0x7ff6fc292523]
+	GetHandleVerifier [0x0x7ff6fc76687d+3059501]
+	GetHandleVerifier [0x0x7ff6fc760c3d+3035885]
+	GetHandleVerifier [0x0x7ff6fc780430+3164896]
+	GetHandleVerifier [0x0x7ff6fc4a8c6e+185118]
+	GetHandleVerifier [0x0x7ff6fc4b057f+216111]
+	GetHandleVerifier [0x0x7ff6fc497314+113092]
+	GetHandleVerifier [0x0x7ff6fc4974c9+113529]
+	GetHandleVerifier [0x0x7ff6fc47e2c8+10616]
+	BaseThreadInitThunk [0x0x7fffc93a7374+20]
+	RtlUserThreadStart [0x0x7fffca67cc91+33]
+
+2025-08-21 11:20:11,922 - INFO - 
+📍 현재 URL: https://theterminalx.com/agent/enterprise
+📄 페이지 제목: Terminal X
+⏰ 시간: 11:20:11
+
+2025-08-21 11:20:11,922 - INFO - 🖱️ 요소 클릭: //nav//a[contains(text(), "Archive")]
+2025-08-21 11:20:22,077 - ERROR - 요소 클릭 실패: Message: 
+Stacktrace:
+	GetHandleVerifier [0x0x7ff6fc48e965+77845]
+	GetHandleVerifier [0x0x7ff6fc48e9c0+77936]
+	(No symbol) [0x0x7ff6fc249cda]
+	(No symbol) [0x0x7ff6fc2a06aa]
+	(No symbol) [0x0x7ff6fc2a095c]
+	(No symbol) [0x0x7ff6fc2f3d07]
+	(No symbol) [0x0x7ff6fc2c890f]
+	(No symbol) [0x0x7ff6fc2f0b07]
+	(No symbol) [0x0x7ff6fc2c86a3]
+	(No symbol) [0x0x7ff6fc291791]
+	(No symbol) [0x0x7ff6fc292523]
+	GetHandleVerifier [0x0x7ff6fc76687d+3059501]
+	GetHandleVerifier [0x0x7ff6fc760c3d+3035885]
+	GetHandleVerifier [0x0x7ff6fc780430+3164896]
+	GetHandleVerifier [0x0x7ff6fc4a8c6e+185118]
+	GetHandleVerifier [0x0x7ff6fc4b057f+216111]
+	GetHandleVerifier [0x0x7ff6fc497314+113092]
+	GetHandleVerifier [0x0x7ff6fc4974c9+113529]
+	GetHandleVerifier [0x0x7ff6fc47e2c8+10616]
+	BaseThreadInitThunk [0x0x7fffc93a7374+20]
+	RtlUserThreadStart [0x0x7fffca67cc91+33]
+
+2025-08-21 11:20:24,088 - INFO - 
+📍 현재 URL: https://theterminalx.com/agent/enterprise
+📄 페이지 제목: Terminal X
+⏰ 시간: 11:20:24
+
+2025-08-21 11:20:24,088 - INFO - 🖱️ 요소 클릭: //button[contains(text(), "Archive")]
+2025-08-21 11:20:34,302 - ERROR - 요소 클릭 실패: Message: 
+Stacktrace:
+	GetHandleVerifier [0x0x7ff6fc48e965+77845]
+	GetHandleVerifier [0x0x7ff6fc48e9c0+77936]
+	(No symbol) [0x0x7ff6fc249cda]
+	(No symbol) [0x0x7ff6fc2a06aa]
+	(No symbol) [0x0x7ff6fc2a095c]
+	(No symbol) [0x0x7ff6fc2f3d07]
+	(No symbol) [0x0x7ff6fc2c890f]
+	(No symbol) [0x0x7ff6fc2f0b07]
+	(No symbol) [0x0x7ff6fc2c86a3]
+	(No symbol) [0x0x7ff6fc291791]
+	(No symbol) [0x0x7ff6fc292523]
+	GetHandleVerifier [0x0x7ff6fc76687d+3059501]
+	GetHandleVerifier [0x0x7ff6fc760c3d+3035885]
+	GetHandleVerifier [0x0x7ff6fc780430+3164896]
+	GetHandleVerifier [0x0x7ff6fc4a8c6e+185118]
+	GetHandleVerifier [0x0x7ff6fc4b057f+216111]
+	GetHandleVerifier [0x0x7ff6fc497314+113092]
+	GetHandleVerifier [0x0x7ff6fc4974c9+113529]
+	GetHandleVerifier [0x0x7ff6fc47e2c8+10616]
+	BaseThreadInitThunk [0x0x7fffc93a7374+20]
+	RtlUserThreadStart [0x0x7fffca67cc91+33]
+
+2025-08-21 11:20:36,310 - INFO - 
+📍 현재 URL: https://theterminalx.com/agent/enterprise
+📄 페이지 제목: Terminal X
+⏰ 시간: 11:20:36
+
+2025-08-21 11:20:36,310 - INFO - 🔄 페이지 이동: https://theterminalx.com/agent/archive
+2025-08-21 11:20:40,236 - INFO - 
+📍 현재 URL: https://theterminalx.com/agent/enterprise
+📄 페이지 제목: Terminal X
+⏰ 시간: 11:20:40
+

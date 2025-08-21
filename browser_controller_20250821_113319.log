@@ -1,0 +1,228 @@
+2025-08-21 11:33:19,282 - INFO - TerminalX 자격 증명 로드 완료
+2025-08-21 11:33:19,283 - INFO - 🚀 TerminalX 기능 완전 탐구 시작!
+2025-08-21 11:33:20,506 - INFO - 🌐 Chrome 브라우저 시작 완료
+2025-08-21 11:33:20,507 - INFO - 🔐 TerminalX 자동 로그인 시작
+2025-08-21 11:33:20,507 - INFO - 🔄 페이지 이동: https://theterminalx.com/agent/enterprise
+2025-08-21 11:33:25,873 - INFO - 
+📍 현재 URL: https://theterminalx.com/agent/enterprise
+📄 페이지 제목: Terminal X
+⏰ 시간: 11:33:25
+
+2025-08-21 11:33:25,874 - INFO - 메인 페이지 접근 결과: 
+📍 현재 URL: https://theterminalx.com/agent/enterprise
+📄 페이지 제목: Terminal X
+⏰ 시간: 11:33:25
+
+2025-08-21 11:33:25,875 - INFO - 🖱️ 요소 클릭: //button[contains(., 'Log in')]
+2025-08-21 11:33:26,742 - INFO - ✅ 요소 클릭 성공
+2025-08-21 11:33:28,743 - INFO - 로그인 버튼 클릭 결과: 클릭 성공
+2025-08-21 11:33:31,744 - INFO - ⌨️ 텍스트 입력:  meanstomakemewealthy@naver.com
+2025-08-21 11:33:31,942 - INFO - ✅ 텍스트 입력 성공
+2025-08-21 11:33:31,942 - INFO - 이메일 입력 결과: 텍스트 입력 성공
+2025-08-21 11:33:31,942 - INFO - ⌨️ 텍스트 입력:  !00baggers
+2025-08-21 11:33:32,036 - INFO - ✅ 텍스트 입력 성공
+2025-08-21 11:33:32,037 - INFO - 비밀번호 입력 결과: 텍스트 입력 성공
+2025-08-21 11:33:32,037 - INFO - 🖱️ 요소 클릭: //button[contains(., 'Log In')]
+2025-08-21 11:33:32,102 - INFO - ✅ 요소 클릭 성공
+2025-08-21 11:33:34,109 - INFO - 로그인 실행 결과: 클릭 성공
+2025-08-21 11:33:39,116 - INFO - 
+📍 현재 URL: https://theterminalx.com/agent/enterprise
+📄 페이지 제목: Terminal X
+⏰ 시간: 11:33:39
+
+2025-08-21 11:33:39,116 - INFO - ✅ TerminalX 로그인 성공!
+2025-08-21 11:33:39,116 - INFO - ✅ 기능 탐구 준비 완료!
+2025-08-21 11:33:39,116 - INFO - ============================================================
+2025-08-21 11:33:39,116 - INFO - 📋 일반 세션에서 보고서 산출 방법 탐구 시작
+2025-08-21 11:33:39,117 - INFO - 🔄 페이지 이동: https://theterminalx.com/agent/enterprise
+2025-08-21 11:33:42,827 - INFO - 
+📍 현재 URL: https://theterminalx.com/agent/enterprise
+📄 페이지 제목: Terminal X
+⏰ 시간: 11:33:42
+
+2025-08-21 11:33:45,866 - INFO -   📝 입력 영역 0: Ask Anything... (textarea)
+2025-08-21 11:33:45,902 - INFO -   🔘 버튼 0: New Session
+2025-08-21 11:33:45,923 - INFO -   🔘 버튼 1: Comps Analysis
+2025-08-21 11:33:45,948 - INFO -   🔘 버튼 2: Custom Report Builder
+2025-08-21 11:33:45,969 - INFO -   🔘 버튼 3: My Watchlist
+2025-08-21 11:33:45,991 - INFO -   🔘 버튼 4: Live Research
+2025-08-21 11:33:46,011 - INFO -   🔘 버튼 5: Private Data Room
+2025-08-21 11:33:46,031 - INFO -   🔘 버튼 6: History
+2025-08-21 11:33:46,059 - INFO -   🔘 버튼 7: Subscriptions
+2025-08-21 11:33:46,079 - INFO -   🔘 버튼 8: Entitlements
+2025-08-21 11:33:46,100 - INFO -   🔘 버튼 9: Profile
+Pro
+2025-08-21 11:33:46,176 - INFO -   🔘 버튼 12: Private Data Room
+2025-08-21 11:33:46,197 - INFO -   🔘 버튼 13: Trending Queries
+2025-08-21 11:33:46,217 - INFO -   🔘 버튼 14: Ticker Lookup
+2025-08-21 11:33:46,236 - INFO -   🔘 버튼 15: Public Comps
+2025-08-21 11:33:46,257 - INFO -   🔘 버튼 16: AI Reports
+2025-08-21 11:33:46,257 - INFO - 🔍 실제 쿼리 테스트 시작
+2025-08-21 11:33:46,257 - INFO - 📝 메인 입력 영역 발견: Ask Anything...
+2025-08-21 11:33:46,257 - INFO - 🧪 테스트 쿼리: Give me a market summary for today
+2025-08-21 11:33:55,848 - INFO -   ✅ 쿼리 실행 완료: 응답 감지 = True
+2025-08-21 11:33:58,848 - INFO - 🧪 테스트 쿼리: What are the top gainers in the S&P 500?
+2025-08-21 11:34:00,122 - ERROR -   ❌ 쿼리 실행 실패: Message: invalid element state: Element is not currently interactable and may not be manipulated
+  (Session info: chrome=139.0.7258.128)
+Stacktrace:
+	GetHandleVerifier [0x0x7ff6fc48e965+77845]
+	GetHandleVerifier [0x0x7ff6fc48e9c0+77936]
+	(No symbol) [0x0x7ff6fc249cda]
+	(No symbol) [0x0x7ff6fc251679]
+	(No symbol) [0x0x7ff6fc25471c]
+	(No symbol) [0x0x7ff6fc2547ef]
+	(No symbol) [0x0x7ff6fc29641b]
+	(No symbol) [0x0x7ff6fc2c88ca]
+	(No symbol) [0x0x7ff6fc292f76]
+	(No symbol) [0x0x7ff6fc2c8ae0]
+	(No symbol) [0x0x7ff6fc2f0b07]
+	(No symbol) [0x0x7ff6fc2c86a3]
+	(No symbol) [0x0x7ff6fc291791]
+	(No symbol) [0x0x7ff6fc292523]
+	GetHandleVerifier [0x0x7ff6fc76687d+3059501]
+	GetHandleVerifier [0x0x7ff6fc760c3d+3035885]
+	GetHandleVerifier [0x0x7ff6fc780430+3164896]
+	GetHandleVerifier [0x0x7ff6fc4a8c6e+185118]
+	GetHandleVerifier [0x0x7ff6fc4b057f+216111]
+	GetHandleVerifier [0x0x7ff6fc497314+113092]
+	GetHandleVerifier [0x0x7ff6fc4974c9+113529]
+	GetHandleVerifier [0x0x7ff6fc47e2c8+10616]
+	BaseThreadInitThunk [0x0x7fffc93a7374+20]
+	RtlUserThreadStart [0x0x7fffca67cc91+33]
+
+2025-08-21 11:34:00,122 - INFO - 🧪 테스트 쿼리: Generate a report on AAPL stock performance
+2025-08-21 11:34:01,663 - ERROR -   ❌ 쿼리 실행 실패: Message: invalid element state: Element is not currently interactable and may not be manipulated
+  (Session info: chrome=139.0.7258.128)
+Stacktrace:
+	GetHandleVerifier [0x0x7ff6fc48e965+77845]
+	GetHandleVerifier [0x0x7ff6fc48e9c0+77936]
+	(No symbol) [0x0x7ff6fc249cda]
+	(No symbol) [0x0x7ff6fc251679]
+	(No symbol) [0x0x7ff6fc25471c]
+	(No symbol) [0x0x7ff6fc2547ef]
+	(No symbol) [0x0x7ff6fc29641b]
+	(No symbol) [0x0x7ff6fc2c88ca]
+	(No symbol) [0x0x7ff6fc292f76]
+	(No symbol) [0x0x7ff6fc2c8ae0]
+	(No symbol) [0x0x7ff6fc2f0b07]
+	(No symbol) [0x0x7ff6fc2c86a3]
+	(No symbol) [0x0x7ff6fc291791]
+	(No symbol) [0x0x7ff6fc292523]
+	GetHandleVerifier [0x0x7ff6fc76687d+3059501]
+	GetHandleVerifier [0x0x7ff6fc760c3d+3035885]
+	GetHandleVerifier [0x0x7ff6fc780430+3164896]
+	GetHandleVerifier [0x0x7ff6fc4a8c6e+185118]
+	GetHandleVerifier [0x0x7ff6fc4b057f+216111]
+	GetHandleVerifier [0x0x7ff6fc497314+113092]
+	GetHandleVerifier [0x0x7ff6fc4974c9+113529]
+	GetHandleVerifier [0x0x7ff6fc47e2c8+10616]
+	BaseThreadInitThunk [0x0x7fffc93a7374+20]
+	RtlUserThreadStart [0x0x7fffca67cc91+33]
+
+2025-08-21 11:34:01,664 - INFO - ✅ 일반 세션 보고서 산출 방법 탐구 완료
+2025-08-21 11:34:01,664 - INFO - ============================================================
+2025-08-21 11:34:01,664 - INFO - 📊 보고서 탭 기능 탐구 시작
+2025-08-21 11:34:01,664 - INFO - 🔍 보고서 페이지 분석: https://theterminalx.com/agent/enterprise/live-research
+2025-08-21 11:34:01,664 - INFO - 🔄 페이지 이동: https://theterminalx.com/agent/enterprise/live-research
+2025-08-21 11:34:05,663 - INFO - 
+📍 현재 URL: https://theterminalx.com/agent/enterprise/live-research
+📄 페이지 제목: Terminal X
+⏰ 시간: 11:34:05
+
+2025-08-21 11:34:08,887 - INFO - 🔍 보고서 페이지 분석: https://theterminalx.com/agent/enterprise/admin
+2025-08-21 11:34:08,887 - INFO - 🔄 페이지 이동: https://theterminalx.com/agent/enterprise/admin
+2025-08-21 11:34:12,600 - INFO - 
+📍 현재 URL: https://theterminalx.com/agent/enterprise/admin
+📄 페이지 제목: Terminal X
+⏰ 시간: 11:34:12
+
+2025-08-21 11:34:15,699 - INFO - 🔍 보고서 페이지 분석: https://theterminalx.com/agent/enterprise/watchlist
+2025-08-21 11:34:15,700 - INFO - 🔄 페이지 이동: https://theterminalx.com/agent/enterprise/watchlist
+2025-08-21 11:34:19,357 - INFO - 
+📍 현재 URL: https://theterminalx.com/agent/enterprise/watchlist
+📄 페이지 제목: Terminal X
+⏰ 시간: 11:34:19
+
+2025-08-21 11:34:22,494 - INFO -   🔘 생성 버튼 발견: 
+2025-08-21 11:34:22,510 - INFO -   🔘 생성 버튼 발견: 
+2025-08-21 11:34:22,530 - INFO -   🔘 생성 버튼 발견: 
+2025-08-21 11:34:22,546 - INFO -   🔘 생성 버튼 발견: 
+2025-08-21 11:34:22,547 - INFO - ✅ 보고서 탭 기능 탐구 완료
+2025-08-21 11:34:22,547 - INFO - ============================================================
+2025-08-21 11:34:22,547 - INFO - 🔬 고급 기능 탐구 시작
+2025-08-21 11:34:22,550 - INFO - 🔍 현재 페이지에서 고급 기능 탐색: https://theterminalx.com/agent/enterprise/watchlist
+2025-08-21 11:34:22,587 - INFO -   🎯 고급 기능 발견: comps - Comps Analysis...
+2025-08-21 11:34:22,653 - INFO -   🎯 고급 기능 발견: analysis - Comps Analysis...
+2025-08-21 11:34:22,818 - INFO -   🎯 고급 기능 발견: portfolio - My Portfolio...
+2025-08-21 11:34:22,853 - INFO -   🎯 고급 기능 발견: watchlist - My Watchlist...
+2025-08-21 11:34:22,907 - INFO - 🧪 고급 기능 URL 테스트: https://theterminalx.com/agent/enterprise/analysis
+2025-08-21 11:34:22,907 - INFO - 🔄 페이지 이동: https://theterminalx.com/agent/enterprise/analysis
+2025-08-21 11:34:26,637 - INFO - 
+📍 현재 URL: https://theterminalx.com/agent/enterprise
+📄 페이지 제목: Terminal X
+⏰ 시간: 11:34:26
+
+2025-08-21 11:34:28,641 - INFO -   ❌ 접근 실패 또는 리다이렉트
+2025-08-21 11:34:28,645 - INFO - 🧪 고급 기능 URL 테스트: https://theterminalx.com/agent/enterprise/models
+2025-08-21 11:34:28,645 - INFO - 🔄 페이지 이동: https://theterminalx.com/agent/enterprise/models
+2025-08-21 11:34:32,310 - INFO - 
+📍 현재 URL: https://theterminalx.com/agent/enterprise
+📄 페이지 제목: Terminal X
+⏰ 시간: 11:34:32
+
+2025-08-21 11:34:34,314 - INFO -   ❌ 접근 실패 또는 리다이렉트
+2025-08-21 11:34:34,318 - INFO - 🧪 고급 기능 URL 테스트: https://theterminalx.com/agent/enterprise/comps
+2025-08-21 11:34:34,318 - INFO - 🔄 페이지 이동: https://theterminalx.com/agent/enterprise/comps
+2025-08-21 11:34:37,985 - INFO - 
+📍 현재 URL: https://theterminalx.com/agent/enterprise/comps
+📄 페이지 제목: Terminal X
+⏰ 시간: 11:34:37
+
+2025-08-21 11:34:39,992 - INFO -   ✅ 접근 성공: Terminal X
+2025-08-21 11:34:40,073 - INFO - 🧪 고급 기능 URL 테스트: https://theterminalx.com/agent/enterprise/screening
+2025-08-21 11:34:40,074 - INFO - 🔄 페이지 이동: https://theterminalx.com/agent/enterprise/screening
+2025-08-21 11:34:43,779 - INFO - 
+📍 현재 URL: https://theterminalx.com/agent/enterprise
+📄 페이지 제목: Terminal X
+⏰ 시간: 11:34:43
+
+2025-08-21 11:34:45,784 - INFO -   ❌ 접근 실패 또는 리다이렉트
+2025-08-21 11:34:45,786 - INFO - 🧪 고급 기능 URL 테스트: https://theterminalx.com/agent/enterprise/portfolio
+2025-08-21 11:34:45,786 - INFO - 🔄 페이지 이동: https://theterminalx.com/agent/enterprise/portfolio
+2025-08-21 11:34:49,561 - INFO - 
+📍 현재 URL: https://theterminalx.com/agent/enterprise
+📄 페이지 제목: Terminal X
+⏰ 시간: 11:34:49
+
+2025-08-21 11:34:51,569 - INFO -   ❌ 접근 실패 또는 리다이렉트
+2025-08-21 11:34:51,575 - INFO - ✅ 고급 기능 탐구 완료
+2025-08-21 11:34:51,575 - INFO - ============================================================
+2025-08-21 11:34:51,575 - INFO - 📄 리포트 추출 방법 탐구 시작
+2025-08-21 11:34:51,575 - INFO - 🔍 리포트 추출 방법 탐색: https://theterminalx.com/agent/enterprise
+2025-08-21 11:34:51,575 - INFO - 🔄 페이지 이동: https://theterminalx.com/agent/enterprise
+2025-08-21 11:34:55,347 - INFO - 
+📍 현재 URL: https://theterminalx.com/agent/enterprise
+📄 페이지 제목: Terminal X
+⏰ 시간: 11:34:55
+
+2025-08-21 11:34:58,502 - INFO -   📊 보고서 테이블 발견: 2행, 헤더: ['Document Name', 'Document Type', 'Source']
+2025-08-21 11:34:58,502 - INFO - 🔍 리포트 추출 방법 탐색: https://theterminalx.com/agent/enterprise/live-research
+2025-08-21 11:34:58,502 - INFO - 🔄 페이지 이동: https://theterminalx.com/agent/enterprise/live-research
+2025-08-21 11:35:02,161 - INFO - 
+📍 현재 URL: https://theterminalx.com/enterprise?contact=true
+📄 페이지 제목: Terminal X - AI Financial Research & Analysis
+⏰ 시간: 11:35:02
+
+2025-08-21 11:35:05,211 - INFO - 🔍 리포트 추출 방법 탐색: https://theterminalx.com/agent/enterprise/admin
+2025-08-21 11:35:05,211 - INFO - 🔄 페이지 이동: https://theterminalx.com/agent/enterprise/admin
+2025-08-21 11:35:08,932 - INFO - 
+📍 현재 URL: https://theterminalx.com/agent/enterprise/admin
+📄 페이지 제목: Terminal X
+⏰ 시간: 11:35:08
+
+2025-08-21 11:35:12,135 - INFO -   📊 보고서 테이블 발견: 2행, 헤더: ['', 'Document Name', 'ID']
+2025-08-21 11:35:12,135 - INFO - ✅ 리포트 추출 방법 탐구 완료
+2025-08-21 11:35:12,135 - INFO - 💾 기능 분석 결과 저장 중...
+2025-08-21 11:35:12,139 - INFO - ✅ 기능 분석 결과 저장 완료: C:\Users\eunta\multi-agent-workspace\projects\100xFenok-generator\terminalx_function_analysis
+2025-08-21 11:35:12,139 - INFO - 🔒 브라우저 종료
+2025-08-21 11:35:14,351 - INFO - 🏁 TerminalX 기능 탐구 완료!
