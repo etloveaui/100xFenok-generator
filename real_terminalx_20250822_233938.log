@@ -1,0 +1,33 @@
+2025-08-22 23:39:38,311 - INFO - TerminalX 자격 증명 로드 완료
+2025-08-22 23:39:38,311 - INFO - === 진짜 TerminalX 완전 파이프라인 시작 ===
+2025-08-22 23:39:39,384 - INFO - Chrome 브라우저 설정 완료
+2025-08-22 23:39:39,384 - INFO - === TerminalX 실제 로그인 시작 ===
+2025-08-22 23:39:39,384 - INFO - 1. TerminalX 메인 페이지 접근...
+2025-08-22 23:39:55,365 - INFO - 현재 URL: https://theterminalx.com/agent/enterprise
+2025-08-22 23:39:55,365 - INFO - 2. 로그인 버튼 찾는 중...
+2025-08-22 23:40:10,506 - ERROR - TerminalX 로그인 실패: Message: 
+Stacktrace:
+	GetHandleVerifier [0x0x7ff704e5e965+77845]
+	GetHandleVerifier [0x0x7ff704e5e9c0+77936]
+	(No symbol) [0x0x7ff704c19cda]
+	(No symbol) [0x0x7ff704c706aa]
+	(No symbol) [0x0x7ff704c7095c]
+	(No symbol) [0x0x7ff704cc3d07]
+	(No symbol) [0x0x7ff704c9890f]
+	(No symbol) [0x0x7ff704cc0b07]
+	(No symbol) [0x0x7ff704c986a3]
+	(No symbol) [0x0x7ff704c61791]
+	(No symbol) [0x0x7ff704c62523]
+	GetHandleVerifier [0x0x7ff70513687d+3059501]
+	GetHandleVerifier [0x0x7ff705130c3d+3035885]
+	GetHandleVerifier [0x0x7ff705150430+3164896]
+	GetHandleVerifier [0x0x7ff704e78c6e+185118]
+	GetHandleVerifier [0x0x7ff704e8057f+216111]
+	GetHandleVerifier [0x0x7ff704e67314+113092]
+	GetHandleVerifier [0x0x7ff704e674c9+113529]
+	GetHandleVerifier [0x0x7ff704e4e2c8+10616]
+	BaseThreadInitThunk [0x0x7ff945317374+20]
+	RtlUserThreadStart [0x0x7ff9466fcc91+33]
+
+2025-08-22 23:40:10,506 - ERROR - TerminalX 로그인 실패
+2025-08-22 23:40:10,506 - INFO - 브라우저를 5분간 열어둡니다 (수동 확인용)

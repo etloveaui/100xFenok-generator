@@ -1,0 +1,9 @@
+{
+  "id": 1,
+  "type": "basic_report",
+  "title": "Market Summary Today",
+  "prompt": "Give me a comprehensive market summary for today including major indices, key movers, and market sentiment",
+  "response": "NotificationsNo notifications to show.Agent Answer한글로 보기 Give me a comprehensive market summary for today including major indices, key movers, and market sentiment8/22, 11:50PM ∙ Deep Research\n          /* Specific targeting for supersearchx-body */\n          .supersearchx-body ul {\n            list-style-type: disc !important;\n          }\n          .supersearchx-body ul ul {\n            list-style-type: circle !important;\n          }\n          .supersearchx-body ul ul ul {\n            list-style-type: square !important;\n          }\n          .supersearchx-body ul ul ul ul {\n            list-style-type: disc !important;\n          }\n          /* This class makes the wrapper div scrollable */\n          .table-scroll-wrapper {\n            overflow-x: auto;\n            width: 100%;\n          }\n          /* This overrides Tailwind's w-full and lets the table size itself */\n          .supersearchx-body table {\n            width: auto !important;\n            min-width: max-content;\n          }\n        Fed Chair Jerome Powell's dovish pivot at Jackson Hole triggered a broad market rally, with the S&amp;P 500 surging 1.48% to 6,464.52 and the Nasdaq jumping 1.74% to 23,546.42. Powell signaled potential September rate cuts, stating that",
+  "generated_at": "20250822_235104",
+  "url": "https://theterminalx.com/agent/enterprise/answer/2025/08/22/give-me-a-comprehensive-market-summary-for-today-including-m-84e80cdb-b713-4c84-8688-940fc2e72867"
+}

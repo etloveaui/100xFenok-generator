@@ -275,33 +275,112 @@ class FenokReportGenerator:
         current_url = self.driver.current_url
         print(f"  - 실제 도착한 URL: {current_url}")
         
-        # 아카이브 페이지로 리다이렉션된 경우 처리
+        # 아카이브 페이지로 리다이렉션된 경우 강력한 다중 우회 처리
         if "archive" in current_url:
-            print("  - 아카이브 페이지로 리다이렉션됨. 다시 폼으로 이동 시도...")
+            print("  - [REDIRECT DETECTED] 아카이브 페이지로 리다이렉션됨. 강력한 우회 시도...")
             
-            # 방법 1: 직접 재시도
-            time.sleep(2)
-            self.driver.get(report_form_url)
+            success = False
+            # 방법 1: 세션 쿠키 확인 후 직접 재시도
+            print("  - 방법 1: 세션 상태 확인 후 직접 재시도")
             time.sleep(3)
+            self.driver.get(report_form_url)
+            time.sleep(5)  # 더 오래 대기
             current_url_retry = self.driver.current_url
-            print(f"  - 재시도 후 URL: {current_url_retry}")
+            print(f"    → 재시도 후 URL: {current_url_retry}")
             
-            # 여전히 아카이브 페이지라면 다른 방법 시도
-            if "archive" in current_url_retry:
-                print("  - 직접 접근 실패. 아카이브에서 '새 리포트' 버튼 접근 시도...")
-                try:
-                    # 아카이브 페이지에서 "새 리포트" 버튼 찾아서 클릭
-                    new_report_button = WebDriverWait(self.driver, 5).until(
-                        EC.element_to_be_clickable((By.XPATH, "//a[contains(@href, 'report/form') or contains(text(), '새') or contains(text(), 'New')]"))
-                    )
-                    new_report_button.click()
-                    time.sleep(3)
-                    final_url = self.driver.current_url
-                    print(f"  - '새 리포트' 버튼 클릭 후 URL: {final_url}")
-                except TimeoutException:
-                    print("  - '새 리포트' 버튼을 찾을 수 없음. 폼 페이지 접근 실패.")
-                    report.status = "FAILED"
-                    return False
+            if "form" in current_url_retry:
+                print("    → [SUCCESS] 직접 재시도로 폼 페이지 접근 성공!")
+                success = True
+            else:
+                print("    → [FAILED] 직접 재시도 실패")
+                
+                # 방법 2: 다른 템플릿 ID로 우회 시도  
+                print("  - 방법 2: 다른 템플릿 ID로 우회 접근")
+                alternative_urls = [
+                    "https://theterminalx.com/agent/enterprise/report/form/1",
+                    "https://theterminalx.com/agent/enterprise/report/form/5",
+                    "https://theterminalx.com/agent/enterprise/report/form"
+                ]
+                
+                for alt_url in alternative_urls:
+                    print(f"    → 시도: {alt_url}")
+                    self.driver.get(alt_url)
+                    time.sleep(4)
+                    alt_current_url = self.driver.current_url
+                    print(f"    → 결과: {alt_current_url}")
+                    
+                    if "form" in alt_current_url and "archive" not in alt_current_url:
+                        print(f"    → [SUCCESS] 대안 URL로 폼 접근 성공: {alt_url}")
+                        success = True
+                        break
+                
+                if not success:
+                    print("  - 방법 3: 아카이브에서 새 리포트 버튼 클릭")
+                    try:
+                        # 먼저 아카이브 페이지로 명시적 이동
+                        self.driver.get("https://theterminalx.com/agent/enterprise/report/archive")
+                        time.sleep(3)
+                        
+                        # 다양한 버튼 셀렉터 시도
+                        button_selectors = [
+                            "//a[contains(@href, 'report/form')]",
+                            "//button[contains(text(), 'New') or contains(text(), '새')]",
+                            "//a[contains(text(), 'Create') or contains(text(), '생성')]",
+                            "//button[contains(@class, 'btn') and contains(text(), 'Report')]",
+                            ".btn-primary[href*='form']",
+                            "a[href*='report/form']"
+                        ]
+                        
+                        for selector in button_selectors:
+                            try:
+                                print(f"    → 버튼 시도: {selector}")
+                                if selector.startswith("//"):
+                                    button = WebDriverWait(self.driver, 3).until(
+                                        EC.element_to_be_clickable((By.XPATH, selector))
+                                    )
+                                else:
+                                    button = WebDriverWait(self.driver, 3).until(
+                                        EC.element_to_be_clickable((By.CSS_SELECTOR, selector))
+                                    )
+                                button.click()
+                                time.sleep(4)
+                                button_url = self.driver.current_url
+                                print(f"    → 클릭 후 URL: {button_url}")
+                                
+                                if "form" in button_url:
+                                    print("    → [SUCCESS] 버튼 클릭으로 폼 접근 성공!")
+                                    success = True
+                                    break
+                            except:
+                                continue
+                                
+                    except Exception as e:
+                        print(f"    → [ERROR] 버튼 클릭 방법 실패: {e}")
+                
+                if not success:
+                    print("  - 방법 4: 강제 JavaScript 네비게이션")
+                    try:
+                        # JavaScript로 직접 페이지 이동 강제 실행
+                        js_navigate = f"window.location.href = '{report_form_url}'; return true;"
+                        self.driver.execute_script(js_navigate)
+                        time.sleep(5)
+                        js_url = self.driver.current_url
+                        print(f"    → JS 네비게이션 후 URL: {js_url}")
+                        
+                        if "form" in js_url:
+                            print("    → [SUCCESS] JavaScript 강제 네비게이션 성공!")
+                            success = True
+                    except Exception as e:
+                        print(f"    → [ERROR] JavaScript 네비게이션 실패: {e}")
+            
+            # 최종 결과 확인
+            final_url = self.driver.current_url
+            if "form" in final_url:
+                print(f"  - [FINAL SUCCESS] 폼 페이지 최종 접근 성공: {final_url}")
+            else:
+                print(f"  - [FINAL FAILED] 모든 우회 방법 실패. 최종 URL: {final_url}")
+                report.status = "FAILED"
+                return False
 
         try:
             # 페이지 로드 대기 (Report Title 입력 필드 기준으로)
