@@ -1,0 +1,443 @@
+{
+  "analysis_timestamp": "2025-08-23T13:41:45.691611",
+  "session_workflows": {
+    "general_session": {
+      "page_url": "https://theterminalx.com/agent/enterprise",
+      "timestamp": "2025-08-23T13:40:21.558435",
+      "text_input_areas": [
+        {
+          "index": 0,
+          "tag": "textarea",
+          "type": "textarea",
+          "placeholder": "Ask Anything...",
+          "class": "text-left min-h-[90px] resize-none focus:outline-none text-black text-[16px] flex-1 border-none bg-transparent font-[400] font-roboto placeholder:text-[#8c8c8c] placeholder:text-[16px] placeholder:font-[400]",
+          "value": "",
+          "is_visible": true,
+          "is_enabled": true
+        }
+      ],
+      "available_buttons": [
+        {
+          "index": 0,
+          "text": "New Session",
+          "type": "button",
+          "class": "MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium rounded-[4px] text-[#e9e9e9] font-[400] min-w-0 w-full p-0 hover:bg-white/20 h-[40px] hover:bg-white bg-[#2b2e39] mui-theme-14kc2c2",
+          "is_visible": true,
+          "is_enabled": true
+        },
+        {
+          "index": 1,
+          "text": "Comps Analysis",
+          "type": "button",
+          "class": "MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium rounded-[4px] text-[#e9e9e9] font-[400] min-w-0 w-full p-0 hover:bg-white/20 h-[40px] undefined bg-inherit mui-theme-14kc2c2",
+          "is_visible": true,
+          "is_enabled": true
+        },
+        {
+          "index": 2,
+          "text": "Custom Report Builder",
+          "type": "button",
+          "class": "MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium rounded-[4px] text-[#e9e9e9] font-[400] min-w-0 w-full p-0 hover:bg-white/20 h-[40px] undefined bg-inherit mui-theme-14kc2c2",
+          "is_visible": true,
+          "is_enabled": true
+        },
+        {
+          "index": 3,
+          "text": "My Watchlist",
+          "type": "button",
+          "class": "MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium rounded-[4px] text-[#e9e9e9] font-[400] min-w-0 w-full p-0 hover:bg-white/20 h-[40px] undefined bg-inherit mui-theme-14kc2c2",
+          "is_visible": true,
+          "is_enabled": true
+        },
+        {
+          "index": 4,
+          "text": "Live Research",
+          "type": "button",
+          "class": "MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium rounded-[4px] text-[#e9e9e9] font-[400] min-w-0 w-full p-0 hover:bg-white/20 h-[40px] undefined bg-inherit mui-theme-14kc2c2",
+          "is_visible": true,
+          "is_enabled": true
+        },
+        {
+          "index": 5,
+          "text": "Private Data Room",
+          "type": "button",
+          "class": "MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium rounded-[4px] text-[#e9e9e9] font-[400] min-w-0 w-full p-0 hover:bg-white/20 h-[40px] undefined bg-inherit mui-theme-14kc2c2",
+          "is_visible": true,
+          "is_enabled": true
+        },
+        {
+          "index": 6,
+          "text": "History",
+          "type": "button",
+          "class": "MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium rounded-[4px] text-[#e9e9e9] font-[400] min-w-0 w-full p-0 hover:bg-white/20 h-[40px] undefined bg-inherit mui-theme-14kc2c2",
+          "is_visible": true,
+          "is_enabled": true
+        },
+        {
+          "index": 7,
+          "text": "Subscriptions",
+          "type": "button",
+          "class": "MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium rounded-[4px] text-[#e9e9e9] font-[400] min-w-0 w-full p-0 hover:bg-white/20 h-[40px] undefined bg-inherit mui-theme-14kc2c2",
+          "is_visible": true,
+          "is_enabled": true
+        },
+        {
+          "index": 8,
+          "text": "Entitlements",
+          "type": "button",
+          "class": "MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium rounded-[4px] text-[#e9e9e9] font-[400] min-w-0 w-full p-0 hover:bg-white/20 h-[40px] undefined bg-inherit mui-theme-14kc2c2",
+          "is_visible": true,
+          "is_enabled": true
+        },
+        {
+          "index": 9,
+          "text": "Profile\nPro",
+          "type": "button",
+          "class": "MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium rounded-[4px] text-[#e9e9e9] font-[400] min-w-0 w-full p-0 hover:bg-white/20 h-[40px] undefined bg-inherit mui-theme-14kc2c2",
+          "is_visible": true,
+          "is_enabled": true
+        },
+        {
+          "index": 10,
+          "text": "",
+          "type": "button",
+          "class": "MuiButtonBase-root mui-theme-1b47e06",
+          "is_visible": true,
+          "is_enabled": true
+        },
+        {
+          "index": 11,
+          "text": "",
+          "type": "submit",
+          "class": "flex items-center justify-center cursor-pointer border-none bg-transparent p-0 fill-[#d9d9d9]",
+          "is_visible": true,
+          "is_enabled": false
+        },
+        {
+          "index": 12,
+          "text": "Private Data Room",
+          "type": "submit",
+          "class": "text-[12px] font-roboto flex flex-row items-center border-solid border-[#d9d9d9] border-[1px] rounded-[46.61px] cursor-pointer h-[31.55px] gap-[6.31px] px-[12.62px] hover:border-black/20 hover:bg-[#d9d9d9] hover:text-[#0d0d0d] active:bg-black active:text-white\n          bg-[#f9f9f9] text-[#595959]\n          ",
+          "is_visible": true,
+          "is_enabled": true
+        },
+        {
+          "index": 13,
+          "text": "Trending Queries",
+          "type": "submit",
+          "class": "text-[12px] font-roboto flex flex-row items-center border-solid border-[#d9d9d9] border-[1px] rounded-[46.61px] cursor-pointer h-[31.55px] gap-[6.31px] px-[12.62px] hover:border-black/20 hover:bg-[#d9d9d9] hover:text-[#0d0d0d] active:bg-black active:text-white\n          bg-[#f9f9f9] text-[#595959]\n          ",
+          "is_visible": true,
+          "is_enabled": true
+        },
+        {
+          "index": 14,
+          "text": "Ticker Lookup",
+          "type": "submit",
+          "class": "text-[12px] font-roboto flex flex-row items-center border-solid border-[#d9d9d9] border-[1px] rounded-[46.61px] cursor-pointer h-[31.55px] gap-[6.31px] px-[12.62px] hover:border-black/20 hover:bg-[#d9d9d9] hover:text-[#0d0d0d] active:bg-black active:text-white\n          bg-[#f9f9f9] text-[#595959]\n          ",
+          "is_visible": true,
+          "is_enabled": true
+        },
+        {
+          "index": 15,
+          "text": "Public Comps",
+          "type": "submit",
+          "class": "text-[12px] font-roboto flex flex-row items-center border-solid border-[#d9d9d9] border-[1px] rounded-[46.61px] cursor-pointer h-[31.55px] gap-[6.31px] px-[12.62px] hover:border-black/20 hover:bg-[#d9d9d9] hover:text-[#0d0d0d] active:bg-black active:text-white\n          bg-[#f9f9f9] text-[#595959]\n          ",
+          "is_visible": true,
+          "is_enabled": true
+        },
+        {
+          "index": 16,
+          "text": "AI Reports",
+          "type": "submit",
+          "class": "text-[12px] font-roboto flex flex-row items-center border-solid border-[#d9d9d9] border-[1px] rounded-[46.61px] cursor-pointer h-[31.55px] gap-[6.31px] px-[12.62px] hover:border-black/20 hover:bg-[#d9d9d9] hover:text-[#0d0d0d] active:bg-black active:text-white\n          bg-[#f9f9f9] text-[#595959]\n          ",
+          "is_visible": true,
+          "is_enabled": true
+        }
+      ],
+      "session_workflow": [
+        {
+          "query": "Give me a market summary for today",
+          "timestamp": "2025-08-23T13:40:31.280900",
+          "response_detected": true,
+          "page_title": "Terminal X",
+          "current_url": "https://theterminalx.com/agent/enterprise/answer/2025/08/23/give-me-a-market-summary-for-today-7f9bb3cb-d9b7-4feb-9ec7-2f557e0d8000"
+        }
+      ]
+    }
+  },
+  "report_capabilities": {
+    "timestamp": "2025-08-23T13:40:36.415920",
+    "pages_analyzed": [
+      {
+        "url": "https://theterminalx.com/agent/enterprise/live-research",
+        "title": "Terminal X - AI Financial Research & Analysis",
+        "report_elements": [
+          {
+            "keyword": "research",
+            "tag": "script",
+            "text": "",
+            "class": "",
+            "type": "application/ld+json",
+            "is_clickable": false
+          },
+          {
+            "keyword": "research",
+            "tag": "div",
+            "text": "",
+            "class": "divbox",
+            "type": null,
+            "is_clickable": false
+          },
+          {
+            "keyword": "research",
+            "tag": "div",
+            "text": "",
+            "class": "divbox",
+            "type": null,
+            "is_clickable": false
+          },
+          {
+            "keyword": "research",
+            "tag": "script",
+            "text": "",
+            "class": "",
+            "type": "",
+            "is_clickable": false
+          },
+          {
+            "keyword": "research",
+            "tag": "script",
+            "text": "",
+            "class": "",
+            "type": "",
+            "is_clickable": false
+          },
+          {
+            "keyword": "template",
+            "tag": "script",
+            "text": "",
+            "class": "",
+            "type": "",
+            "is_clickable": false
+          }
+        ],
+        "creation_buttons": [],
+        "templates": []
+      },
+      {
+        "url": "https://theterminalx.com/agent/enterprise/admin",
+        "title": "Terminal X",
+        "report_elements": [
+          {
+            "keyword": "research",
+            "tag": "script",
+            "text": "",
+            "class": "",
+            "type": "application/ld+json",
+            "is_clickable": false
+          },
+          {
+            "keyword": "research",
+            "tag": "script",
+            "text": "",
+            "class": "",
+            "type": "",
+            "is_clickable": false
+          },
+          {
+            "keyword": "template",
+            "tag": "script",
+            "text": "",
+            "class": "",
+            "type": "",
+            "is_clickable": false
+          }
+        ],
+        "creation_buttons": [],
+        "templates": []
+      },
+      {
+        "url": "https://theterminalx.com/agent/enterprise/watchlist",
+        "title": "Terminal X",
+        "report_elements": [
+          {
+            "keyword": "research",
+            "tag": "script",
+            "text": "",
+            "class": "",
+            "type": "application/ld+json",
+            "is_clickable": false
+          },
+          {
+            "keyword": "research",
+            "tag": "script",
+            "text": "",
+            "class": "",
+            "type": "",
+            "is_clickable": false
+          },
+          {
+            "keyword": "template",
+            "tag": "script",
+            "text": "",
+            "class": "",
+            "type": "",
+            "is_clickable": false
+          }
+        ],
+        "creation_buttons": [
+          {
+            "text": "",
+            "class": "MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium w-full p-2 cursor-pointer rounded-[8px] no-underline text-black text-[12.8px] font-roboto hover:bg-gray-100 text-left font-normal mui-theme-1xyjn4a",
+            "is_clickable": false
+          },
+          {
+            "text": "",
+            "class": "MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium w-full p-2 cursor-pointer rounded-[8px] no-underline text-black text-[12.8px] font-roboto hover:bg-gray-100 text-left font-normal mui-theme-1xyjn4a",
+            "is_clickable": false
+          },
+          {
+            "text": "",
+            "class": "MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium w-full p-2 cursor-pointer rounded-[8px] no-underline text-black text-[12.8px] font-roboto hover:bg-gray-100 text-left font-normal mui-theme-1xyjn4a",
+            "is_clickable": false
+          },
+          {
+            "text": "",
+            "class": "MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium w-full p-2 cursor-pointer rounded-[8px] no-underline text-black text-[12.8px] font-roboto hover:bg-gray-100 text-left font-normal mui-theme-1xyjn4a",
+            "is_clickable": false
+          }
+        ],
+        "templates": []
+      }
+    ],
+    "report_types_found": [],
+    "creation_workflows": []
+  },
+  "advanced_features": {
+    "timestamp": "2025-08-23T13:40:57.364688",
+    "features_found": [
+      {
+        "keyword": "comps",
+        "text": "Comps Analysis",
+        "tag": "div",
+        "class": "text-[14px] font-roboto font-[400]",
+        "href": null,
+        "is_interactive": true
+      },
+      {
+        "keyword": "analysis",
+        "text": "Comps Analysis",
+        "tag": "div",
+        "class": "text-[14px] font-roboto font-[400]",
+        "href": null,
+        "is_interactive": true
+      },
+      {
+        "keyword": "portfolio",
+        "text": "My Portfolio",
+        "tag": "div",
+        "class": "p-[8px] text-[24px] font-[500] font-newsReader",
+        "href": null,
+        "is_interactive": true
+      },
+      {
+        "keyword": "watchlist",
+        "text": "My Watchlist",
+        "tag": "div",
+        "class": "text-[14px] font-roboto font-[400]",
+        "href": null,
+        "is_interactive": true
+      }
+    ],
+    "navigation_paths": [
+      {
+        "url": "https://theterminalx.com/agent/enterprise/analysis",
+        "accessible": false,
+        "redirected_to": "https://theterminalx.com/agent/enterprise"
+      },
+      {
+        "url": "https://theterminalx.com/agent/enterprise/models",
+        "accessible": false,
+        "redirected_to": "https://theterminalx.com/agent/enterprise"
+      },
+      {
+        "url": "https://theterminalx.com/agent/enterprise/comps",
+        "title": "Terminal X",
+        "accessible": true,
+        "content_preview": [
+          "New Session",
+          "Comps Analysis",
+          "Custom Report Builder",
+          "My Watchlist",
+          "Live Research",
+          "Private Data Room",
+          "History",
+          "Subscriptions",
+          "Entitlements",
+          "Profile\nPro"
+        ]
+      },
+      {
+        "url": "https://theterminalx.com/agent/enterprise/screening",
+        "accessible": false,
+        "redirected_to": "https://theterminalx.com/agent/enterprise"
+      },
+      {
+        "url": "https://theterminalx.com/agent/enterprise/portfolio",
+        "accessible": false,
+        "redirected_to": "https://theterminalx.com/agent/enterprise"
+      }
+    ],
+    "functionality_tests": []
+  },
+  "extraction_methods": {
+    "timestamp": "2025-08-23T13:41:25.724537",
+    "main_reports": [
+      {
+        "page": "https://theterminalx.com/agent/enterprise",
+        "table_index": 0,
+        "row_count": 2,
+        "headers": [
+          "Document Name",
+          "Document Type",
+          "Source",
+          "Location",
+          "100x Daily Wrap Market Close to Close Report"
+        ],
+        "sample_data": [
+          "Daily Market Report",
+          "100x Research",
+          "My Uploads"
+        ]
+      },
+      {
+        "page": "https://theterminalx.com/agent/enterprise/admin",
+        "table_index": 0,
+        "row_count": 2,
+        "headers": [
+          "",
+          "Document Name",
+          "ID",
+          "Document Type",
+          "Source",
+          "Published At",
+          "Synced At (EDT)",
+          "Status"
+        ],
+        "sample_data": [
+          "",
+          "My Uploads",
+          "",
+          "Folder",
+          "",
+          "",
+          "",
+          ""
+        ]
+      }
+    ],
+    "secondary_reports": [],
+    "extraction_workflows": [],
+    "download_methods": []
+  }
+}
