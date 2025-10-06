@@ -1,0 +1,205 @@
+{
+  "timestamp": "20250823_001656",
+  "url": "https://theterminalx.com/agent/enterprise",
+  "title": "Terminal X",
+  "page_size": 96998,
+  "elements_analysis": {
+    "inputs": [
+      {
+        "index": 0,
+        "tag": "textarea",
+        "type": "textarea",
+        "placeholder": "Ask Anything...",
+        "class": "text-left min-h-[90px] resize-none focus:outline-none text-black text-[16px] flex-1 border-none bg-transparent font-[400] font-roboto placeholder:text-[#8c8c8c] placeholder:text-[16px] placeholder:font-[400]",
+        "id": "",
+        "name": "",
+        "visible": true,
+        "enabled": true
+      },
+      {
+        "index": 1,
+        "tag": "input",
+        "type": "file",
+        "placeholder": "file-input",
+        "class": "hidden",
+        "id": "",
+        "name": "",
+        "visible": false,
+        "enabled": true
+      }
+    ],
+    "buttons": [
+      {
+        "index": 0,
+        "tag": "button",
+        "text": "New Session",
+        "type": "button",
+        "class": "MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium rounded-[4px] text-[#e9e9e9] font-[400] min-w-0 w-full p-0 hover:bg-white/20 h-[40px] hover:bg-white bg-[#2b2e39] mui-theme-14kc2c2",
+        "visible": true,
+        "enabled": true,
+        "clickable": true
+      },
+      {
+        "index": 1,
+        "tag": "button",
+        "text": "Comps Analysis",
+        "type": "button",
+        "class": "MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium rounded-[4px] text-[#e9e9e9] font-[400] min-w-0 w-full p-0 hover:bg-white/20 h-[40px] undefined bg-inherit mui-theme-14kc2c2",
+        "visible": true,
+        "enabled": true,
+        "clickable": true
+      },
+      {
+        "index": 2,
+        "tag": "button",
+        "text": "Custom Report Builder",
+        "type": "button",
+        "class": "MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium rounded-[4px] text-[#e9e9e9] font-[400] min-w-0 w-full p-0 hover:bg-white/20 h-[40px] undefined bg-inherit mui-theme-14kc2c2",
+        "visible": true,
+        "enabled": true,
+        "clickable": true
+      },
+      {
+        "index": 3,
+        "tag": "button",
+        "text": "My Watchlist",
+        "type": "button",
+        "class": "MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium rounded-[4px] text-[#e9e9e9] font-[400] min-w-0 w-full p-0 hover:bg-white/20 h-[40px] undefined bg-inherit mui-theme-14kc2c2",
+        "visible": true,
+        "enabled": true,
+        "clickable": true
+      },
+      {
+        "index": 4,
+        "tag": "button",
+        "text": "Live Research",
+        "type": "button",
+        "class": "MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium rounded-[4px] text-[#e9e9e9] font-[400] min-w-0 w-full p-0 hover:bg-white/20 h-[40px] undefined bg-inherit mui-theme-14kc2c2",
+        "visible": true,
+        "enabled": true,
+        "clickable": true
+      },
+      {
+        "index": 5,
+        "tag": "button",
+        "text": "Private Data Room",
+        "type": "button",
+        "class": "MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium rounded-[4px] text-[#e9e9e9] font-[400] min-w-0 w-full p-0 hover:bg-white/20 h-[40px] undefined bg-inherit mui-theme-14kc2c2",
+        "visible": true,
+        "enabled": true,
+        "clickable": true
+      },
+      {
+        "index": 6,
+        "tag": "button",
+        "text": "History",
+        "type": "button",
+        "class": "MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium rounded-[4px] text-[#e9e9e9] font-[400] min-w-0 w-full p-0 hover:bg-white/20 h-[40px] undefined bg-inherit mui-theme-14kc2c2",
+        "visible": true,
+        "enabled": true,
+        "clickable": true
+      },
+      {
+        "index": 7,
+        "tag": "button",
+        "text": "Subscriptions",
+        "type": "button",
+        "class": "MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium rounded-[4px] text-[#e9e9e9] font-[400] min-w-0 w-full p-0 hover:bg-white/20 h-[40px] undefined bg-inherit mui-theme-14kc2c2",
+        "visible": true,
+        "enabled": true,
+        "clickable": true
+      },
+      {
+        "index": 8,
+        "tag": "button",
+        "text": "Entitlements",
+        "type": "button",
+        "class": "MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium rounded-[4px] text-[#e9e9e9] font-[400] min-w-0 w-full p-0 hover:bg-white/20 h-[40px] undefined bg-inherit mui-theme-14kc2c2",
+        "visible": true,
+        "enabled": true,
+        "clickable": true
+      },
+      {
+        "index": 9,
+        "tag": "button",
+        "text": "Profile\nPro",
+        "type": "button",
+        "class": "MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium rounded-[4px] text-[#e9e9e9] font-[400] min-w-0 w-full p-0 hover:bg-white/20 h-[40px] undefined bg-inherit mui-theme-14kc2c2",
+        "visible": true,
+        "enabled": true,
+        "clickable": true
+      },
+      {
+        "index": 10,
+        "tag": "button",
+        "text": "",
+        "type": "button",
+        "class": "MuiButtonBase-root mui-theme-1b47e06",
+        "visible": true,
+        "enabled": true,
+        "clickable": true
+      },
+      {
+        "index": 11,
+        "tag": "button",
+        "text": "",
+        "type": "submit",
+        "class": "flex items-center justify-center cursor-pointer border-none bg-transparent p-0 fill-[#d9d9d9]",
+        "visible": true,
+        "enabled": false,
+        "clickable": false
+      },
+      {
+        "index": 12,
+        "tag": "button",
+        "text": "Private Data Room",
+        "type": "submit",
+        "class": "text-[12px] font-roboto flex flex-row items-center border-solid border-[#d9d9d9] border-[1px] rounded-[46.61px] cursor-pointer h-[31.55px] gap-[6.31px] px-[12.62px] hover:border-black/20 hover:bg-[#d9d9d9] hover:text-[#0d0d0d] active:bg-black active:text-white\n          bg-[#f9f9f9] text-[#595959]\n          ",
+        "visible": true,
+        "enabled": true,
+        "clickable": true
+      },
+      {
+        "index": 13,
+        "tag": "button",
+        "text": "Trending Queries",
+        "type": "submit",
+        "class": "text-[12px] font-roboto flex flex-row items-center border-solid border-[#d9d9d9] border-[1px] rounded-[46.61px] cursor-pointer h-[31.55px] gap-[6.31px] px-[12.62px] hover:border-black/20 hover:bg-[#d9d9d9] hover:text-[#0d0d0d] active:bg-black active:text-white\n          bg-[#f9f9f9] text-[#595959]\n          ",
+        "visible": true,
+        "enabled": true,
+        "clickable": true
+      },
+      {
+        "index": 14,
+        "tag": "button",
+        "text": "Ticker Lookup",
+        "type": "submit",
+        "class": "text-[12px] font-roboto flex flex-row items-center border-solid border-[#d9d9d9] border-[1px] rounded-[46.61px] cursor-pointer h-[31.55px] gap-[6.31px] px-[12.62px] hover:border-black/20 hover:bg-[#d9d9d9] hover:text-[#0d0d0d] active:bg-black active:text-white\n          bg-[#f9f9f9] text-[#595959]\n          ",
+        "visible": true,
+        "enabled": true,
+        "clickable": true
+      },
+      {
+        "index": 15,
+        "tag": "button",
+        "text": "Public Comps",
+        "type": "submit",
+        "class": "text-[12px] font-roboto flex flex-row items-center border-solid border-[#d9d9d9] border-[1px] rounded-[46.61px] cursor-pointer h-[31.55px] gap-[6.31px] px-[12.62px] hover:border-black/20 hover:bg-[#d9d9d9] hover:text-[#0d0d0d] active:bg-black active:text-white\n          bg-[#f9f9f9] text-[#595959]\n          ",
+        "visible": true,
+        "enabled": true,
+        "clickable": true
+      },
+      {
+        "index": 16,
+        "tag": "button",
+        "text": "AI Reports",
+        "type": "submit",
+        "class": "text-[12px] font-roboto flex flex-row items-center border-solid border-[#d9d9d9] border-[1px] rounded-[46.61px] cursor-pointer h-[31.55px] gap-[6.31px] px-[12.62px] hover:border-black/20 hover:bg-[#d9d9d9] hover:text-[#0d0d0d] active:bg-black active:text-white\n          bg-[#f9f9f9] text-[#595959]\n          ",
+        "visible": true,
+        "enabled": true,
+        "clickable": true
+      }
+    ],
+    "dropdowns": []
+  }
+}

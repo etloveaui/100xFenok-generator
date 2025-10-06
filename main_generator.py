@@ -19,8 +19,9 @@ class FenokReportGenerator:
         # 1. 경로 표준화: 스크립트 위치를 기준으로 모든 경로를 설정
         self.project_dir = os.path.dirname(os.path.abspath(__file__))
         self.base_dir = os.path.abspath(os.path.join(self.project_dir, '..', '..'))
-        
-        self.secrets_file = os.path.join(self.base_dir, 'secrets', 'my_sensitive_data.md')
+
+        # secrets 파일 경로: projects/100xFenok-generator/secret/
+        self.secrets_file = os.path.join(self.project_dir, 'secret', 'my_sensitive_data.md')
         self.generated_html_dir = os.path.join(self.project_dir, 'generated_html')
         self.generated_json_dir = os.path.join(self.project_dir, 'generated_json')
         self.input_data_dir = os.path.join(self.project_dir, 'input_data')
@@ -77,8 +78,11 @@ class FenokReportGenerator:
             options.add_argument('--disable-dev-shm-usage')
             self.driver = webdriver.Chrome(service=service, options=options)
             self.driver.set_page_load_timeout(60) # 페이지 로드 타임아웃 60초
-            self.driver.maximize_window() # 브라우저 창 최대화
-            print("WebDriver 설정 완료.")
+
+            # 좌측 FHD 모니터 (1920x1080)
+            self.driver.set_window_position(-1920, 0)
+            self.driver.maximize_window()
+            print("WebDriver 설정 완료 (좌측 FHD 모니터, 전체 화면).")
         except Exception as e:
             print(f"WebDriver 설정 중 오류 발생: {e}")
             exit()
@@ -90,112 +94,152 @@ class FenokReportGenerator:
         print("출력 디렉토리 생성 완료.")
 
     def _login_terminalx(self):
-        """TerminalX에 로그인합니다."""
+        """TerminalX에 로그인합니다. (verify_system.py 검증된 multi-fallback 전략)"""
         print("TerminalX 로그인 시도...")
-        self.driver.get("https://theterminalx.com/agent/enterprise")
-        
-        # 페이지 로드 직후 알림 창이 뜨는지 먼저 확인하고 처리
         try:
-            WebDriverWait(self.driver, 5).until(EC.alert_is_present()) # 알림 대기 시간을 5초로 설정
-            alert = self.driver.switch_to.alert
-            print(f"알림 창 감지: {alert.text}")
-            alert.accept() # 알림 창 닫기
-        except TimeoutException:
-            pass # 알림 창이 없으면 무시
+            self.driver.get("https://theterminalx.com/agent/enterprise")
+            print("페이지 로드 완료, 5초 대기...")
+            time.sleep(5)
 
-        try:
-            # 초기 페이지의 "Log in" 버튼 클릭하여 로그인 폼으로 이동
-            initial_login_button = WebDriverWait(self.driver, 10).until(
-                EC.element_to_be_clickable((By.XPATH, "//button[contains(., 'Log in')]"))
-            )
-            initial_login_button.click()
-            print("초기 'Log in' 버튼 클릭.")
-            
-            time.sleep(2) # 페이지 전환을 위한 짧은 대기
+            # 초기 로그인 버튼 클릭 (여러 셀렉터 시도)
+            login_btn = None
+            selectors = [
+                "//button[contains(text(), 'Log in')]",
+                "//button[contains(., 'Log in')]",
+                "//a[contains(text(), 'Log in')]",
+                "//a[contains(., 'Log in')]",
+                "//button[contains(@class, 'login')]",
+                "//a[contains(@href, 'login')]"
+            ]
 
-            # 로그인 폼 페이지로 이동 후 요소 대기 (visibility_of_element_located 사용)
-            email_input = WebDriverWait(self.driver, 10).until(
-                EC.visibility_of_element_located((By.XPATH, "//input[@placeholder='Enter your email']"))
-            )
-            password_input = self.driver.find_element(By.XPATH, "//input[@placeholder='Enter your password']")
-            login_button = self.driver.find_element(By.XPATH, "//button[contains(., 'Log In')]")
+            for selector in selectors:
+                try:
+                    login_btn = WebDriverWait(self.driver, 3).until(
+                        EC.element_to_be_clickable((By.XPATH, selector))
+                    )
+                    print(f"로그인 버튼 찾음: {selector}")
+                    break
+                except:
+                    continue
 
-            # 명시적으로 필드를 비우고 값 입력
+            if not login_btn:
+                print("로그인 버튼을 찾을 수 없습니다.")
+                return False
+
+            login_btn.click()
+            print("로그인 버튼 클릭 완료")
+            time.sleep(3)
+
+            # 이메일 입력 (여러 셀렉터 시도)
+            email_input = None
+            email_selectors = [
+                "//input[@placeholder='Enter your email']",
+                "//input[@type='email']",
+                "//input[@name='email']",
+                "//input[contains(@placeholder, 'email')]"
+            ]
+
+            for selector in email_selectors:
+                try:
+                    email_input = WebDriverWait(self.driver, 3).until(
+                        EC.visibility_of_element_located((By.XPATH, selector))
+                    )
+                    print("이메일 입력 필드 찾음")
+                    break
+                except:
+                    continue
+
+            if not email_input:
+                print("이메일 입력 필드를 찾을 수 없습니다.")
+                return False
+
+            # 비밀번호 입력 (여러 셀렉터 시도)
+            password_input = None
+            password_selectors = [
+                "//input[@placeholder='Enter your password']",
+                "//input[@type='password']",
+                "//input[@name='password']"
+            ]
+
+            for selector in password_selectors:
+                try:
+                    password_input = self.driver.find_element(By.XPATH, selector)
+                    print("비밀번호 입력 필드 찾음")
+                    break
+                except:
+                    continue
+
+            if not password_input:
+                print("비밀번호 입력 필드를 찾을 수 없습니다.")
+                return False
+
             email_input.clear()
             email_input.send_keys(self.terminalx_username)
             print(f"이메일 입력: {self.terminalx_username}")
-            print(f"입력된 이메일 확인: {email_input.get_attribute('value')}") # 입력된 값 확인
 
             password_input.clear()
             password_input.send_keys(self.terminalx_password)
-            print(f"비밀번호 입력: {'*' * len(self.terminalx_password)}") # 실제 비밀번호는 출력하지 않음
-            print(f"입력된 비밀번호 확인 (일부): {password_input.get_attribute('value')[:3]}...") # 입력된 값 일부 확인
+            print("비밀번호 입력 완료")
+            time.sleep(2)
 
-            time.sleep(1) # 잠시 대기 (디버깅용)
+            # 로그인 제출 버튼 (여러 셀렉터 시도)
+            login_button = None
+            login_btn_selectors = [
+                "//button[contains(text(), 'Continue')]",
+                "//button[contains(., 'Continue')]",
+                "//button[contains(text(), 'Log In')]",
+                "//button[contains(., 'Log In')]",
+                "//button[@type='submit']",
+                "//button[contains(@class, 'submit')]",
+                "//button[contains(@class, 'bg-[#0c0d0e]')]"
+            ]
+
+            for selector in login_btn_selectors:
+                try:
+                    login_button = self.driver.find_element(By.XPATH, selector)
+                    print("로그인 제출 버튼 찾음")
+                    break
+                except:
+                    continue
+
+            if not login_button:
+                print("로그인 제출 버튼을 찾을 수 없습니다.")
+                return False
 
             login_button.click()
-            print("자격 증명 입력 및 'Log In' 버튼 클릭.")
+            print("로그인 제출 버튼 클릭")
 
-            # 로그인 버튼 클릭 후 알림 창이 뜨는지 확인하고 처리
-            try:
-                WebDriverWait(self.driver, 5).until(EC.alert_is_present())
-                alert = self.driver.switch_to.alert
-                print(f"로그인 후 알림 창 감지: {alert.text}")
-                alert.accept() # 알림 창 닫기
-                return False # 알림이 떴다는 것은 로그인 실패를 의미
-            except TimeoutException:
-                pass # 알림 창이 없으면 무시 (로그인 성공 가능성)
+            # 로그인 성공 확인 (여러 셀렉터 시도)
+            success_selectors = [
+                "//button[contains(text(), 'Subscriptions')]",
+                "//button[contains(., 'Subscriptions')]",
+                "//a[contains(text(), 'Subscriptions')]",
+                "//div[contains(@class, 'dashboard')]",
+                "//h1[contains(text(), 'Dashboard')]",
+                "//button[contains(., 'Archive')]"
+            ]
 
-            # 로그인 성공 여부 확인 (subscriptions 버튼 활성화 여부)
-            try:
-                WebDriverWait(self.driver, 15).until(
-                    EC.element_to_be_clickable((By.XPATH, "//button[contains(., 'Subscriptions')]"))
-                )
-                print("TerminalX 로그인 성공 (Subscriptions 버튼 확인).")
-                
-                # 로그인 성공 후 나타나는 알림 활성화 팝업 처리
+            success = False
+            for selector in success_selectors:
                 try:
-                    # "나중에" 또는 "No Thanks"와 같은 버튼을 찾아서 클릭
-                    # 실제 팝업의 HTML 구조에 따라 XPath 또는 CSS Selector 조정 필요
-                    # 예시: "No Thanks" 버튼
-                    no_thanks_button = WebDriverWait(self.driver, 5).until(
-                        EC.element_to_be_clickable((By.XPATH, "//button[contains(., 'No Thanks')]"))
+                    WebDriverWait(self.driver, 5).until(
+                        EC.presence_of_element_located((By.XPATH, selector))
                     )
-                    no_thanks_button.click()
-                    print("알림 활성화 팝업 'No Thanks' 클릭.")
-                except TimeoutException:
-                    print("알림 활성화 팝업을 찾을 수 없습니다. (없거나 이미 닫혔을 수 있음)")
-                except Exception as e:
-                    print(f"알림 활성화 팝업 처리 중 오류 발생: {e}")
+                    print(f"로그인 성공 확인: {selector}")
+                    success = True
+                    break
+                except:
+                    continue
 
-                return True
-            except TimeoutException:
-                print("로그인 실패: Subscriptions 버튼을 찾을 수 없습니다.")
+            if not success:
+                print("로그인 성공 확인 실패")
                 return False
-            except Exception as e:
-                print(f"로그인 성공 여부 확인 중 오류 발생: {e}")
-                return False
-        except TimeoutException:
-            print("로그인 타임아웃: 로그인 페이지 로드 또는 로그인 후 리다이렉트 실패.")
-            return False
-        except NoSuchElementException:
-            print("로그인 요소(이메일, 비밀번호, 로그인 버튼)를 찾을 수 없습니다. 이미 로그인되어 있을 수 있습니다.")
-            # 이미 로그인되어 있는지 확인하는 로직 추가 (예: 특정 대시보드 요소 확인)
-            try:
-                self.driver.get("https://theterminalx.com/agent/enterprise/dashboard")
-                WebDriverWait(self.driver, 5).until(
-                    EC.presence_of_element_located((By.TAG_NAME, "h1")) # 대시보드의 h1 태그 등
-                )
-                print("이미 TerminalX에 로그인되어 있습니다.")
-                return True
-            except TimeoutException:
-                print("이미 로그인되어 있는지 확인 실패. 수동 확인이 필요합니다.")
-                return False
-            except Exception as e:
-                print(f"로그인 확인 중 예외 발생: {e}")
-                return False
+
+            print("TerminalX 로그인 성공")
+            return True
+
         except Exception as e:
-            print(f"로그인 중 오류 발생: {e}")
+            print(f"로그인 실패: {e}")
             return False
 
     def _input_date_directly(self, date_str: str, is_start: bool):
@@ -673,24 +717,97 @@ class FenokReportGenerator:
             print("오류: 리포트 생성에 최종 실패하여 자동화를 중단합니다.")
             return
 
+    def extract_and_validate_html(self, report, output_path: str) -> bool:
+        """Archive 상태 확인 후 HTML 추출 및 검증"""
+        try:
+            # 1. 리포트 페이지로 이동
+            print(f"  - '{report.title}' HTML 추출 시작...")
+            self.driver.get(report.url)
+            print(f"  - 페이지 로딩 대기 (10초)...")
+            time.sleep(10)  # 3초 → 10초 증가
+
+            # 2. supersearchx-body 확인 (타임아웃 30초로 증가)
+            print(f"  - supersearchx-body 확인 중...")
+            try:
+                WebDriverWait(self.driver, 30).until(
+                    EC.presence_of_element_located((By.CLASS_NAME, "supersearchx-body"))
+                )
+                print(f"  - supersearchx-body 확인 완료")
+            except TimeoutException:
+                print(f"  - 오류: supersearchx-body 30초 대기 후에도 없음")
+                return False
+
+            # 3. "No documents found" 확인
+            page_source = self.driver.page_source
+            if "No documents found" in page_source:
+                print(f"  - 오류: 'No documents found' 감지 - 리포트 생성 실패")
+                return False
+
+            # 4. HTML 저장
+            with open(output_path, 'w', encoding='utf-8') as f:
+                f.write(page_source)
+            print(f"  - HTML 저장 완료: {output_path}")
+
+            return True
+        except Exception as e:
+            print(f"  - HTML 추출 중 예외 발생: {e}")
+            return False
+
+    def run_full_automation(self):
+        """전체 자동화 프로세스를 실행합니다."""
+        batch_manager = ReportBatchManager(self.driver)
+
+        today = datetime.now()
+        weekday = today.weekday()
+        delta_days = 2 if weekday == 1 else 1
+        report_date_str = today.strftime('%Y%m%d')
+        ref_date_start = (today - timedelta(days=delta_days)).strftime('%Y-%m-%d')
+        ref_date_end = today.strftime('%Y-%m-%d')
+
+        # Phase 1: Fire-and-Forget - 모든 리포트 생성 요청
+        print("\n--- Phase 1: 리포트 생성 요청 시작 ---")
+        for part_type in ["Part1", "Part2"]:
+            title = f"{report_date_str} 100x Daily Wrap {part_type}"
+            batch_manager.add_report(part_type, title)
+
+        for report in batch_manager.reports:
+            self.generate_report_html(report, report_date_str, ref_date_start, ref_date_end)
+
+        # Phase 2: Monitor & Retry - 모든 리포트가 완료될 때까지 모니터링
+        print("\n--- Phase 2: 아카이브 페이지에서 상태 모니터링 시작 ---")
+        success = batch_manager.monitor_and_retry()
+
+        # Phase 2.5: 실패한 리포트 재시도 로직 (main_generator에서 처리)
+        failed_reports_after_monitor = [r for r in batch_manager.reports if r.status == "FAILED" and r.retry_count <= batch_manager.max_retries_per_report]
+        if failed_reports_after_monitor:
+            print("\n--- Phase 2.5: 실패한 리포트 재시도 시작 ---")
+            for report in failed_reports_after_monitor:
+                print(f"재시도: {report.title} (시도 {report.retry_count}/{batch_manager.max_retries_per_report})")
+                # generate_report_html을 다시 호출하여 리포트 재생성 시도
+                self.generate_report_html(report, report_date_str, ref_date_start, ref_date_end)
+                # 재시도 후 상태는 다시 GENERATING으로 변경될 것이므로, 다음 모니터링 주기에서 다시 확인됨
+
+            # 재시도 후 다시 모니터링을 시작하여 최종 상태 확인
+            print("\n--- Phase 2.5: 재시도 후 최종 상태 모니터링 ---")
+            success = batch_manager.monitor_and_retry() # 재시도된 리포트의 최종 상태를 확인
+
+        if not success:
+            print("오류: 리포트 생성에 최종 실패하여 자동화를 중단합니다.")
+            return
+
         # Phase 3: Extract & Process - 성공한 리포트 데이터 처리
         print("\n--- Phase 3: 데이터 추출 및 처리 시작 ---")
         final_html_paths = []
         for report in batch_manager.reports:
             if report.status == "GENERATED":
-                print(f"  - 리포트 '{report.title}'가 'Generated' 상태 확인. HTML 추출을 위해 페이지로 이동.")
-                self.driver.get(report.url)
-                
-                # HTML 추출
-                report_html_content = self.driver.page_source
-                print(f"  - '{report.title}' 페이지 전체 HTML 추출 완료.")
-
                 output_html_filename = f"{report_date_str}_{report.part_type.lower()}.html"
                 output_html_path = os.path.join(self.generated_html_dir, output_html_filename)
-                with open(output_html_path, 'w', encoding='utf-8') as f:
-                    f.write(report_html_content)
-                print(f"생성된 HTML 저장 완료: {output_html_path}")
-                final_html_paths.append(output_html_path)
+
+                # extract_and_validate_html() 메서드 사용
+                if self.extract_and_validate_html(report, output_html_path):
+                    final_html_paths.append(output_html_path)
+                else:
+                    print(f"  - 오류: '{report.title}' HTML 추출 실패")
             else:
                 print(f"  - 오류: 리포트 '{report.title}'가 'Generated' 상태에 도달하지 못했습니다. HTML 추출을 건너뜁니다.")
 

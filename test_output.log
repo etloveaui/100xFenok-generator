@@ -1,0 +1,23 @@
+Traceback (most recent call last):
+  File "C:\Users\etlov\agents-workspace\projects\100xFenok-generator\test_single_report.py", line 114, in <module>
+    success = test_single_report()
+              ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\etlov\agents-workspace\projects\100xFenok-generator\test_single_report.py", line 30, in test_single_report
+    print("\u274c 로그인 실패")
+UnicodeEncodeError: 'cp949' codec can't encode character '\u274c' in position 0: illegal multibyte sequence
+============================================================
+단위 테스트: 1개 리포트 생성 및 Archive 모니터링
+============================================================
+
+[STEP 1] FenokReportGenerator 초기화...
+TerminalX 자격 증명 로드 완료.
+WebDriver 설정 완료.
+출력 디렉토리 생성 완료.
+
+[STEP 2] TerminalX 로그인...
+TerminalX 로그인 시도...
+초기 'Log in' 버튼 클릭.
+로그인 타임아웃: 로그인 페이지 로드 또는 로그인 후 리다이렉트 실패.
+
+
+예외 발생: 'cp949' codec can't encode character '\u274c' in position 0: illegal multibyte sequence

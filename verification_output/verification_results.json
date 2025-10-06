@@ -1,0 +1,22 @@
+{
+  "timestamp": "2025-10-07T01:24:44.700054",
+  "tests": {
+    "login": {
+      "status": "SUCCESS",
+      "message": "로그인 성공"
+    },
+    "archive_structure": {
+      "status": "SUCCESS",
+      "row_count": 572,
+      "status_texts": [
+        "GENERATED"
+      ],
+      "matched_patterns": [
+        "GENERATED"
+      ],
+      "sample_title": "20250829 100x Daily Wrap Part2",
+      "sample_status": "Generated",
+      "status_match": true
+    }
+  }
+}

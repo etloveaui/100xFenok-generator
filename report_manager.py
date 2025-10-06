@@ -63,10 +63,36 @@ class ReportBatchManager:
 
             print(f"[Batch Manager] 아카이브 페이지 새로고침. 남은 리포트: {len(pending_reports)}")
             self.driver.get("https://theterminalx.com/agent/enterprise/report/archive")
-            
+
+            # JavaScript 렌더링 대기 추가 (verify_system.py 검증 로직 적용)
+            print("[Batch Manager] Archive 페이지 로딩 대기중...")
+            time.sleep(3)  # 초기 페이지 로딩
+
+            print("[Batch Manager] JavaScript 렌더링 대기중...")
+            time.sleep(7)  # JavaScript 실행 및 테이블 렌더링
+
             try:
-                WebDriverWait(self.driver, 20).until(EC.presence_of_element_located((By.XPATH, "//table/tbody")))
-                rows = self.driver.find_elements(By.XPATH, "//table/tbody/tr")
+                # tbody 태그 존재 확인 (타임아웃 15초)
+                WebDriverWait(self.driver, 15).until(EC.presence_of_element_located((By.XPATH, "//table/tbody")))
+
+                # 테이블 행 렌더링 폴링 (최대 5회 시도)
+                print("[Batch Manager] 테이블 행 렌더링 대기중...")
+                rows = []
+                for attempt in range(5):
+                    rows = self.driver.find_elements(By.XPATH, "//table/tbody/tr")
+                    if len(rows) > 0:
+                        print(f"[Batch Manager] 테이블 행 {len(rows)}개 발견")
+                        break
+                    print(f"[Batch Manager] 시도 {attempt+1}/5: 행 없음, 2초 대기...")
+                    time.sleep(2)
+
+                # 테이블 행이 렌더링되지 않은 경우 다음 폴링까지 스킵
+                if len(rows) == 0:
+                    print("[Batch Manager] 경고: 테이블 행이 렌더링되지 않음. 다음 폴링까지 대기.")
+                    time.sleep(current_interval)
+                    continue
+
+                # 정상 케이스: status_map 생성
                 status_map = {}
                 for row in rows:
                     try:

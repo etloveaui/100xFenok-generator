@@ -1,0 +1,75 @@
+============================================================
+Quick Test: Single Report Generation
+============================================================
+TerminalX 자격 증명 로드 완료.
+WebDriver 설정 완료 (좌측 FHD 모니터, 전체 화면).
+출력 디렉토리 생성 완료.
+
+[Login]...
+TerminalX 로그인 시도...
+페이지 로드 완료, 5초 대기...
+로그인 버튼 찾음: //button[contains(text(), 'Log in')]
+로그인 버튼 클릭 완료
+이메일 입력 필드 찾음
+비밀번호 입력 필드 찾음
+이메일 입력:  meanstomakemewealthy@naver.com
+비밀번호 입력 완료
+로그인 제출 버튼 찾음
+로그인 제출 버튼 클릭
+로그인 성공 확인: //button[contains(., 'Subscriptions')]
+TerminalX 로그인 성공
+Login OK
+[Batch Manager] Part1 (20251007 TEST Part1) 리포트가 배치에 추가되었습니다.
+
+Report: 20251007 TEST Part1
+
+[Generate]...
+
+=== generate_report_html 함수 시작 ===
+--- Part1 보고서 생성 요청 시작 ---
+Report: 20251007 TEST Part1
+Date: 20251007, Range: 2025-10-06 ~ 2025-10-07
+파일 존재 확인:
+  - Prompt 파일: C:\Users\etlov\agents-workspace\projects\100xFenok-generator\input_data\21_100x_Daily_Wrap_Prompt_1_20250723.md (존재)
+  - Source PDF: C:\Users\etlov\agents-workspace\projects\100xFenok-generator\input_data\10_100x_Daily_Wrap_My_Sources_1_20250723.pdf (존재)
+  - Prompt PDF: C:\Users\etlov\agents-workspace\projects\100xFenok-generator\input_data\21_100x_Daily_Wrap_Prompt_1_20250723.pdf (존재)
+Prompt 파일 로드 성공 (길이: 24314자)
+  - 리포트 폼 URL로 이동 시도: https://theterminalx.com/agent/enterprise/report/form/10
+  - 실제 도착한 URL: https://theterminalx.com/agent/enterprise/report/form/10
+  - Report Title 입력 필드 찾는 중...
+  - Report Title 입력 필드 발견됨!
+  - Report Title 입력 중: '20251007 TEST Part1'
+  - Report Title 입력 완료!
+  - Reference Date 입력 중: 2025-10-06 ~ 2025-10-07
+  - Report Reference Date 입력 완료!
+  - Sample Report 업로드 중: C:\Users\etlov\agents-workspace\projects\100xFenok-generator\input_data\10_100x_Daily_Wrap_My_Sources_1_20250723.pdf
+  - Sample Report 업로드 완료!
+  - Own Sources 업로드 중: C:\Users\etlov\agents-workspace\projects\100xFenok-generator\input_data\10_100x_Daily_Wrap_My_Sources_1_20250723.pdf, C:\Users\etlov\agents-workspace\projects\100xFenok-generator\input_data\21_100x_Daily_Wrap_Prompt_1_20250723.pdf
+  - Own Sources 업로드 완료!
+  - Prompt 입력 중... (길이: 24314자)
+  - Prompt 입력 완료!
+  - Generate 버튼 활성화 대기 중...
+  - Generate 버튼 초기 disabled 상태: None
+  - Generate 버튼 활성화 확인!
+  - Generate 버튼 최종 disabled 상태: None
+  - Generate 버튼 클릭! 보고서 생성 시작 대기 중...
+  - 산출물 URL 변경 대기 중 (최대 20분)...
+  - 보고서 URL 확인 완료: https://theterminalx.com/agent/enterprise/report/1331
+  - 'Generating your report' 메시지 등장 대기 중...
+  - 'Generating your report' 메시지 등장 확인. 리포트 생성 시작됨.
+Generate OK: https://theterminalx.com/agent/enterprise/report/1331
+
+[Monitor]...
+============================================================
+[Batch Manager] 아카이브 페이지 새로고침. 남은 리포트: 1
+[Batch Manager] Archive 페이지 로딩 대기중...
+[Batch Manager] JavaScript 렌더링 대기중...
+[Batch Manager] 테이블 행 렌더링 대기중...
+[Batch Manager] 테이블 행 574개 발견
+[Batch Manager] 성공: '20251007 TEST Part1' -> GENERATED
+[Batch Manager] 모든 리포트가 최종 상태에 도달했습니다.
+============================================================
+
+Status: GENERATED
+
+[SUCCESS] Report is GENERATED!
