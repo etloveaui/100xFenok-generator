@@ -724,17 +724,17 @@ class FenokReportGenerator:
             print(f"  - '{report.title}' HTML 추출 시작...")
             self.driver.get(report.url)
             print(f"  - 페이지 로딩 대기 (10초)...")
-            time.sleep(10)  # 3초 → 10초 증가
+            time.sleep(10)  # Next.js 초기 렌더링 대기
 
-            # 2. supersearchx-body 확인 (타임아웃 30초로 증가)
-            print(f"  - supersearchx-body 확인 중...")
+            # 2. markdown-body 확인 (GENERATED 리포트는 markdown-body 사용)
+            print(f"  - markdown-body 확인 중...")
             try:
                 WebDriverWait(self.driver, 30).until(
-                    EC.presence_of_element_located((By.CLASS_NAME, "supersearchx-body"))
+                    EC.presence_of_element_located((By.XPATH, "//div[contains(@class, 'markdown-body')]"))
                 )
-                print(f"  - supersearchx-body 확인 완료")
+                print(f"  - markdown-body 확인 완료")
             except TimeoutException:
-                print(f"  - 오류: supersearchx-body 30초 대기 후에도 없음")
+                print(f"  - 오류: markdown-body 30초 대기 후에도 없음")
                 return False
 
             # 3. "No documents found" 확인
@@ -743,7 +743,14 @@ class FenokReportGenerator:
                 print(f"  - 오류: 'No documents found' 감지 - 리포트 생성 실패")
                 return False
 
-            # 4. HTML 저장
+            # 4. 콘텐츠 크기 검증 (완전히 렌더링된 리포트는 >50KB)
+            html_size = len(page_source)
+            if html_size < 50000:
+                print(f"  - 오류: HTML 크기 너무 작음 ({html_size} bytes < 50KB) - 불완전한 렌더링")
+                return False
+            print(f"  - HTML 크기 검증 통과: {html_size} bytes")
+
+            # 5. HTML 저장
             with open(output_path, 'w', encoding='utf-8') as f:
                 f.write(page_source)
             print(f"  - HTML 저장 완료: {output_path}")
@@ -752,6 +759,127 @@ class FenokReportGenerator:
         except Exception as e:
             print(f"  - HTML 추출 중 예외 발생: {e}")
             return False
+
+    def generate_single_report(self, config, output_filename="report.html"):
+        """단일 리포트 생성 (test_batch_6reports.py용)
+
+        Args:
+            config (dict): 리포트 설정 (name, prompt, keywords, urls, past_day, num_pages)
+            output_filename (str): 저장할 파일명
+
+        Returns:
+            tuple: (success, html_path, report_id)
+        """
+        try:
+            # 리포트 객체 생성
+            from report_manager import Report
+            report = Report(
+                part_type="custom",
+                title=config.get("name", "Custom Report")
+            )
+
+            # 날짜 설정
+            today = datetime.now()
+            report_date_str = today.strftime('%Y%m%d')
+            ref_date_start = (today - timedelta(days=1)).strftime('%Y-%m-%d')
+            ref_date_end = today.strftime('%Y-%m-%d')
+
+            # 1. 리포트 생성 요청
+            print(f"  리포트 생성 요청 시작...")
+            success = self.generate_report_html(
+                report,
+                report_date_str,
+                ref_date_start,
+                ref_date_end,
+                prompt=config.get("prompt", ""),
+                keywords=config.get("keywords", ""),
+                urls=config.get("urls", []),
+                past_day=config.get("past_day", 90),
+                num_pages=config.get("num_pages", 30)
+            )
+
+            if not success:
+                print(f"  리포트 생성 요청 실패")
+                return False, None, None
+
+            # Report ID 추출
+            report_id = None
+            if report.url:
+                import re
+                match = re.search(r'/report/(\d+)', report.url)
+                if match:
+                    report_id = match.group(1)
+                    print(f"  Report ID: {report_id}")
+
+            # 2. Archive 모니터링 (최대 10분)
+            print(f"  Archive 모니터링 시작...")
+            max_wait_time = 600  # 10분
+            check_interval = 30  # 30초마다 체크
+            elapsed_time = 0
+
+            while elapsed_time < max_wait_time:
+                # Archive 페이지 방문
+                self.driver.get("https://theterminalx.com/agent/enterprise/report/archive")
+                time.sleep(5)  # 페이지 로드 대기
+
+                # 상태 확인
+                try:
+                    from selenium.webdriver.common.by import By
+                    rows = self.driver.find_elements(By.XPATH, "//table/tbody/tr")
+
+                    for row in rows[:10]:  # 최근 10개만 확인
+                        try:
+                            title_elem = row.find_element(By.XPATH, ".//td[1]")
+                            status_elem = row.find_element(By.XPATH, ".//td[4]")
+
+                            title = title_elem.text.strip()
+                            status = status_elem.text.strip()
+
+                            if config.get("name") in title and status.upper() == "GENERATED":
+                                print(f"  리포트 생성 완료! 상태: {status}")
+
+                                # 리포트 URL 가져오기
+                                try:
+                                    # 행 클릭으로 이동
+                                    row.click()
+                                    time.sleep(3)
+                                    report.url = self.driver.current_url
+                                except:
+                                    pass
+
+                                # 3. HTML 추출
+                                print(f"  HTML 추출 시작...")
+                                if report.url:
+                                    self.driver.get(report.url)
+                                    time.sleep(10)  # 페이지 로드 대기
+
+                                    # HTML 추출 및 검증
+                                    success = self._extract_html_with_validation(output_filename)
+
+                                    if success:
+                                        html_path = os.path.join(self.generated_html_dir, output_filename)
+                                        return True, html_path, report_id
+                                    else:
+                                        return False, None, report_id
+
+                        except:
+                            continue
+
+                except Exception as e:
+                    print(f"  Archive 확인 중 오류: {e}")
+
+                # 대기
+                print(f"  {elapsed_time}초 경과... {check_interval}초 후 재확인")
+                time.sleep(check_interval)
+                elapsed_time += check_interval
+
+            # 타임아웃
+            print(f"  리포트 생성 타임아웃 (10분)")
+            return False, None, report_id
+
+        except Exception as e:
+            print(f"  리포트 생성 중 예외: {e}")
+            return False, None, None
 
     def run_full_automation(self):
         """전체 자동화 프로세스를 실행합니다."""

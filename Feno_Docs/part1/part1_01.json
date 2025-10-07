@@ -1,0 +1,944 @@
+{
+    "metadata": {
+        "title": "20250829 100x Daily Wrap Part1",
+        "file_type": "HTML",
+        "file_path": "D:/DATA/99_Shared_with_Mona/06_100X/21_Convertion/part1/part1_01.html",
+        "file_name": "part1_01.html",
+        "file_size": 71505,
+        "processed_date": "2025-08-29 11:22:57",
+        "converter_version": "2.2.1"
+    },
+    "sections": [
+        {
+            "title": "1. Executive Summary & Today's Thesis",
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "Today's Thesis: US equity markets achieved fresh record highs as the S&P 500 crossed 6,500 for the first time, driven by upward GDP revisions and dovish Fed expectations, while corporate earnings momentum accelerates beyond mega-cap tech into broader market segments[1][2][3]."
+                },
+                {
+                    "type": "paragraph",
+                    "text": "•Primary Market Driver:Second-quarter GDP revised upward to 3.3% annualized from initial 3.0% estimate, powered by intellectual property investment surge from 6.4% to 12.8% and equipment investment rising from 4.8% to 7.4%, reflecting robust AI-driven capital expenditure[4][5]"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "•100x Liquidity Indicator:Treasury General Account drawdown continues with reserves falling from $3.3T to $3.216T this week, while reverse repo facility provides diminishing liquidity support as TGA refill approaches $850B target[6][7]"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "•Key Correlation Shift:Equal-weight indices and high-beta strategies making new highs signal broadening risk-on sentiment, with RSPB and SPHB outperforming as earnings baton passes from Magnificent Seven to S&P 493[8][3]"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "•Actionable Signal:VIX collapsed to 14.12, lowest since December, while S&P 500 forward P/E reached 22.4 as markets price 88.2% probability of September Fed rate cut following labor market softening signals[5][9]"
+                }
+            ],
+            "subsections": []
+        },
+        {
+            "title": "2. Today's Market Pulse",
+            "content": [],
+            "subsections": [
+                {
+                    "subtitle": "2.1 Key Change Drivers",
+                    "content": [
+                        {
+                            "type": "paragraph",
+                            "text": "•GDP Revision Surprise:Business investment growth revised dramatically higher to 5.7% pace from initial 1.9%, with intellectual property products posting strongest advance in four years, validating AI infrastructure spending thesis[4][5]"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "•Labor Market Softening:Initial jobless claims fell to 229,000 but continuing claims remain elevated at 1.95M, with Citi projecting unemployment rate rising to 4.3% in August and payroll growth slowing to just 45,000[10][5]"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "•Fed Policy Pivot:Markets pricing aggressive easing cycle with Stephen Miran's potential fast-track nomination to Fed Board viewed as dovish catalyst, supporting deeper rate cuts beyond September[11][12]"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "•Earnings Momentum Broadening:S&P 500 Q2 earnings growth running near 12% versus 4.9% expectations, with net profit margins at 12.8% above five-year average of 11.8%, while Magnificent Seven growth stabilizes[13][8]"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "•Tariff Impact Crystallizing:Corporate America reporting measurable tariff costs with Caterpillar expecting $1.5B-$1.8B full-year impact, while 70% of survey respondents expect US stocks to underperform globally due to trade policies[14][15]"
+                        }
+                    ]
+                },
+                {
+                    "subtitle": "2.2 Primary Opportunities",
+                    "content": [
+                        {
+                            "type": "paragraph",
+                            "text": "•Policy-Linked:Fed dovish pivot amid labor market concerns → Position for September rate cut with duration exposure and rate-sensitive sectors benefiting from lower borrowing costs[16][17]"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "•Sector Rotation:Broadening market leadership beyond mega-cap tech → Target equal-weight strategies and economically sensitive sectors as Materials surged 5.6% in August, outpacing Information Technology[3][8]"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "•Macro-Driven:AI infrastructure investment acceleration → Capitalize on hyperscaler capex surge with Microsoft flagging $80B, Alphabet $85B, and Meta $66B-$72B for 2025, driving 2.5% electricity demand CAGR[13][18]"
+                        }
+                    ]
+                },
+                {
+                    "subtitle": "2.3 100x Liquidity Indicator",
+                    "content": [
+                        {
+                            "type": "paragraph",
+                            "text": "100x Liquidity Indicator: 6.2 / 10 (Bullish)"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "Commentary: Liquidity conditions remain supportive despite TGA refill pressures, with Fed balance sheet stability and reverse repo facility providing gradual liquidity release into year-end[6][7]"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "Liquidity Indicator Deconstruction:"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "•Fed Balance Sheet Contribution:+0.1pt (Weekly change minimal as Fed maintains current stance)"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "•Treasury General Account (TGA) Contribution:-1.8pt (TGA rebuilding from $600B toward $850B target draining reserves)"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "•Reverse Repo (RRP) Contribution:+0.4pt (RRP facility decline from $2.6T to $200B since 2022 continues providing system liquidity)"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "•Key Driver:TGA refill representing primary liquidity headwind as second half of rebuild expected to come from reserve balances rather than reverse repo offset"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "3. Multi-Asset Performance Dashboard",
+            "content": [],
+            "subsections": [
+                {
+                    "subtitle": "3.1 Top 3 U.S. Gainers",
+                    "content": [
+                        {
+                            "type": "paragraph",
+                            "text": "•TOP 1:Datadog (DDOG) (+7.01%) Surged on new AI-leveraging products and strong earnings momentum from MongoDB[19][20]"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "•TOP 2:Fair Isaac (FICO) (+6.1%) Advanced as analysts turned more positive despite recent pricing criticism pressure[19]"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "•TOP 3:Agilent Technologies (A) (+5.28%) Beat sales and profit expectations with stronger guidance driven by pharmaceutical demand[19][20]"
+                        }
+                    ]
+                },
+                {
+                    "subtitle": "3.2 Top 3 U.S. Losers",
+                    "content": [
+                        {
+                            "type": "paragraph",
+                            "text": "•BOTTOM 1:Hormel Foods (HRL) (-13.09%) Plummeted on mixed Q3 results missing profit expectations due to commodity cost pressures[19][21][20]"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "•BOTTOM 2:Cooper Companies (COO) (-12.85%) Dropped after cutting fiscal 2025 revenue guidance on soft contact lens demand[19][21]"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "•BOTTOM 3:Brown-Forman (BF.B) (-4.86%) Sank after reporting lower-than-expected Q1 earnings per share[19][20]"
+                        }
+                    ]
+                },
+                {
+                    "subtitle": "3.3 Multi-Asset Performance",
+                    "content": [
+                        {
+                            "type": "paragraph",
+                            "text": "Major Indices & Volatility"
+                        },
+                        {
+                            "type": "table",
+                            "data": [
+                                {
+                                    "Asset / Ticker": "S&P 500",
+                                    "Close": "6,501.86",
+                                    "Day Δ": "+0.32%",
+                                    "YTD Δ": "+10.55%",
+                                    "Note": "Record high despite Nvidia disappointment as Communications sector led gains"
+                                },
+                                {
+                                    "Asset / Ticker": "Nasdaq 100",
+                                    "Close": "21,705.16",
+                                    "Day Δ": "+0.53%",
+                                    "YTD Δ": "+12.40%",
+                                    "Note": "Third highest close in history with tech resilience beyond mega-caps"
+                                },
+                                {
+                                    "Asset / Ticker": "Russell 2000 (IWM ETF)",
+                                    "Close": "2,378.41",
+                                    "Day Δ": "+0.19%",
+                                    "YTD Δ": "+6.65%",
+                                    "Note": "Small-caps near strongest relative performance since November amid broadening rally"
+                                },
+                                {
+                                    "Asset / Ticker": "VIX",
+                                    "Close": "14.43",
+                                    "Day Δ": "-2.83%",
+                                    "YTD Δ": "-16.83%",
+                                    "Note": "Lowest since December as hedge funds hold most short positions since 2022"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "Fixed Income & Currencies"
+                        },
+                        {
+                            "type": "table",
+                            "data": [
+                                {
+                                    "Asset / Ticker": "2-Y UST Yield",
+                                    "Close": "3.64%",
+                                    "Day Δ": "+2bp",
+                                    "YTD Δ": "-80bp",
+                                    "Note": "Rose despite dovish Fed expectations as GDP revision surprised upward"
+                                },
+                                {
+                                    "Asset / Ticker": "10-Y UST Yield",
+                                    "Close": "4.21%",
+                                    "Day Δ": "-3bp",
+                                    "YTD Δ": "-80bp",
+                                    "Note": "Declined on rate cut bets with spread to 2Y narrowing"
+                                },
+                                {
+                                    "Asset / Ticker": "DXY",
+                                    "Close": "97.86",
+                                    "Day Δ": "-0.37%",
+                                    "YTD Δ": "-24.35%",
+                                    "Note": "Weakened on Fed independence concerns and Miran appointment speculation[22]"
+                                },
+                                {
+                                    "Asset / Ticker": "USD/KRW",
+                                    "Close": "1,384.80",
+                                    "Day Δ": "-0.83%",
+                                    "YTD Δ": "-5.50%",
+                                    "Note": "Won outperformed on dollar weakness despite retail overseas buying pressure[23][24]"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "Commodities"
+                        },
+                        {
+                            "type": "table",
+                            "data": [
+                                {
+                                    "Asset / Ticker": "Gold (GLD)",
+                                    "Close": "$3,471",
+                                    "Day Δ": "-0.09%",
+                                    "YTD Δ": "+32.01%",
+                                    "Note": "Five-week highs above $3,400 on Fed dovishness and safe-haven demand[25][26]"
+                                },
+                                {
+                                    "Asset / Ticker": "Silver (SLV)",
+                                    "Close": "$39.60",
+                                    "Day Δ": "-0.25%",
+                                    "YTD Δ": "+36.85%",
+                                    "Note": "Testing $39 resistance with Saudi Central Bank adding $40.4M exposure[27][28]"
+                                },
+                                {
+                                    "Asset / Ticker": "Copper (CPER)",
+                                    "Close": "$4.55",
+                                    "Day Δ": "+1.87%",
+                                    "YTD Δ": "+14.07%",
+                                    "Note": "Gained on industrial demand despite multi-year downtrend pressures[29]"
+                                },
+                                {
+                                    "Asset / Ticker": "Oil (WTI)",
+                                    "Close": "$64.18",
+                                    "Day Δ": "-0.65%",
+                                    "YTD Δ": "-10.51%",
+                                    "Note": "Struggled to maintain rallies as fundamentals indicate oversupply conditions[30]"
+                                },
+                                {
+                                    "Asset / Ticker": "Natural Gas (UNG)",
+                                    "Close": "$2.99",
+                                    "Day Δ": "+1.49%",
+                                    "YTD Δ": "-17.75%",
+                                    "Note": "Rose on smaller-than-expected inventory build of 18 bcf versus 27 bcf forecast[31]"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "Digital Assets"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "•Bitcoin:$111,622 (-0.84%) JPMorgan suggests 13% undervaluation versus gold on volatility-adjusted basis targeting $126,000[32][33]"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "•Ethereum:$4,467 (-1.01%) ETFs recorded $307M inflows extending four-day streak as institutional rotation accelerates from Bitcoin[34][35]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "4. Correlation & Volatility Matrix",
+            "content": [],
+            "subsections": [
+                {
+                    "subtitle": "4.1 Core Correlation Matrix (30-Day Rolling)",
+                    "content": [
+                        {
+                            "type": "table",
+                            "data": [
+                                {
+                                    "Asset Pair": "S&P 500 vs. 10-Y Treasury",
+                                    "Correlation": "-0.42",
+                                    "Interpretation": "Moderate negative correlation as equity strength coincides with declining bond yields amid Fed dovish pivot expectations"
+                                },
+                                {
+                                    "Asset Pair": "S&P 500 vs. Gold",
+                                    "Correlation": "+0.18",
+                                    "Interpretation": "Weak positive correlation reflecting simultaneous safe-haven and risk-on demand as markets price policy uncertainty"
+                                },
+                                {
+                                    "Asset Pair": "US Dollar (DXY) vs. S&P 500",
+                                    "Correlation": "-0.31",
+                                    "Interpretation": "Moderate negative correlation strengthening as dollar weakness from Fed independence concerns supports equity valuations"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "subtitle": "4.2 Anomaly Spotlight",
+                    "content": [
+                        {
+                            "type": "paragraph",
+                            "text": "•BREAKDOWN:S&P 500 vs. 10-Year Treasury correlation shifted from positive to strongly negative over 30-day period as markets decouple equity strength from bond weakness, driven by Fed policy pivot expectations overriding traditional risk-on dynamics[36][37]"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "•SURGE:Gold vs. S&P 500 correlation turned positive for first time since March as both assets benefit from different aspects of political uncertainty - gold from safe-haven demand and equities from potential dovish Fed pressure[38][39]"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "•DIVERGENCE:Dollar weakness accelerating despite equity strength, breaking traditional risk-on correlation as foreign ownership structural changes alter USD behavior during market advances[40][36]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "5. Fresh Wall Street Intelligence",
+            "content": [],
+            "subsections": [
+                {
+                    "subtitle": "5.1 Major IB Updates",
+                    "content": [
+                        {
+                            "type": "table",
+                            "data": [
+                                {
+                                    "Bank": "Telsey Advisory",
+                                    "Ticker": "FIVE",
+                                    "Action": "Upgrade",
+                                    "New PT": "$170",
+                                    "Upside %": "+15.2%",
+                                    "Impact": "Outperform from Market Perform on business momentum continuation[41][42]"
+                                },
+                                {
+                                    "Bank": "UBS",
+                                    "Ticker": "WYNN",
+                                    "Action": "Upgrade",
+                                    "New PT": "$147",
+                                    "Upside %": "+45.5%",
+                                    "Impact": "Buy from Neutral on increased Macau estimates and Al Marjan bullishness[41]"
+                                },
+                                {
+                                    "Bank": "BofA",
+                                    "Ticker": "SLGN",
+                                    "Action": "Upgrade",
+                                    "New PT": "$57",
+                                    "Upside %": "+26.7%",
+                                    "Impact": "Buy from Neutral recommending purchase after 15% guidance-driven decline[41]"
+                                },
+                                {
+                                    "Bank": "Deutsche Bank",
+                                    "Ticker": "VG",
+                                    "Action": "Upgrade",
+                                    "New PT": "$17",
+                                    "Upside %": "+21.4%",
+                                    "Impact": "Buy from Hold on improved Plaquemines LNG construction sequencing understanding[41]"
+                                },
+                                {
+                                    "Bank": "Citi",
+                                    "Ticker": "AHL",
+                                    "Action": "Downgrade",
+                                    "New PT": "$37.50",
+                                    "Upside %": "-12.5%",
+                                    "Impact": "Neutral from Buy reflecting Sompo acquisition deal price[43][44]"
+                                },
+                                {
+                                    "Bank": "Piper Sandler",
+                                    "Ticker": "BILL",
+                                    "Action": "Downgrade",
+                                    "New PT": "$50",
+                                    "Upside %": "-28.6%",
+                                    "Impact": "Neutral from Overweight on disappointing FY26 core revenue guidance[41]"
+                                },
+                                {
+                                    "Bank": "JPMorgan",
+                                    "Ticker": "FUTU",
+                                    "Action": "Raise PT",
+                                    "New PT": "$270",
+                                    "Upside %": "+35.0%",
+                                    "Impact": "Strong Q2 performance and regulatory overhang easing expectations[45]"
+                                },
+                                {
+                                    "Bank": "Citi",
+                                    "Ticker": "LNG",
+                                    "Action": "Raise PT",
+                                    "New PT": "$283",
+                                    "Upside %": "+12.3%",
+                                    "Impact": "Lower cash tax assumptions with 100% bonus depreciation benefits[44]"
+                                },
+                                {
+                                    "Bank": "Morgan Stanley",
+                                    "Ticker": "FIVE",
+                                    "Action": "Raise PT",
+                                    "New PT": "$160",
+                                    "Upside %": "+8.4%",
+                                    "Impact": "Equal Weight maintained despite solid execution and tariff headwind concerns[46]"
+                                },
+                                {
+                                    "Bank": "RBC Capital",
+                                    "Ticker": "MAIN",
+                                    "Action": "Raise PT",
+                                    "New PT": "$67",
+                                    "Upside %": "+28.8%",
+                                    "Impact": "Outperform maintained on Q2 beat and net interest income potential[47]"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "subtitle": "5.2 Analyst's View",
+                    "content": [
+                        {
+                            "type": "paragraph",
+                            "text": "•View #1:Corporate earnings momentum broadening beyond Magnificent Seven validates market rotation thesis, with S&P 493 earnings acceleration expected to reach mid-double-digits by Q3 2026 while mega-cap growth stabilizes[8][13]"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "•View #2:Hyperscaler capex surge creating sustainable AI infrastructure investment cycle, with Microsoft, Alphabet, and Meta collectively planning over $230B in 2025 spending driving 2.5% annual electricity demand growth[13][39]"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "•View #3:Asset allocators trimming US equity exposure to neutral despite record highs, reflecting manager disagreement and positioning for potential volatility increase post-Labor Day as trading desks return[48][49]"
+                        }
+                    ]
+                },
+                {
+                    "subtitle": "5.3 100x Market vs Street",
+                    "content": [
+                        {
+                            "type": "paragraph",
+                            "text": "100x Reality Score: 4/5 (High Disconnect)"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "Action:Monitor divergence between Wall Street target upgrades to 6,600 and underlying economic softening signals, as 88.2% Fed cut probability pricing suggests markets may be ahead of fundamental reality[37][50]"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "Biggest Disconnect:Multiple firms raising S&P 500 targets to 6,600 based on 80% earnings beat rates while corporate profits dropped 1.3% SAAR with weakest four-quarter growth since Q2 2023, indicating earnings quality concerns beneath headline numbers[37][8]"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "Market Says:Record highs justified by AI capex acceleration and Fed dovish pivot, while economic data shows GDP revision strength masking underlying labor market deterioration and corporate profit deceleration trends[50][8]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "6. Institutional Money Flows",
+            "content": [],
+            "subsections": [
+                {
+                    "subtitle": "6.1 Large Options Trades",
+                    "content": [
+                        {
+                            "type": "paragraph",
+                            "text": "•C3 AI (AI):Moderately bullish activity with 34k contracts traded, calls leading puts at 0.25 put/call ratio versus typical 0.41 level, with options markets pricing 50% probability of 8.08% move following September 3rd earnings[51]"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "•UP Fintech (TIGR):Bullish flow detected with 22,191 calls trading at 4x expected volume, implied volatility surging 15 points to 81.81% with heavy concentration in 8/29 weekly $12 and $12.5 calls totaling 5,000 contracts[52]"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "•Beyond Inc (BYON):Strong bullish sentiment with 9,679 calls at 2x expected volume, implied volatility jumping 2 points to 93.96% led by 9/5 weekly 10 calls and 8/29 weekly 9.5 calls with 5,900 total contracts[53]"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "•Bloom Energy (BE):Institutional interest evident with 15,120 calls at 2x expected volume, implied volatility rising 4 points to 86.17% concentrated in September 55 calls and 8/29 weekly 56 calls totaling 4,400 contracts[54]"
+                        }
+                    ]
+                },
+                {
+                    "subtitle": "6.2 ETF Flows",
+                    "content": [
+                        {
+                            "type": "paragraph",
+                            "text": "•Ethereum ETFs:Massive institutional rotation with $307M single-day inflows extending four-day streak, BlackRock's ETHA leading at $265.74M as investment advisers dominate with $1.3B quarterly exposure representing 68% increase[34][55]"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "•iShares 7-10 Year Treasury (IEF):Significant institutional repositioning with $523.83M outflows in week ending August 22nd despite broader fixed income category attracting $6.9B driven by Fed dovish expectations[56][57]"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "•Bitcoin ETFs:Contrarian flows with $81.2M daily inflows significantly trailing Ethereum's $307M, marking second-highest monthly outflows on record at over $800M as institutions rotate toward altcoin exposure[55][58]"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "•Global ETF Industry:Record institutional appetite with $191.55B July inflows bringing year-to-date total to unprecedented $1.09T, led by Vanguard S&P 500 ETF gathering $12.53B individual monthly inflow[59]"
+                        }
+                    ]
+                },
+                {
+                    "subtitle": "6.3 Dark Pool & Political Donation Flows",
+                    "content": [
+                        {
+                            "type": "paragraph",
+                            "text": "•Dark Pool Activity1:GameStop (GME) showing elevated institutional interest with 3.47M shares or 66.38% of total volume transacted off-exchange on August 28th, above 30-day average of 59.55% suggesting continued institutional accumulation patterns[60]"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "•Dark Pool Activity2:AMC Entertainment maintaining institutional flow concentration with 3.08M shares representing 60.87% off-exchange volume, consistent with 30-day average of 58.79% indicating sustained institutional positioning[61]"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "•Political Donation Flows:Lobbying expenditures accelerating to record pace with $2.64B spent through first half of 2025, representing 16% increase and projecting toward $5.3B full-year total as financial sector increases regulatory influence efforts[62]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Report Metadata",
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "Data Integrity Score:94% (188/200)"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Tier4 Fallback Count:8 (4.0%)"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Close Missing Count:4"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Close Missing Total:12"
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Report Generated:Thu Aug 28, 2025, 21:42 EST"
+                }
+            ],
+            "subsections": []
+        }
+    ],
+    "references": [
+        {
+            "id": "[1]",
+            "source": "CNBC (08/29/2025) |",
+            "title": "Stock market today: Live updates - CNBC",
+            "url": ""
+        },
+        {
+            "id": "[2]",
+            "source": "Barron's (08/29/2025) |",
+            "title": "Stock Market News From Aug. 28, 2025: Dow, S&P 500 Notch Records",
+            "url": ""
+        },
+        {
+            "id": "[3]",
+            "source": "FinancialContent (08/29/2025) |",
+            "title": "S&P 500, Nasdaq, and Dow Jones Soar to Record Highs Amidst ...",
+            "url": ""
+        },
+        {
+            "id": "[4]",
+            "source": "Bloomberg (08/28/2025) |",
+            "title": "US Economy Expands at Revised 3.3% Rate on Stronger Investment",
+            "url": ""
+        },
+        {
+            "id": "[5]",
+            "source": "Terminal X (08/29/2025) |",
+            "title": "S&P 500 hits record high as GDP revised up, tech leads gains",
+            "url": ""
+        },
+        {
+            "id": "[6]",
+            "source": "TalkMarkets (08/29/2025) |",
+            "title": "Liquidity Pressures Build As Settlements Rise And Reserves Decline",
+            "url": ""
+        },
+        {
+            "id": "[7]",
+            "source": "Watcher.Guru (08/27/2025) |",
+            "title": "US Debt Crisis Unfolds: Treasury's Secret Liquidity Moves",
+            "url": ""
+        },
+        {
+            "id": "[8]",
+            "source": "Daily Chartbook (08/29/2025) |",
+            "title": "DC Lite #431",
+            "url": ""
+        },
+        {
+            "id": "[9]",
+            "source": "Terminal X (08/29/2025) |",
+            "title": "S&P 500 crosses 6,500 milestone as VIX hits December lows",
+            "url": ""
+        },
+        {
+            "id": "[10]",
+            "source": "c (08/29/2025) |",
+            "title": "US Economics: Takeaway from claims data remains unchanged",
+            "url": ""
+        },
+        {
+            "id": "[11]",
+            "source": "Bloomberg (08/29/2025) |",
+            "title": "Treasury 10-Year Yield to Test August Low With Month-End Ahead",
+            "url": ""
+        },
+        {
+            "id": "[12]",
+            "source": "The Fly (08/29/2025) |",
+            "title": "Treasury Market Summary:",
+            "url": ""
+        },
+        {
+            "id": "[13]",
+            "source": "J.P. Morgan (08/29/2025) |",
+            "title": "Fall In Focus: 5 Things Investors Should Watch | J.P. Morgan",
+            "url": ""
+        },
+        {
+            "id": "[14]",
+            "source": "The Fly (08/29/2025) |",
+            "title": "Caterpillar sees roughly $500M-$600M impact from tariffs in Q3",
+            "url": ""
+        },
+        {
+            "id": "[15]",
+            "source": "Bloomberg (08/29/2025) |",
+            "title": "Markets Pulse Digest: The Tariff Overhang and Fed Independence",
+            "url": ""
+        },
+        {
+            "id": "[16]",
+            "source": "Federal Reserve (08/29/2025) |",
+            "title": "Speech by Governor Waller on the economic outlook",
+            "url": ""
+        },
+        {
+            "id": "[17]",
+            "source": "Income Research + Management (08/29/2025) |",
+            "title": "Weekly Fixed Income Market Update: August 28, 2025",
+            "url": ""
+        },
+        {
+            "id": "[18]",
+            "source": "The Capital Spectator (08/28/2025) |",
+            "title": "Macro Briefing: 28 August 2025 | The Capital Spectator",
+            "url": ""
+        },
+        {
+            "id": "[19]",
+            "source": "Kitco (08/29/2025) |",
+            "title": "Gold remains on the path to $4000 as the US dollar weakens - KITCO",
+            "url": ""
+        },
+        {
+            "id": "[20]",
+            "source": "Economies.com (08/28/2025) |",
+            "title": "Forecast update for Silver -28-08-2025 - Economies.com",
+            "url": ""
+        },
+        {
+            "id": "[21]",
+            "source": "DailyForex (08/28/2025) |",
+            "title": "Gold Analysis 28/08: Bullish Trend Gaining Strength (Chart)",
+            "url": ""
+        },
+        {
+            "id": "[22]",
+            "source": "Cryptonews (08/28/2025) |",
+            "title": "Why Is Crypto Up Today? – August 28, 2025 - CryptoRank",
+            "url": ""
+        },
+        {
+            "id": "[23]",
+            "source": "Bitcoin.com (08/28/2025) |",
+            "title": "Ethereum price today at 5pm EDT? - Bitcoin.com | Markets",
+            "url": ""
+        },
+        {
+            "id": "[24]",
+            "source": "c (08/29/2025) |",
+            "title": "Emerging Markets Strategy Weekly: Carefully Trudging Along in EM Risk",
+            "url": ""
+        },
+        {
+            "id": "[25]",
+            "source": "Trading Economics (08/29/2025) |",
+            "title": "Gold - Price - Chart - Historical Data - News - Trading Economics",
+            "url": ""
+        },
+        {
+            "id": "[26]",
+            "source": "Terminal X (08/29/2025) |",
+            "title": "Gold surges past $3,400 to $3,476 on Fed dovish tone, Trump-Cook firing",
+            "url": ""
+        },
+        {
+            "id": "[27]",
+            "source": "Terminal X (08/29/2025) |",
+            "title": "Saudi Central Bank's $40M SLV buy fuels silver rally to $35.52",
+            "url": ""
+        },
+        {
+            "id": "[28]",
+            "source": "XTB (08/29/2025) |",
+            "title": "Silver rallies nearly 1% | XTB",
+            "url": ""
+        },
+        {
+            "id": "[29]",
+            "source": "Mining.com (08/28/2025) |",
+            "title": "Large gap in futures prices evaporates in wake of tariff exemptions",
+            "url": ""
+        },
+        {
+            "id": "[30]",
+            "source": "Bloomberg (08/29/2025) |",
+            "title": "Oil Rallies to Prove Fleeting as Supply Usurps Geopolitics",
+            "url": ""
+        },
+        {
+            "id": "[31]",
+            "source": "Barchart (08/29/2025) |",
+            "title": "Natural Gas Prices and Natural Gas Futures Prices - Barchart.com",
+            "url": ""
+        },
+        {
+            "id": "[32]",
+            "source": "CoinDesk (08/29/2025) |",
+            "title": "Crypto Currents: JPMorgan sees bitcoin undervalued vs. gold",
+            "url": ""
+        },
+        {
+            "id": "[33]",
+            "source": "Terminal X (08/29/2025) |",
+            "title": "Bitcoin recovers to $112K after whale crash, Metaplanet eyes $880M buy",
+            "url": ""
+        },
+        {
+            "id": "[34]",
+            "source": "Terminal X (08/29/2025) |",
+            "title": "ETH drops to $4,457 despite $307M ETF inflows, whale accumulation",
+            "url": ""
+        },
+        {
+            "id": "[35]",
+            "source": "Terminal X (08/28/2025) |",
+            "title": "ETH at $4,602 on $307M ETF inflows, $20B corporate buying spree",
+            "url": ""
+        },
+        {
+            "id": "[36]",
+            "source": "Terminal X (08/29/2025) |",
+            "title": "DXY falls 0.37% to 97.86 on Powell dovish speech, rate cut bets",
+            "url": ""
+        },
+        {
+            "id": "[37]",
+            "source": "Terminal X (08/29/2025) |",
+            "title": "IVV gains 0.36% as earnings beat 80% rate, Fed cut odds at 88%",
+            "url": ""
+        },
+        {
+            "id": "[38]",
+            "source": "Terminal X (08/29/2025) |",
+            "title": "GLD hits 5-week high at $315 as Fed's Cook sues Trump, dollar falls",
+            "url": ""
+        },
+        {
+            "id": "[39]",
+            "source": "Schwab (08/29/2025) |",
+            "title": "Schwab's Market Open Update",
+            "url": ""
+        },
+        {
+            "id": "[40]",
+            "source": "c (08/28/2025) |",
+            "title": "Fed trumps French politics – add to US 5s30s steepeners, USD shorts",
+            "url": ""
+        },
+        {
+            "id": "[41]",
+            "source": "The Fly (08/28/2025) |",
+            "title": "Five Below upgraded, Bill downgraded: Wall Street's top analyst calls",
+            "url": ""
+        },
+        {
+            "id": "[42]",
+            "source": "Telsey Advisory (08/28/2025) |",
+            "title": "Telsey upgrades Five Below to Outperform on business inflection",
+            "url": ""
+        },
+        {
+            "id": "[43]",
+            "source": "c (08/29/2025) |",
+            "title": "Aspen Insurance Holdings Ltd (AHL.N) | Neutral Downgrading to Neutral from Buy/Price Target Updated to Reflect Deal Price",
+            "url": ""
+        },
+        {
+            "id": "[44]",
+            "source": "c (08/28/2025) |",
+            "title": "The SMID Point",
+            "url": ""
+        },
+        {
+            "id": "[45]",
+            "source": "JPMorgan (08/28/2025) |",
+            "title": "Futu Holdings price target raised to $270 from $200 at JPMorgan",
+            "url": ""
+        },
+        {
+            "id": "[46]",
+            "source": "Morgan Stanley (08/28/2025) |",
+            "title": "Five Below price target raised to $160 from $135 at Morgan Stanley",
+            "url": ""
+        },
+        {
+            "id": "[47]",
+            "source": "RBC Capital (08/28/2025) |",
+            "title": "Main Street price target raised to $67 from $52 at RBC Capital",
+            "url": ""
+        },
+        {
+            "id": "[48]",
+            "source": "c (08/29/2025) |",
+            "title": "Where are all the allocators' blocks? Positioning trimming in the summertime",
+            "url": ""
+        },
+        {
+            "id": "[49]",
+            "source": "Bloomberg (08/29/2025) |",
+            "title": "A Low-Volatility Market Will Be Tested After Labor Day",
+            "url": ""
+        },
+        {
+            "id": "[50]",
+            "source": "BNN Bloomberg (08/29/2025) |",
+            "title": "Markets today: Stocks add a bit to their records on Wall Street",
+            "url": ""
+        },
+        {
+            "id": "[51]",
+            "source": "The Fly (08/29/2025) |",
+            "title": "Moderately bullish activity in C3 AI with shareslittle changed",
+            "url": ""
+        },
+        {
+            "id": "[52]",
+            "source": "The Fly (08/28/2025) |",
+            "title": "UP Fintech Holding Ltd call volume above normal and directionally bullish",
+            "url": ""
+        },
+        {
+            "id": "[53]",
+            "source": "The Fly (08/29/2025) |",
+            "title": "Beyond Inc call volume above normal and directionally bullish",
+            "url": ""
+        },
+        {
+            "id": "[54]",
+            "source": "The Fly (08/28/2025) |",
+            "title": "Bloom Energy call volume above normal and directionally bullish",
+            "url": ""
+        },
+        {
+            "id": "[55]",
+            "source": "CryptoNews (08/29/2025) |",
+            "title": "Ethereum ETFs Shock Wall Street With $307M Inflows In One Day ...",
+            "url": ""
+        },
+        {
+            "id": "[56]",
+            "source": "Terminal X (08/29/2025) |",
+            "title": "IEF up 0.23% on Powell dovish stance, Sept cut odds at 91.5%",
+            "url": ""
+        },
+        {
+            "id": "[57]",
+            "source": "Terminal X (08/28/2025) |",
+            "title": "IEF slips 0.02% premarket despite Powell dovish signals, yields fall",
+            "url": ""
+        },
+        {
+            "id": "[58]",
+            "source": "CoinDesk (08/28/2025) |",
+            "title": "Bitcoin, Ether ETF Flows Hint at Incoming Altcoin Bull Run - CoinDesk",
+            "url": ""
+        },
+        {
+            "id": "[59]",
+            "source": "ETFGI (08/27/2025) |",
+            "title": "ETFGI reports that assets invested in the ETFs industry globally ...",
+            "url": ""
+        },
+        {
+            "id": "[60]",
+            "source": "ChartExchange (08/29/2025) |",
+            "title": "GME Dark Pool Statistics | ChartExchange",
+            "url": ""
+        },
+        {
+            "id": "[61]",
+            "source": "ChartExchange (08/28/2025) |",
+            "title": "AMC Dark Pool Statistics | ChartExchange",
+            "url": ""
+        },
+        {
+            "id": "[62]",
+            "source": "LegiStorm (08/29/2025) |",
+            "title": "LegiStorm: Congress Revealed",
+            "url": ""
+        }
+    ],
+    "gpt_knowledge": true,
+    "book_converter": "Lexi Convert by El Fenomeno"
+}

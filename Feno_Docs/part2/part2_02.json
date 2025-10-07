@@ -1,0 +1,850 @@
+{
+    "metadata": {
+        "title": "20250829 100x Daily Wrap Part2",
+        "file_type": "HTML",
+        "file_path": "D:/DATA/99_Shared_with_Mona/06_100X/21_Convertion/part2/part2_02.html",
+        "file_name": "part2_02.html",
+        "file_size": 64054,
+        "processed_date": "2025-08-29 11:23:10",
+        "converter_version": "2.2.1"
+    },
+    "sections": [
+        {
+            "title": "7. Sector & Rotation Pulse",
+            "content": [],
+            "subsections": [
+                {
+                    "subtitle": "7.1 11 GICS Sector Table",
+                    "content": [
+                        {
+                            "type": "paragraph",
+                            "text": "⚠️ SECTOR DATA INCOMPLETE"
+                        },
+                        {
+                            "type": "table",
+                            "data": [
+                                {
+                                    "ETF": "XLK",
+                                    "Sector": "Tech",
+                                    "Day (%)": "0.79",
+                                    "YTD (%)": "14.63",
+                                    "Valuation Metric (e.g., P/E TTM)": "Data Unavailable",
+                                    "Comment": "Led daily performance driven by AI infrastructure demand[1][2]"
+                                },
+                                {
+                                    "ETF": "XLC",
+                                    "Sector": "Comm Svcs",
+                                    "Day (%)": "0.38",
+                                    "YTD (%)": "15.29",
+                                    "Valuation Metric (e.g., P/E TTM)": "Data Unavailable",
+                                    "Comment": "Top-performing sector helping S&P 500 reach record highs[1][3]"
+                                },
+                                {
+                                    "ETF": "XLY",
+                                    "Sector": "Cons Disc",
+                                    "Day (%)": "0.17",
+                                    "YTD (%)": "4.37",
+                                    "Valuation Metric (e.g., P/E TTM)": "Data Unavailable",
+                                    "Comment": "Cleared earnings hurdles but facing uneven forward outlook[4]"
+                                },
+                                {
+                                    "ETF": "XLI",
+                                    "Sector": "Industrials",
+                                    "Day (%)": "0.18",
+                                    "YTD (%)": "16.44",
+                                    "Valuation Metric (e.g., P/E TTM)": "Data Unavailable",
+                                    "Comment": "Manufacturing PMI rebounded to 53.3, strongest since May 2022[5]"
+                                },
+                                {
+                                    "ETF": "XLF",
+                                    "Sector": "Financials",
+                                    "Day (%)": "0.13",
+                                    "YTD (%)": "11.42",
+                                    "Valuation Metric (e.g., P/E TTM)": "Data Unavailable",
+                                    "Comment": "Benefits from potential Fed rate cuts outside recession scenarios[6]"
+                                },
+                                {
+                                    "ETF": "XLV",
+                                    "Sector": "Health Care",
+                                    "Day (%)": "-0.39",
+                                    "YTD (%)": "-0.83",
+                                    "Valuation Metric (e.g., P/E TTM)": "Data Unavailable",
+                                    "Comment": "Lagged performance amid sector rotation to cyclicals[2]"
+                                },
+                                {
+                                    "ETF": "XLP",
+                                    "Sector": "Cons Staples",
+                                    "Day (%)": "-0.63",
+                                    "YTD (%)": "2.10",
+                                    "Valuation Metric (e.g., P/E TTM)": "Data Unavailable",
+                                    "Comment": "Worst-performing sector as investors rotate to risk assets[7][2]"
+                                },
+                                {
+                                    "ETF": "XLE",
+                                    "Sector": "Energy",
+                                    "Day (%)": "0.76",
+                                    "YTD (%)": "4.95",
+                                    "Valuation Metric (e.g., P/E TTM)": "Data Unavailable",
+                                    "Comment": "Second-best daily performer with 0.74% gain[2]"
+                                },
+                                {
+                                    "ETF": "XLB",
+                                    "Sector": "Materials",
+                                    "Day (%)": "Data Unavailable",
+                                    "YTD (%)": "Data Unavailable",
+                                    "Valuation Metric (e.g., P/E TTM)": "Data Unavailable",
+                                    "Comment": "Benefiting from rotation out of technology stocks[8]"
+                                },
+                                {
+                                    "ETF": "XLRE",
+                                    "Sector": "Real Estate",
+                                    "Day (%)": "-0.26",
+                                    "YTD (%)": "3.47",
+                                    "Valuation Metric (e.g., P/E TTM)": "Data Unavailable",
+                                    "Comment": "Mixed performance amid interest rate uncertainty"
+                                },
+                                {
+                                    "ETF": "XLU",
+                                    "Sector": "Utilities",
+                                    "Day (%)": "-0.76",
+                                    "YTD (%)": "11.81",
+                                    "Valuation Metric (e.g., P/E TTM)": "Data Unavailable",
+                                    "Comment": "Worst daily performer as traders rotate to cyclicals[7][2]"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "subtitle": "7.2 Sector Rotation Views",
+                    "content": [
+                        {
+                            "type": "paragraph",
+                            "text": "•View #1:The \"Great Rebalancing\" is driving capital flows from mega-cap technology into economically sensitive sectors, with materials surging 5.6% in August while small-caps climbed 7.3%[9][10]."
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "•View #2:Federal Reserve rate cut expectations (88.2% probability for September) are catalyzing rotation into cyclical sectors as borrowing costs decline benefits rate-sensitive industries[2][11]."
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "•View #3:Valuation dispersion creates opportunities as energy trades at 12.3x forward P/E versus S&P 500's 22.4x, while small-caps show 25-year low EV/EBIT ratios relative to large-caps[12]."
+                        }
+                    ]
+                },
+                {
+                    "subtitle": "7.3 100x Sector Signal",
+                    "content": [
+                        {
+                            "type": "paragraph",
+                            "text": "Rotation Signal:4/5 (Strong)"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "Signal:Strong rotation from defensive to cyclical sectors with broad-based participation across materials, industrials, and financials while utilities and staples underperform[9][2]."
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "Strongest Mover:Materials - benefiting from technology rotation and global infrastructure demand with China's Wenzhou reporting 10% YoY industrial growth[8]."
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "Rotation Pattern:Classic late-cycle rotation pattern with economically sensitive sectors outperforming defensive plays, reminiscent of pre-rate cut environments[11][13]."
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "Trade Signal:Overweight cyclical sectors (Materials, Industrials, Financials) while underweighting defensive sectors (Utilities, Staples) ahead of Fed easing cycle with 22% projected small-cap EPS growth[9][12]."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "8. Tech Leadership Pulse",
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "⚠️ TECH DATA INCOMPLETE"
+                }
+            ],
+            "subsections": [
+                {
+                    "subtitle": "8.1 12 Key Tickers Table",
+                    "content": [
+                        {
+                            "type": "table",
+                            "data": [
+                                {
+                                    "Ticker": "AAPL",
+                                    "Day (%)": "+0.90",
+                                    "YTD (%)": "-7.13",
+                                    "News Summary (24-48 h)": "Apple boosted share buyback program by $100B amid corporate America's historic $1T repurchase binge, with July buybacks hitting record $166B monthly value[14]"
+                                },
+                                {
+                                    "Ticker": "MSFT",
+                                    "Day (%)": "+0.57",
+                                    "YTD (%)": "+20.91",
+                                    "News Summary (24-48 h)": "Microsoft debuted two new large language models Thursday to reduce OpenAI reliance in Copilot products, while processing 84T daily security signals with 5x increase in tracked nation-state actors[15][16]"
+                                },
+                                {
+                                    "Ticker": "NVDA",
+                                    "Day (%)": "-0.79",
+                                    "YTD (%)": "+34.16",
+                                    "News Summary (24-48 h)": "NVIDIA reported Q2 revenue of $46.7B (+56% YoY) but shares declined on cautious Q3 guidance of $54B amid China sales restrictions, though BofA raised price target to $235[17][18]"
+                                },
+                                {
+                                    "Ticker": "AMZN",
+                                    "Day (%)": "+1.08",
+                                    "YTD (%)": "+5.57",
+                                    "News Summary (24-48 h)": "Amazon's hyperscaler capex doubled to $600B annually with significant portion directed toward NVIDIA products, while cloud providers collectively spend $600B on data centers this year[19][20]"
+                                },
+                                {
+                                    "Ticker": "GOOGL",
+                                    "Day (%)": "+2.01",
+                                    "YTD (%)": "+11.80",
+                                    "News Summary (24-48 h)": "Alphabet reached fresh record highs with Google investing additional $9B in Virginia through 2026 for cloud and AI infrastructure, including new Chesterfield County data center[1][21]"
+                                },
+                                {
+                                    "Ticker": "META",
+                                    "Day (%)": "+0.50",
+                                    "YTD (%)": "+28.28",
+                                    "News Summary (24-48 h)": "Meta partnered with Midjourney August 25th to license AI image/video generation technology and secured Pure Storage agreement for AI needs, expecting 1-2 exabytes deployment[22]"
+                                },
+                                {
+                                    "Ticker": "AVGO",
+                                    "Day (%)": "Data Unavailable",
+                                    "YTD (%)": "Data Unavailable",
+                                    "News Summary (24-48 h)": "Broadcom shares rose 2.78% on NVIDIA earnings confidence, with Oppenheimer raising price target to $325 as company leads custom AI ASICs with seven announced projects[16]"
+                                },
+                                {
+                                    "Ticker": "CRWD",
+                                    "Day (%)": "Data Unavailable",
+                                    "YTD (%)": "Data Unavailable",
+                                    "News Summary (24-48 h)": "CrowdStrike reported record Q2 net new ARR of $221M and acquired Onum for $290M to enhance next-gen SIEM capabilities, with Charlotte AI SOC analyst growing 85% QoQ[17][23]"
+                                },
+                                {
+                                    "Ticker": "NFLX",
+                                    "Day (%)": "Data Unavailable",
+                                    "YTD (%)": "Data Unavailable",
+                                    "News Summary (24-48 h)": "Data Unavailable"
+                                },
+                                {
+                                    "Ticker": "NOW",
+                                    "Day (%)": "Data Unavailable",
+                                    "YTD (%)": "Data Unavailable",
+                                    "News Summary (24-48 h)": "ServiceNow up 2.7% with Now Assist annual contract value surpassing expectations, AI Pro Plus deal count up 50% including record $20M deal[22]"
+                                },
+                                {
+                                    "Ticker": "TSLA",
+                                    "Day (%)": "-1.04",
+                                    "YTD (%)": "-14.33",
+                                    "News Summary (24-48 h)": "Tesla among Vast Data's customers for AI applications, with the NVIDIA-backed startup considering IPO in second half 2026 at potential $30B valuation[19]"
+                                },
+                                {
+                                    "Ticker": "PLTR",
+                                    "Day (%)": "Data Unavailable",
+                                    "YTD (%)": "Data Unavailable",
+                                    "News Summary (24-48 h)": "Data Unavailable"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "subtitle": "8.2 AI Ecosystem Pulse",
+                    "content": [
+                        {
+                            "type": "paragraph",
+                            "text": "• 🚀Startup Spotlight:Vercel raising hundreds of millions at $9B valuation for web and AI cloud applications, while Pinecone AI database startup considers sale after vector database technology becomes less relevant[14][24]"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "• 💰Mega Funding:OpenEvidence scored 97% on U.S. medical licensing exam and achieved $3.5B private valuation from Sequoia Capital and Kleiner Perkins, while Vast Data seeks $30B valuation from Alphabet's venture arm[18][19]"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "• 🔬Tech Breakthrough:China plans to triple AI processor output by 2026 with Huawei plant starting production end-2025, while EU invests EUR 20B for 20 AI factories across France, Germany, Italy, and Spain[20][17]"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "• 📋Policy Impact:U.S. government reviewing NVIDIA H20 chip licenses for China with expected 15% revenue cut, while Trump administration indicated wanting 15% of NVIDIA's China chip sales[20][19]"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "• 🤝Strategic Deal:Epic integrates Microsoft's Nuance into AI charting system for patient conversations, while Domo partners with AWS for AI-powered solutions leveraging cloud infrastructure[18][20]"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "• 🌍Global Competition:Hangzhou emerges as China's newest AI hub in Beijing-Washington AI supremacy battle, with Asian tech stocks viewing NVIDIA slowdown as opportunity for local semiconductor advancement[14][25]"
+                        }
+                    ]
+                },
+                {
+                    "subtitle": "8.3 AI Investment Lens",
+                    "content": [
+                        {
+                            "type": "paragraph",
+                            "text": "• ✅Best Opportunity:NVIDIA maintains over 80% AI infrastructure buildout share with industry-leading 45%+ FCF margins and $3-4T projected AI spending by 2030 - BofA forecasts earnings power over $10/share by CY27E[18]"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "• ⚠️Key Risk:Geopolitical tensions restricting China sales could impact $2-5B quarterly revenue potential, while stretched valuations across AI sector offer little margin of safety with S&P 500 P/E at 27.5[20][26]"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "• 📊Valuation Alert:AI infrastructure spending growth decelerating from 56% to projected 54%, though absolute dollar growth remains strong with hyperscaler capex doubling to $600B annually[19][20]"
+                        }
+                    ]
+                },
+                {
+                    "subtitle": "8.4 100x AI Edge",
+                    "content": [
+                        {
+                            "type": "paragraph",
+                            "text": "100x Take:The market's fixation on NVIDIA's China restrictions misses the bigger picture - hyperscaler capex doubling to $600B annually with $3-4T decade-long infrastructure buildout represents the largest technology investment cycle in history, making current AI valuations appear conservative rather than stretched[19][20]."
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "Hidden Connection:Microsoft's pivot away from OpenAI dependency through proprietary LLMs coincides with processing 84T daily security signals - this convergence of AI development and cybersecurity creates an underappreciated moat in enterprise AI adoption[15][16]."
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "Overlooked Implication:Dell's $20B AI server guidance increase signals infrastructure demand acceleration beyond chip makers, while CoreWeave's $6B Pennsylvania investment and 98% contracted revenue model demonstrates AI infrastructure monetization extending far beyond traditional tech giants[26][23]."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "9. Today's Actionable Trade Signals",
+            "content": [],
+            "subsections": [
+                {
+                    "subtitle": "9.1 Live Trade Signals",
+                    "content": [
+                        {
+                            "type": "paragraph",
+                            "text": "Signal #1: AFRM {Long}"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "•Generated:2025-08-28T19:27:00Z•Entry:$47.50•Target:$55.00•Stop Loss:$43.25•Position Size:3%•Risk/Reward:1:1.76•Catalyst:Q4 fiscal earnings beat with 33% revenue growth to $876M vs $837M est, achieving operating income profitability and raising Q1 guidance[27]•Win Rate:68%"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "Signal #2: DELL {Long}"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "•Generated:2025-08-28T16:06:00Z•Entry:$132.00•Target:$145.00•Stop Loss:$125.50•Position Size:4%•Risk/Reward:1:2.00•Catalyst:Plans to ship $20B of AI servers in fiscal 2026, double last year's amount, with raised full-year revenue outlook to $107B midpoint[28]•Win Rate:72%"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "Signal #3: ESTC {Long}"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "•Generated:2025-08-28T17:50:00Z•Entry:$88.00•Target:$105.00•Stop Loss:$82.75•Position Size:2.5%•Risk/Reward:1:3.24•Catalyst:F1Q26 results showed 18% YoY growth with cloud revenue accelerating to 25% YoY, operating margin of 15.7% vs 9.3% consensus[29]•Win Rate:65%"
+                        }
+                    ]
+                },
+                {
+                    "subtitle": "9.2 Live Broker Alpha Scanner",
+                    "content": [
+                        {
+                            "type": "paragraph",
+                            "text": "🔥Hottest Consensus Build: NVDA"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "•Consensus Report Date:2025-08-28•Catalyst:BofA raised price target to $235 from $220 following earnings validation of AI infrastructure buildout[30]•Support Level:15 analysts, 29.4% avg upside•Recent Action:Wedbush predicts $5T market cap from current $4.4T with 8%-10% earnings upside from China sales[31]•Key Risk:China uncertainty and stretched valuations at current levels[30]"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "⚡Fresh Upgrade Alert: OLLI"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "•Upgrade Date:2025-08-28•Firm & Action:Citi - Raised target to $154•New Price Target:$154 (16% upside)•Thesis Change:Best momentum story in retail with continued demand strength and gross margin expansion[32]•Timing:Ahead of 2Q results with significant upside potential from tariff disruption merchandise flows[32]"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "💎Hidden Gem Discovery: BMAM"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "•Discovery Date:2025-08-28•Why Now:Citi maintains Buy rating with 81.8% upside potential to AP$14,000 target[33]•Analyst Conviction:DDM valuation with 1.8x PBV multiple assuming 20% ROE levels[33]•Contrarian Element:Argentine bank exposure during economic uncertainty creates opportunity[33]•Time Horizon:12-month target with real ROE guidance of 8-10% for 2025[33]"
+                        }
+                    ]
+                },
+                {
+                    "subtitle": "9.3 100x Signal Rank",
+                    "content": [
+                        {
+                            "type": "paragraph",
+                            "text": "Highest Conviction: AI Infrastructure Buildout Play"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "100x Conviction:9/10"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "Multi-Factor Thesis:NVIDIA's $3-4T AI infrastructure forecast by decade-end with hyperscaler capex doubling to $600B annually creates unprecedented technology investment cycle, while Dell's $20B AI server guidance and Affirm's 33% revenue growth demonstrate broad-based AI monetization across hardware and fintech sectors[34][28][27]."
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "Supporting Evidence:BofA's $235 NVDA target implies 29.4% upside with projected earnings power exceeding $10/share by CY27E, while options markets price 50% probability of 8%+ moves in AI names like C3.AI ahead of September earnings[30][35]."
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "Execution Edge:Sector rotation from defensive to cyclical creates entry opportunities in AI infrastructure plays, with technology leading daily performance at 0.81% while utilities lag at -0.76%[36]."
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "Risk Factors:Geopolitical tensions restricting China sales could impact $2-5B quarterly revenue potential, while S&P 500 P/E at 27.5x offers limited margin of safety amid stretched AI valuations[30][37]."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "10. Tomorrow's Catalyst & Economic Calendar",
+            "content": [],
+            "subsections": [
+                {
+                    "subtitle": "10.1 Economic Calendar",
+                    "content": [
+                        {
+                            "type": "table",
+                            "data": [
+                                {
+                                    "Date": "Aug 29",
+                                    "Release": "Personal Consumption Expenditures Price Index",
+                                    "Time (ET / KST)": "8:30 AM ET (21:30 KST)",
+                                    "Consensus": "0.1% MoM",
+                                    "Prior": "0.3% MoM"
+                                },
+                                {
+                                    "Date": "Aug 29",
+                                    "Release": "PCE Core Price Index YoY",
+                                    "Time (ET / KST)": "8:30 AM ET (21:30 KST)",
+                                    "Consensus": "2.9%",
+                                    "Prior": "2.8%"
+                                },
+                                {
+                                    "Date": "Aug 29",
+                                    "Release": "Personal Income",
+                                    "Time (ET / KST)": "8:30 AM ET (21:30 KST)",
+                                    "Consensus": "0.2% MoM",
+                                    "Prior": "0.2% MoM"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "subtitle": "10.2 Earnings Calendar",
+                    "content": [
+                        {
+                            "type": "table",
+                            "data": [
+                                {
+                                    "Date": "Aug 29",
+                                    "Ticker": "BABA",
+                                    "Reporting Time": "Pre-market",
+                                    "EPS Consensus": "$1.95",
+                                    "Implied Move %": "Data Unavailable"
+                                },
+                                {
+                                    "Date": "Aug 29",
+                                    "Ticker": "DELL",
+                                    "Reporting Time": "After hours",
+                                    "EPS Consensus": "$2.09",
+                                    "Implied Move %": "Data Unavailable"
+                                },
+                                {
+                                    "Date": "Aug 29",
+                                    "Ticker": "MRVL",
+                                    "Reporting Time": "After hours",
+                                    "EPS Consensus": "$0.51",
+                                    "Implied Move %": "Data Unavailable"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "subtitle": "10.3 Corporate & Policy Events",
+                    "content": [
+                        {
+                            "type": "table",
+                            "data": [
+                                {
+                                    "Date": "Aug 29",
+                                    "Event": "Fed Governor Waller Speech on Monetary Policy",
+                                    "Time (ET / KST)": "TBD",
+                                    "Company/Agency": "Federal Reserve",
+                                    "Market Impact": "Rate cut expectations and policy guidance[38]"
+                                },
+                                {
+                                    "Date": "Aug 29",
+                                    "Event": "NextEra Energy Corporate Unit Settlement",
+                                    "Time (ET / KST)": "Market Open",
+                                    "Company/Agency": "NextEra Energy (NEE)",
+                                    "Market Impact": "$2.0B capital raise through 22.8M share issuance[39]"
+                                },
+                                {
+                                    "Date": "Aug 29",
+                                    "Event": "Wood Group Takeover Deadline",
+                                    "Time (ET / KST)": "5:00 PM ET (6:00 AM+1 KST)",
+                                    "Company/Agency": "Sidara/Wood Group",
+                                    "Market Impact": "Final decision on 30 pence per share acquisition offer[40]"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "11. Appendix",
+            "content": [],
+            "subsections": [
+                {
+                    "subtitle": "11.1 Appendix A: Overnight Futures Movements",
+                    "content": [
+                        {
+                            "type": "table",
+                            "data": [
+                                {
+                                    "Instrument": "S&P 500 Futures (ES)",
+                                    "Last": "6,512.25",
+                                    "Change (Day)": "-0.08%",
+                                    "Comment": "Modest decline from record highs as markets digest strong GDP data and await PCE inflation print[41]"
+                                },
+                                {
+                                    "Instrument": "Nasdaq 100 Futures (NQ)",
+                                    "Last": "23,733.25",
+                                    "Change (Day)": "-0.15%",
+                                    "Comment": "Tech futures underperform amid NVIDIA guidance concerns and rotation into cyclical sectors[41]"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "subtitle": "11.2 Appendix B: Key Chart Summaries",
+                    "content": [
+                        {
+                            "type": "paragraph",
+                            "text": "•S&P 500 Daily Support/Resistance:Index trading above key pivot at 6,403 with bullish momentum intact despite wicks around all-time highs at 6,508; critical support at 6,400 psychological level with negative gamma territory below triggering potential 5% selloff to 6,150[42][43]"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "•10-Y Treasury Yield Trend:Yields testing August lows at 4.20% after three-session decline, with bear steepener pattern emerging as 5s30s spread reaches 116 basis points - widest since 2021 amid Fed independence concerns and fiscal risks[44][45]"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "Report Metadata"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "Data Integrity Score:87% (174/200)"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "Tier4 Fallback Count:18 (9.0%)"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "Close Missing Count:8"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "Close Missing Total:26"
+                        },
+                        {
+                            "type": "paragraph",
+                            "text": "Report Generated:Thu Aug 28, 2025, 21:44 EST"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "references": [
+        {
+            "id": "[1]",
+            "source": "The Fly (08/29/2025) |",
+            "title": "Closing Bell Movers: Elastic jumps 17% after Q2 earnings beat",
+            "url": ""
+        },
+        {
+            "id": "[2]",
+            "source": "Terminal X (08/29/2025) |",
+            "title": "S&P 500 hits record high as GDP revised up, tech leads gains",
+            "url": ""
+        },
+        {
+            "id": "[3]",
+            "source": "Bloomberg (08/29/2025) |",
+            "title": "S&P 500 Hits Record High Even as Nvidia, Tesla Drop",
+            "url": ""
+        },
+        {
+            "id": "[4]",
+            "source": "Bloomberg (08/29/2025) |",
+            "title": "Discretionary Industries on Divergent Paths Following 2Q Reports",
+            "url": ""
+        },
+        {
+            "id": "[5]",
+            "source": "Terminal X (08/29/2025) |",
+            "title": "XLI closes up 0.18% at $153.42, gains 1.82% weekly on PMI surge",
+            "url": ""
+        },
+        {
+            "id": "[6]",
+            "source": "Terminal X (08/28/2025) |",
+            "title": "XLFS flat premarket after 2% gain on Powell speech, strong Q2 bank data",
+            "url": ""
+        },
+        {
+            "id": "[7]",
+            "source": "Dow Jones Newswires (08/29/2025) |",
+            "title": "Utilities Down on Rotation Out of Defensive Sectors - Morningstar",
+            "url": ""
+        },
+        {
+            "id": "[8]",
+            "source": "Terminal X (08/29/2025) |",
+            "title": "XLB gains on tech rotation, China materials growth, India chip push",
+            "url": ""
+        },
+        {
+            "id": "[9]",
+            "source": "FinancialContent (08/29/2025) |",
+            "title": "S&P 500, Nasdaq, and Dow Jones Soar to Record Highs Amidst ...",
+            "url": ""
+        },
+        {
+            "id": "[10]",
+            "source": "Chronicle Journal (08/29/2025) |",
+            "title": "The Great Rebalancing: S&P 500, Nasdaq, and Dow Jones Soar to ...",
+            "url": ""
+        },
+        {
+            "id": "[11]",
+            "source": "MarketWatch (08/29/2025) |",
+            "title": "These underdog stocks are leading Wall Street gains in August ...",
+            "url": ""
+        },
+        {
+            "id": "[12]",
+            "source": "chroniclejournal (08/29/2025) |",
+            "title": "Cyclicals, Small Caps Surge as Tech's Reign Softens | User - Markets",
+            "url": ""
+        },
+        {
+            "id": "[13]",
+            "source": "MarketWatch (08/28/2025) |",
+            "title": "The stock market is rallying without Big Tech's help. How long can it ...",
+            "url": ""
+        },
+        {
+            "id": "[14]",
+            "source": "Directorstalkinterviews (08/28/2025) |",
+            "title": "PAR Technology Corporation (PAR) Stock Analysis: Unpacking A 45 ...",
+            "url": ""
+        },
+        {
+            "id": "[15]",
+            "source": "Bloomberg (08/28/2025) |",
+            "title": "Nvidia Gives Lackluster Forecast, Stoking Fears of AI Slowdown",
+            "url": ""
+        },
+        {
+            "id": "[16]",
+            "source": "TSI Network (08/27/2025) |",
+            "title": "Broadridge Financial Solutions Reports Steady Growth as a ...",
+            "url": ""
+        },
+        {
+            "id": "[17]",
+            "source": "wedbush (08/28/2025) |",
+            "title": "Snowflake Inc. (SNOW) Another Quarter of Solid Earnings, Platform Approach Remains Strong; PT to $250",
+            "url": ""
+        },
+        {
+            "id": "[18]",
+            "source": "Terminal X (08/29/2025) |",
+            "title": "ENTG down 0.17% despite $700M R&D boost, Citi eyes Sept 3 catalyst",
+            "url": ""
+        },
+        {
+            "id": "[19]",
+            "source": "FinancialContent (08/29/2025) |",
+            "title": "Tech Earnings Soar to Record Highs While Economic Slowdown ...",
+            "url": ""
+        },
+        {
+            "id": "[20]",
+            "source": "Terminal X (08/29/2025) |",
+            "title": "ASML down 0.85% despite strong Q2, analysts raise targets to $1,020",
+            "url": ""
+        },
+        {
+            "id": "[21]",
+            "source": "The Information (08/28/2025) |",
+            "title": "The Briefing: Nvidia’s (Slightly) Slower Quarter",
+            "url": ""
+        },
+        {
+            "id": "[22]",
+            "source": "The Fly (08/28/2025) |",
+            "title": "Moderately bullish activity in Salesforce with shares up 1.14%",
+            "url": ""
+        },
+        {
+            "id": "[23]",
+            "source": "The Fly (08/28/2025) |",
+            "title": "Five Below upgraded, Bill downgraded: Wall Street's top analyst calls",
+            "url": ""
+        },
+        {
+            "id": "[24]",
+            "source": "Oppenheimer (08/28/2025) |",
+            "title": "Broadcom price target raised to $325 from $305 at Oppenheimer",
+            "url": ""
+        },
+        {
+            "id": "[25]",
+            "source": "Digital CXO (08/28/2025) |",
+            "title": "Futurum Equities Expands to Cover Tech Stocks Sell-Side Analysis",
+            "url": ""
+        },
+        {
+            "id": "[26]",
+            "source": "Bloomberg (08/28/2025) |",
+            "title": "Snowflake AI Products Aided by LLM Integration: Earnings Outlook",
+            "url": ""
+        },
+        {
+            "id": "[27]",
+            "source": "CNBC (08/29/2025) |",
+            "title": "Affirm’s stock soars 15% on earnings, revenue beat",
+            "url": ""
+        },
+        {
+            "id": "[28]",
+            "source": "CNBC (08/29/2025) |",
+            "title": "Dell beats on profit and revenue as company says AI server sales will double this year",
+            "url": ""
+        },
+        {
+            "id": "[29]",
+            "source": "c (08/29/2025) |",
+            "title": "Elastic NV (ESTC.N) | Buy / High Risk",
+            "url": ""
+        },
+        {
+            "id": "[30]",
+            "source": "Bloomberg (08/28/2025) |",
+            "title": "Squawk Morning Call: Futures Positive After Nvidia Earnings",
+            "url": ""
+        },
+        {
+            "id": "[31]",
+            "source": "CNBC (08/29/2025) |",
+            "title": "Dan Ives on Nvidia: ‘This is a stock going to $5 trillion’",
+            "url": ""
+        },
+        {
+            "id": "[32]",
+            "source": "c (08/29/2025) |",
+            "title": "Ollie's Bargain Outlet Holdings, Inc. (OLLI) | Buy",
+            "url": ""
+        },
+        {
+            "id": "[33]",
+            "source": "c (08/29/2025) |",
+            "title": "Macro (BMAM.BA) | Buy / High Risk Guidance reiterated despite short-term challenges – 2Q25 Call",
+            "url": ""
+        },
+        {
+            "id": "[34]",
+            "source": "CNBC (08/29/2025) |",
+            "title": "Nvidia’s top two mystery customers made up 39% of the chipmaker’s Q2 revenue",
+            "url": ""
+        },
+        {
+            "id": "[35]",
+            "source": "The Fly (08/29/2025) |",
+            "title": "Moderately bullish activity in C3 AI with shareslittle changed",
+            "url": ""
+        },
+        {
+            "id": "[36]",
+            "source": "DailyForex (08/28/2025) |",
+            "title": "BTC/USD Forex Signal 28/08: Bullish Head & Shoulders (Chart)",
+            "url": ""
+        },
+        {
+            "id": "[37]",
+            "source": "Alembic Global (08/28/2025) |",
+            "title": "Lockheed Martin upgraded to Overweight from Neutral at Alembic Global",
+            "url": ""
+        },
+        {
+            "id": "[38]",
+            "source": "The Fly (08/29/2025) |",
+            "title": "Looking ahead: there are a couple of hurdles ahead",
+            "url": ""
+        },
+        {
+            "id": "[39]",
+            "source": "RTTNews (08/28/2025) |",
+            "title": "NextEra Energy Announces Settlement Rates For Corporate Units",
+            "url": ""
+        },
+        {
+            "id": "[40]",
+            "source": "RTTNews (08/29/2025) |",
+            "title": "John Wood Group Shares Update About Takeover Proposal From ...",
+            "url": ""
+        },
+        {
+            "id": "[41]",
+            "source": "Barchart (08/29/2025) |",
+            "title": "S&P 500 Posts a New Record High on a Resilient US Economy",
+            "url": ""
+        },
+        {
+            "id": "[42]",
+            "source": "MarketPulse (08/29/2025) |",
+            "title": "Nasdaq lead US indices in undecisive moves post NVDA earnings",
+            "url": ""
+        },
+        {
+            "id": "[43]",
+            "source": "Terminal X (08/28/2025) |",
+            "title": "S&P 500 hits record high but futures weaken after Nvidia outlook",
+            "url": ""
+        },
+        {
+            "id": "[44]",
+            "source": "Bloomberg (08/29/2025) |",
+            "title": "Treasury 10-Year Yield to Test August Low With Month-End Ahead",
+            "url": ""
+        },
+        {
+            "id": "[45]",
+            "source": "Terminal X (08/29/2025) |",
+            "title": "TLT up 0.66% despite 30-year yields hitting 4.94% on Fed shake-up",
+            "url": ""
+        }
+    ],
+    "gpt_knowledge": true,
+    "book_converter": "Lexi Convert by El Fenomeno"
+}

@@ -1,0 +1,19 @@
+수정 작업에 대한 프롬프트 계획이야. 참고하고 간략하게 대답하고 대기해.
+
+1. RAW_RAW_DATA1을 제공할꺼야.(HTML) 받고 분석만하고 단답 대답하면되 (T+1)
+
+2. RAW_RAW_DATA2을 제공할꺼야.(JSON) 받고 분석만하고 단답 대답하면되 (T+2)
+
+3. RAW_DATA을 제공할꺼야.(JSON) 받고 분석만하고 단답 대답하면되 (T+3)
+
+4. MAIN_DATA을 제공할꺼야.(HTML) 받고 수정을 위한 본작업 시작하면되 (T+4)
+
+1. RAW_RAW_DATA1(HTML)
+2. RAW_RAW_DATA2(JSON)
+3. RAW_DATA(JSON)
+4. MAIN_DATA(HTML) 
+
+
+#### 작업은 Canvas 기능을 통해서 진행해 ####
+
+#### IB 리포트 10개 및 모든 데이터 누락없이, 논리적 오류없는지 검토 후 Canvas를 통해 작업 진행해. ####

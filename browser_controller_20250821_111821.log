@@ -1,6 +1,0 @@
-2025-08-21 11:18:21,606 - INFO - TerminalX 자격 증명 로드 완료
-2025-08-21 11:18:21,606 - INFO - 🔄 페이지 이동: https://theterminalx.com/agent/archive
-2025-08-21 11:18:21,606 - ERROR - 페이지 이동 실패: 'NoneType' object has no attribute 'get'
-2025-08-21 11:18:21,606 - INFO - 🔄 페이지 이동: https://theterminalx.com/agent/archive
-2025-08-21 11:18:21,606 - ERROR - 페이지 이동 실패: 'NoneType' object has no attribute 'get'
-2025-08-21 11:18:26,607 - ERROR - 아카이브 확인 실패: 'NoneType' object has no attribute 'find_elements'
