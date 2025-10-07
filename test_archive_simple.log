@@ -1,0 +1,130 @@
+============================================================
+Archive 통합 테스트 시작
+============================================================
+TerminalX 자격 증명 로드 완료.
+WebDriver 설정 완료 (좌측 FHD 모니터, 전체 화면).
+출력 디렉토리 생성 완료.
+
+[1단계] TerminalX 로그인...
+TerminalX 로그인 시도...
+페이지 로드 완료, 5초 대기...
+로그인 버튼 찾음: //button[contains(text(), 'Log in')]
+로그인 버튼 클릭 완료
+이메일 입력 필드 찾음
+비밀번호 입력 필드 찾음
+이메일 입력:  meanstomakemewealthy@naver.com
+비밀번호 입력 완료
+로그인 제출 버튼 찾음
+로그인 제출 버튼 클릭
+로그인 성공 확인: //button[contains(., 'Subscriptions')]
+TerminalX 로그인 성공
+✅ 로그인 성공
+
+[2단계] 리포트 생성 요청...
+
+=== generate_report_html 함수 시작 ===
+--- standard 보고서 생성 요청 시작 ---
+Report: Archive Test Report
+Date: 20251008, Range: 2025-10-07 ~ 2025-10-08
+파일 존재 확인:
+  - Prompt 파일: C:\Users\etlov\agents-workspace\projects\100xFenok-generator\input_data\21_100x_Daily_Wrap_Prompt_2_20250708.md (존재)
+  - Source PDF: C:\Users\etlov\agents-workspace\projects\100xFenok-generator\input_data\10_100x_Daily_Wrap_My_Sources_2_20250709.pdf (존재)
+  - Prompt PDF: C:\Users\etlov\agents-workspace\projects\100xFenok-generator\input_data\21_100x_Daily_Wrap_Prompt_2_20250708.pdf (존재)
+Prompt 파일 로드 성공 (길이: 47915자)
+  - 리포트 폼 URL로 이동 시도: https://theterminalx.com/agent/enterprise/report/form/10
+  - 실제 도착한 URL: https://theterminalx.com/agent/enterprise/report/form/10
+  - Report Title 입력 필드 찾는 중...
+  - Report Title 입력 필드 발견됨!
+  - Report Title 입력 중: 'Archive Test Report'
+  - Report Title 입력 완료!
+  - Reference Date 입력 중: 2025-10-07 ~ 2025-10-08
+  - Report Reference Date 입력 완료!
+  - Sample Report 업로드 중: C:\Users\etlov\agents-workspace\projects\100xFenok-generator\input_data\10_100x_Daily_Wrap_My_Sources_2_20250709.pdf
+  - Sample Report 업로드 완료!
+  - Own Sources 업로드 중: C:\Users\etlov\agents-workspace\projects\100xFenok-generator\input_data\10_100x_Daily_Wrap_My_Sources_2_20250709.pdf, C:\Users\etlov\agents-workspace\projects\100xFenok-generator\input_data\21_100x_Daily_Wrap_Prompt_2_20250708.pdf
+  - Own Sources 업로드 완료!
+  - Prompt 입력 중... (길이: 47915자)
+  - Prompt 입력 완료!
+  - Generate 버튼 활성화 대기 중...
+  - Generate 버튼 초기 disabled 상태: None
+  - Generate 버튼 활성화 확인!
+  - Generate 버튼 최종 disabled 상태: None
+  - Generate 버튼 클릭! 보고서 생성 시작 대기 중...
+  - 산출물 URL 변경 대기 중 (최대 20분)...
+  - 보고서 URL 확인 완료: https://theterminalx.com/agent/enterprise/report/1341
+  - 'Generating your report' 메시지 등장 대기 중...
+  - 'Generating your report' 메시지 등장 확인. 리포트 생성 시작됨.
+✅ 리포트 생성 요청 완료
+   Report URL: https://theterminalx.com/agent/enterprise/report/1341
+   Report Status: GENERATING
+
+[3단계] Archive 모니터링...
+   Archive에서 GENERATED 상태 대기중...
+[Batch Manager] 아카이브 페이지 새로고침. 남은 리포트: 1
+[Batch Manager] Archive 페이지 로딩 대기중...
+[Batch Manager] JavaScript 렌더링 대기중...
+[Batch Manager] 테이블 행 렌더링 대기중...
+[Batch Manager] 테이블 행 584개 발견
+[Batch Manager] 대기: 'Archive Test Report' -> GENERATING
+[Batch Manager] 아카이브 페이지 새로고침. 남은 리포트: 1
+[Batch Manager] Archive 페이지 로딩 대기중...
+[Batch Manager] JavaScript 렌더링 대기중...
+[Batch Manager] 테이블 행 렌더링 대기중...
+[Batch Manager] 시도 1/5: 행 없음, 2초 대기...
+[Batch Manager] 시도 2/5: 행 없음, 2초 대기...
+[Batch Manager] 테이블 행 584개 발견
+[Batch Manager] 대기: 'Archive Test Report' -> GENERATING
+[Batch Manager] 아카이브 페이지 새로고침. 남은 리포트: 1
+[Batch Manager] Archive 페이지 로딩 대기중...
+[Batch Manager] JavaScript 렌더링 대기중...
+[Batch Manager] 테이블 행 렌더링 대기중...
+[Batch Manager] 테이블 행 584개 발견
+[Batch Manager] 대기: 'Archive Test Report' -> GENERATING
+[Batch Manager] 아카이브 페이지 새로고침. 남은 리포트: 1
+[Batch Manager] Archive 페이지 로딩 대기중...
+[Batch Manager] JavaScript 렌더링 대기중...
+[Batch Manager] 테이블 행 렌더링 대기중...
+[Batch Manager] 테이블 행 584개 발견
+[Batch Manager] 대기: 'Archive Test Report' -> GENERATING
+[Batch Manager] 아카이브 페이지 새로고침. 남은 리포트: 1
+[Batch Manager] Archive 페이지 로딩 대기중...
+[Batch Manager] JavaScript 렌더링 대기중...
+[Batch Manager] 테이블 행 렌더링 대기중...
+[Batch Manager] 테이블 행 584개 발견
+[Batch Manager] 대기: 'Archive Test Report' -> GENERATING
+[Batch Manager] 아카이브 페이지 새로고침. 남은 리포트: 1
+[Batch Manager] Archive 페이지 로딩 대기중...
+[Batch Manager] JavaScript 렌더링 대기중...
+[Batch Manager] 테이블 행 렌더링 대기중...
+[Batch Manager] 테이블 행 584개 발견
+[Batch Manager] 성공: 'Archive Test Report' -> GENERATED
+[Batch Manager] 모든 리포트가 최종 상태에 도달했습니다.
+✅ 리포트 생성 완료 (GENERATED 상태)
+
+[4단계] HTML 추출...
+  - 'Archive Test Report' HTML 추출 시작...
+  - 페이지 렌더링 대기 (최대 120초)...
+  - 콘텐츠 로딩 대기중... (0초)
+  - 렌더링 완료! HTML 크기: 122422 bytes
+  - HTML 저장 완료: generated_html/test_archive_20251008.html
+  - markdown-body 클래스 확인
+✅ HTML 추출 성공!
+   파일 경로: generated_html/test_archive_20251008.html
+
+📊 검증 결과:
+   파일 크기: 122,422 bytes
+   markdown-body: ✅
+   supersearchx-body: ❌
+   No documents found: ✅ 없음
+   최종 판정: ✅ 성공
+
+브라우저 종료 완료
+
+============================================================
+🎉 테스트 성공! Archive 통합이 정상 작동합니다.
+
+성과:
+  - Archive 모니터링 로직 통합 완료
+  - GENERATED 상태 대기 후 HTML 추출
+  - 'No documents found' 에러 해결
+============================================================

@@ -718,44 +718,70 @@ class FenokReportGenerator:
             return
 
     def extract_and_validate_html(self, report, output_path: str) -> bool:
-        """Archive 상태 확인 후 HTML 추출 및 검증"""
+        """Archive 상태 확인 후 HTML 추출 및 검증 - 폴링 방식으로 개선"""
         try:
             # 1. 리포트 페이지로 이동
             print(f"  - '{report.title}' HTML 추출 시작...")
             self.driver.get(report.url)
-            print(f"  - 페이지 로딩 대기 (10초)...")
-            time.sleep(10)  # Next.js 초기 렌더링 대기
 
-            # 2. markdown-body 확인 (GENERATED 리포트는 markdown-body 사용)
-            print(f"  - markdown-body 확인 중...")
-            try:
-                WebDriverWait(self.driver, 30).until(
-                    EC.presence_of_element_located((By.XPATH, "//div[contains(@class, 'markdown-body')]"))
-                )
-                print(f"  - markdown-body 확인 완료")
-            except TimeoutException:
-                print(f"  - 오류: markdown-body 30초 대기 후에도 없음")
-                return False
+            # 2. 렌더링 완료까지 폴링 (최대 2분)
+            max_wait = 120
+            poll_interval = 5
+            elapsed = 0
 
-            # 3. "No documents found" 확인
-            page_source = self.driver.page_source
-            if "No documents found" in page_source:
-                print(f"  - 오류: 'No documents found' 감지 - 리포트 생성 실패")
-                return False
+            print(f"  - 페이지 렌더링 대기 (최대 {max_wait}초)...")
 
-            # 4. 콘텐츠 크기 검증 (완전히 렌더링된 리포트는 >50KB)
-            html_size = len(page_source)
-            if html_size < 50000:
-                print(f"  - 오류: HTML 크기 너무 작음 ({html_size} bytes < 50KB) - 불완전한 렌더링")
-                return False
-            print(f"  - HTML 크기 검증 통과: {html_size} bytes")
+            while elapsed < max_wait:
+                try:
+                    # markdown-body 또는 supersearchx-body 찾기
+                    elements = self.driver.find_elements(
+                        By.XPATH,
+                        "//div[contains(@class, 'markdown-body') or contains(@class, 'supersearchx-body')]"
+                    )
 
-            # 5. HTML 저장
-            with open(output_path, 'w', encoding='utf-8') as f:
-                f.write(page_source)
-            print(f"  - HTML 저장 완료: {output_path}")
+                    if elements:
+                        # HTML 추출
+                        page_source = self.driver.page_source
 
-            return True
+                        # "No documents found" 체크
+                        if "No documents found" in page_source:
+                            print(f"  - 오류: 'No documents found' 감지 - 리포트 생성 실패")
+                            return False
+
+                        # 크기 검증
+                        html_size = len(page_source)
+                        if html_size > 50000:  # 50KB 이상
+                            print(f"  - 렌더링 완료! HTML 크기: {html_size} bytes")
+
+                            # HTML 저장
+                            with open(output_path, 'w', encoding='utf-8') as f:
+                                f.write(page_source)
+                            print(f"  - HTML 저장 완료: {output_path}")
+
+                            # 클래스 확인
+                            if "markdown-body" in page_source:
+                                print(f"  - markdown-body 클래스 확인")
+                            if "supersearchx-body" in page_source:
+                                print(f"  - supersearchx-body 클래스 확인")
+
+                            return True
+                        else:
+                            print(f"  - 렌더링 대기중... ({elapsed}초, 현재 크기: {html_size} bytes)")
+                    else:
+                        print(f"  - 콘텐츠 로딩 대기중... ({elapsed}초)")
+
+                    time.sleep(poll_interval)
+                    elapsed += poll_interval
+
+                except Exception as e:
+                    print(f"  - 렌더링 체크 중 오류 (재시도): {e}")
+                    time.sleep(poll_interval)
+                    elapsed += poll_interval
+
+            # 타임아웃
+            print(f"  - 오류: {max_wait}초 대기 후에도 렌더링 미완료")
+            return False
+
         except Exception as e:
             print(f"  - HTML 추출 중 예외 발생: {e}")
             return False

@@ -1,0 +1,36 @@
+Traceback (most recent call last):
+  File "C:\Users\etlov\agents-workspace\projects\100xFenok-generator\test_improved_extraction.py", line 48, in test_single_report_with_polling
+    success = generator.generate_report_html(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: FenokReportGenerator.generate_report_html() got an unexpected keyword argument 'prompt'
+============================================================
+개선된 HTML 추출 로직 테스트 시작
+============================================================
+TerminalX 자격 증명 로드 완료.
+WebDriver 설정 완료 (좌측 FHD 모니터, 전체 화면).
+출력 디렉토리 생성 완료.
+
+[1단계] TerminalX 로그인...
+TerminalX 로그인 시도...
+페이지 로드 완료, 5초 대기...
+로그인 버튼 찾음: //button[contains(text(), 'Log in')]
+로그인 버튼 클릭 완료
+이메일 입력 필드 찾음
+비밀번호 입력 필드 찾음
+이메일 입력:  meanstomakemewealthy@naver.com
+비밀번호 입력 완료
+로그인 제출 버튼 찾음
+로그인 제출 버튼 클릭
+로그인 성공 확인: //button[contains(., 'Subscriptions')]
+TerminalX 로그인 성공
+✅ 로그인 성공
+
+[2단계] 테스트 리포트 생성 요청...
+
+❌ 테스트 중 오류 발생: FenokReportGenerator.generate_report_html() got an unexpected keyword argument 'prompt'
+
+브라우저 종료 완료
+
+============================================================
+❌ 테스트 실패. 로그를 확인하세요.
+============================================================
