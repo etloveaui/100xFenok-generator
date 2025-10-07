@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import sys
+import io
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 """
 100xFenok Generator - 6개 리포트 전체 테스트
 개선된 폴링 방식 HTML 추출 로직 적용
