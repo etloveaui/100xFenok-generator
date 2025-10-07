@@ -1,0 +1,56 @@
+{
+  "total": 6,
+  "generated": 6,
+  "extracted": 6,
+  "failed": 0,
+  "reports": [
+    {
+      "name": "Crypto Analysis",
+      "url": "https://theterminalx.com/agent/enterprise/report/1342",
+      "title": "Crypto Analysis",
+      "status": "EXTRACTED",
+      "file_size": 127425,
+      "file_path": "generated_html/20251008_Crypto_Analysis.html"
+    },
+    {
+      "name": "AI Technology Report",
+      "url": "https://theterminalx.com/agent/enterprise/report/1343",
+      "title": "AI Technology Report",
+      "status": "EXTRACTED",
+      "file_size": 126590,
+      "file_path": "generated_html/20251008_AI_Technology_Report.html"
+    },
+    {
+      "name": "Stock Market Analysis",
+      "url": "https://theterminalx.com/agent/enterprise/report/1344",
+      "title": "Stock Market Analysis",
+      "status": "EXTRACTED",
+      "file_size": 123199,
+      "file_path": "generated_html/20251008_Stock_Market_Analysis.html"
+    },
+    {
+      "name": "Tech Innovation Report",
+      "url": "https://theterminalx.com/agent/enterprise/report/1345",
+      "title": "Tech Innovation Report",
+      "status": "EXTRACTED",
+      "file_size": 131360,
+      "file_path": "generated_html/20251008_Tech_Innovation_Report.html"
+    },
+    {
+      "name": "Economic Indicators",
+      "url": "https://theterminalx.com/agent/enterprise/report/1346",
+      "title": "Economic Indicators",
+      "status": "EXTRACTED",
+      "file_size": 135793,
+      "file_path": "generated_html/20251008_Economic_Indicators.html"
+    },
+    {
+      "name": "Energy Market Report",
+      "url": "https://theterminalx.com/agent/enterprise/report/1347",
+      "title": "Energy Market Report",
+      "status": "EXTRACTED",
+      "file_size": 125773,
+      "file_path": "generated_html/20251008_Energy_Market_Report.html"
+    }
+  ]
+}
