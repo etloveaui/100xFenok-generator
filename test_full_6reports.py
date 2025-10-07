@@ -60,26 +60,21 @@ def test_full_six_reports():
                 title=config["name"]
             )
 
-            # 리포트 생성 요청
+            # 리포트 생성 요청 (4개 인자만 사용)
             success = generator.generate_report_html(
                 report,
                 report_date_str,
                 ref_date_start,
-                ref_date_end,
-                prompt=config.get("prompt", ""),
-                keywords=config.get("keywords", ""),
-                urls=config.get("urls", []),
-                past_day=config.get("past_day", 30),
-                num_pages=30
+                ref_date_end
             )
 
             if success:
-                batch_manager.add_report(report)
-                print(f"  ✅ 생성 요청 성공 - Report ID: {report.id}")
+                batch_manager.reports.append(report)
+                print(f"  ✅ 생성 요청 성공 - URL: {report.url}")
                 results["reports"].append({
                     "name": config["name"],
-                    "id": report.id,
                     "url": report.url,
+                    "title": report.title,
                     "status": "REQUESTED"
                 })
             else:
@@ -106,7 +101,7 @@ def test_full_six_reports():
                 results["generated"] += 1
                 # results 업데이트
                 for r in results["reports"]:
-                    if r["id"] == report.id:
+                    if r["url"] == report.url:
                         r["status"] = "GENERATED"
                         break
 
@@ -140,7 +135,7 @@ def test_full_six_reports():
 
                     # results 업데이트
                     for r in results["reports"]:
-                        if r["id"] == report.id:
+                        if r["url"] == report.url:
                             r["status"] = "EXTRACTED"
                             r["file_size"] = file_size
                             r["file_path"] = output_path
