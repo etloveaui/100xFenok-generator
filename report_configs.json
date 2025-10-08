@@ -1,50 +1,50 @@
 [
   {
-    "name": "Crypto Market Report",
-    "prompt": "Analyze the latest cryptocurrency market trends, focusing on major coins including Bitcoin, Ethereum, and emerging altcoins. Include market capitalization changes, trading volumes, and significant price movements.",
-    "keywords": "bitcoin,ethereum,crypto,cryptocurrency",
-    "urls": ["https://coinmarketcap.com", "https://www.coingecko.com"],
-    "past_day": 90,
-    "num_pages": 30
-  },
-  {
-    "name": "AI Industry Report",
-    "prompt": "Provide a comprehensive analysis of the artificial intelligence industry, covering latest developments in machine learning, generative AI, and industry applications. Focus on major players like OpenAI, Google, and emerging startups.",
-    "keywords": "artificial intelligence,machine learning,OpenAI,GPT",
-    "urls": ["https://openai.com", "https://ai.google"],
-    "past_day": 180,
-    "num_pages": 30
-  },
-  {
-    "name": "Global Stock Market Report",
-    "prompt": "Analyze global stock market performance including S&P 500, NASDAQ, FTSE, and emerging markets. Cover major market movers, sector rotations, and economic indicators affecting equity markets.",
-    "keywords": "stock market,S&P 500,NASDAQ,equity",
+    "name": "3.1 3.2 Gain Lose",
+    "prompt": "Last session US Top 3 gainer & loser stocks. For each stock: close price, daily gain (%), YTD gain (%), and reason.",
+    "keywords": "stocks,gainers,losers,performance",
     "urls": ["https://finance.yahoo.com", "https://www.bloomberg.com"],
-    "past_day": 365,
+    "past_day": 1,
     "num_pages": 30
   },
   {
-    "name": "Technology Sector Analysis",
-    "prompt": "Evaluate the technology sector performance, focusing on FAANG stocks, semiconductor companies, and cloud computing providers. Include revenue trends, market share analysis, and future growth prospects.",
-    "keywords": "technology,FAANG,semiconductor,cloud computing",
-    "urls": ["https://techcrunch.com", "https://www.theverge.com"],
-    "past_day": 90,
+    "name": "3.3 Fixed Income",
+    "prompt": "US Treasury Market Summary",
+    "keywords": "treasury,bonds,fixed income,yields",
+    "urls": ["https://www.treasury.gov", "https://www.bloomberg.com"],
+    "past_day": 1,
     "num_pages": 30
   },
   {
-    "name": "Global Economic Outlook",
-    "prompt": "Provide analysis of global economic conditions including GDP growth, inflation rates, central bank policies, and geopolitical impacts on international trade and investment flows.",
-    "keywords": "global economy,GDP,inflation,central bank",
-    "urls": ["https://www.imf.org", "https://www.worldbank.org"],
-    "past_day": 180,
+    "name": "5.1 Major IB Updates",
+    "prompt": "List today's top 10 most significant Investment Bank (IB) updates, including the Bank, Ticker, Action, and New Price Target.",
+    "keywords": "investment bank,analyst,price target,ratings",
+    "urls": ["https://www.bloomberg.com", "https://finance.yahoo.com"],
+    "past_day": 1,
     "num_pages": 30
   },
   {
-    "name": "Energy Market Report",
-    "prompt": "Analyze energy markets including oil, natural gas, renewable energy sectors. Cover price trends, supply-demand dynamics, and transition to clean energy initiatives globally.",
-    "keywords": "energy,oil,renewable energy,solar",
-    "urls": ["https://www.iea.org", "https://www.eia.gov"],
-    "past_day": 365,
+    "name": "6.3 Dark Pool",
+    "prompt": "Last session US dark pool & block trades and, if available, political donation flows: key tickers, notional value/size, notable counterparties, and any political contribution patterns impacting market sentiment.",
+    "keywords": "dark pool,block trades,political donations",
+    "urls": ["https://www.bloomberg.com", "https://finra.org"],
+    "past_day": 1,
+    "num_pages": 30
+  },
+  {
+    "name": "7.1 11 GICS Sector",
+    "prompt": "Today's (MM/DD) 11 GICS sector(ETF's) performance & Day % & YTD % & 1-line driver comment & Valuation (e.g., P/E TTM) & Key Sector Rotation Themes",
+    "keywords": "GICS,sector,ETF,rotation,performance",
+    "urls": ["https://www.spglobal.com", "https://finance.yahoo.com"],
+    "past_day": 1,
+    "num_pages": 30
+  },
+  {
+    "name": "8.1 12 Key Tickers",
+    "prompt": "Today's performance for AAPL, MSFT, NVDA, AMZN, GOOGL, META, AVGO, CRWD, NFLX, NOW, TSLA, PLTR & Day % & YTD % & a specific, 1-paragraph summary for each ticker citing its key driver",
+    "keywords": "AAPL,MSFT,NVDA,AMZN,GOOGL,META,tech stocks",
+    "urls": ["https://finance.yahoo.com", "https://www.bloomberg.com"],
+    "past_day": 1,
     "num_pages": 30
   }
 ]

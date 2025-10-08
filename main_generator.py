@@ -269,13 +269,14 @@ class FenokReportGenerator:
                  h.dispatchEvent(new Event('change',{bubbles:true}));}
         """, date_str, None, is_start)
 
-    def generate_simple_report(self, prompt: str, report: Report):
+    def generate_simple_report(self, prompt: str, report: Report, past_day: int = 1):
         """
         /agent/enterprise 페이지에서 간단한 일반 리포트 생성
 
         Args:
             prompt: 프롬프트 텍스트
             report: Report 객체 (URL과 상태 저장용)
+            past_day: 기간 설정 (1, 90, 180, 365 등)
 
         Returns:
             bool: 성공 여부
@@ -283,6 +284,7 @@ class FenokReportGenerator:
         try:
             print(f"\n=== 일반 리포트 생성 시작 ===")
             print(f"프롬프트: {prompt[:100]}...")
+            print(f"Past Day: {past_day}일")
 
             # 1. Enterprise 페이지로 이동
             self.driver.get('https://theterminalx.com/agent/enterprise')
@@ -295,7 +297,43 @@ class FenokReportGenerator:
             print(f"✅ 프롬프트 입력 완료")
             time.sleep(1)
 
+            # 2.5. Past Day 설정 (문서화된 로직 적용)
+            if past_day != 1:  # 1일이 아니면 Past Day 드롭다운 설정
+                try:
+                    print(f"📅 Past Day {past_day}일로 설정 시도...")
+                    period_selectors = [
+                        "//select[contains(@name, 'period')]",
+                        "//button[contains(text(), 'Any Time')]",
+                        "//div[contains(@class, 'date')]//select",
+                        "//*[contains(text(), 'Any Time')]"
+                    ]
+
+                    for selector in period_selectors:
+                        try:
+                            elements = self.driver.find_elements(By.XPATH, selector)
+                            for elem in elements:
+                                if elem.is_displayed():
+                                    elem.click()
+                                    time.sleep(2)
+
+                                    # Past Day 옵션 찾기
+                                    past_day_options = self.driver.find_elements(
+                                        By.XPATH, f"//*[contains(text(), 'Past {past_day} Day') or contains(text(), '{past_day} day')]"
+                                    )
+                                    for option in past_day_options:
+                                        if option.is_displayed():
+                                            option.click()
+                                            print(f"✅ Past {past_day} Day 설정 완료")
+                                            time.sleep(1)
+                                            break
+                                    break
+                        except:
+                            continue
+                except Exception as e:
+                    print(f"⚠️ Past Day 설정 실패 (계속 진행): {e}")
+
             # 3. Enter 키로 제출
+            textarea = self.driver.find_element(By.TAG_NAME, 'textarea')  # Re-locate after potential UI changes
             textarea.send_keys(Keys.RETURN)
             print(f"⏎ Enter 전송")
             time.sleep(3)

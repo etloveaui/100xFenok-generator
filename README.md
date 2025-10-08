@@ -4,81 +4,81 @@ TerminalX 웹사이트에서 금융 리포트를 자동으로 생성하는 Selen
 
 ## 📊 현재 상태
 
-- **상태**: ✅ 성공 (2025-10-08 - 기본 리포트 6개 100% 생성)
+- **상태**: 🔄 구현 중 (2025-10-08 - Part1/Part2 리포트)
 - **성공 이력**:
-  - ✅ 2025-08-20 11:17 AM (Part1/Part2 리포트)
-  - ✅ 2025-10-08 02:30 AM (기본 리포트 6개 - 2분 57초)
-- **핵심 파일**: main_generator.py, test_full_6reports.py, report_configs.json
+  - ✅ 2025-08-20 11:17 AM (Part1/Part2 리포트 생성 성공)
+  - ✅ 2025-10-08 02:30 AM (기본 리포트 6개 - 참고용)
+- **핵심 파일**: main_generator.py, report_manager.py, Feno_Docs/ (템플릿)
 
-## 🎯 완료된 기본 리포트 (6개)
+## 🎯 목표: Part1/Part2 리포트 (각 3개, 총 6개)
 
-TerminalX `/agent/enterprise`에서 자동 생성:
-1. Crypto Market Report (421KB) ✅
-2. AI Industry Report (491KB) ✅
-3. Global Stock Market Report (449KB) ✅
-4. Technology Sector Analysis (614KB) ✅
-5. Global Economic Outlook (417KB) ✅
-6. Energy Market Report (426KB) ✅
+**Part1 리포트** (Sections 1-6):
+- Executive Summary, Market Pulse, Performance Dashboard
+- Correlation Matrix, Wall Street Intelligence, Institutional Flows
 
-**실행 시간**: 2분 57초 | **성공률**: 100% (6/6)
+**Part2 리포트** (Sections 7-11):
+- Sector Rotation, Tech Leadership, Trade Signals
+- Tomorrow's Catalysts, Appendix
 
-## ✅ 해결 완료
+**템플릿 위치**: `Feno_Docs/`
+- `20250829 100x Daily Wrap Part1.json` (Part1 템플릿)
+- `20250829 100x Daily Wrap Part2.json` (Part2 템플릿)
+- `part1/part1_01-03.json`, `part2/part2_01-03.json` (예제)
 
-**기본 리포트 생성 방식**:
-- 방법: `/agent/enterprise` 페이지에서 프롬프트 입력
-- 특징: Archive 모니터링 불필요 (즉시 생성)
-- 구현: `generate_simple_report()` 메서드 (main_generator.py:272-324)
-- 검증: `supersearchx-body` 클래스 포함 확인
+## 🔧 구현 방법
 
-**사용 방법**:
-```bash
-cd C:\Users\etlov\agents-workspace\projects\100xFenok-generator
-python test_full_6reports.py
-# 결과: 6개 리포트 HTML 파일 generated_html/ 폴더에 저장
-```
+**Part1/Part2 생성 방식** (기본 리포트와 다름):
+- 방법: TerminalX Archive 모니터링 필요
+- 특징: `markdown-body` 클래스 (기본은 `supersearchx-body`)
+- 구현: `report_manager.py`의 Archive 폴링 로직
+- 검증: HTML 크기 >50KB, `markdown-body` 클래스 확인
+
+**Archive 모니터링**:
+- 폴링 간격: 30초 → 120초 (exponential backoff)
+- JavaScript 렌더링 대기: 3초 + 7초
+- 재시도: 최대 2회
 
 ## 🚀 빠른 시작
 
-### 1. 6개 기본 리포트 생성 (현재 작동)
+### Part1/Part2 리포트 생성 (구현 필요)
 ```bash
 cd C:\Users\etlov\agents-workspace\projects\100xFenok-generator
-python test_full_6reports.py
+# Part1 리포트 3개 생성
+python generate_part1_reports.py
+
+# Part2 리포트 3개 생성
+python generate_part2_reports.py
 ```
 
-**결과**:
-- 6개 HTML 파일 자동 생성
-- 저장 위치: `generated_html/20251008_*.html`
-- 실행 시간: ~3분
-- 성공률: 100%
-
-### 2. 설정 변경 (선택)
-`report_configs.json` 편집:
-- `prompt`: 리포트 내용 설명
-- `past_day`: 분석 기간 (일)
-- `keywords`, `urls`: 추가 정보
+**예상 결과**:
+- 6개 HTML 파일 (Part1 3개 + Part2 3개)
+- 저장 위치: `generated_html/part1_*.html`, `generated_html/part2_*.html`
+- 예상 시간: ~20분 (Archive 모니터링 포함)
 
 ## 🔑 핵심 정보
 
-### 작동하는 코드 (2025-10-08)
-- **기본 리포트 생성**: `main_generator.py:272-324` (generate_simple_report)
-- **테스트 스크립트**: `test_full_6reports.py`
-- **설정 파일**: `report_configs.json`
-- **로그인**: `main_generator.py:45-78`
-- **브라우저 설정**: `main_generator.py:25-43`
+### 작동하는 코드 (2025-08-20 성공 케이스)
+- **Archive 모니터링**: `report_manager.py:53-143` (monitor_and_retry)
+- **리포트 생성**: `main_generator.py` (로그인 + 브라우저 설정)
+- **템플릿**: `Feno_Docs/20250829 100x Daily Wrap Part1.json`, `Part2.json`
+- **예제**: `Feno_Docs/part1/part1_01-03.json`, `part2/part2_01-03.json`
 
-### 성공 요인 (2025-10-08)
-1. `/agent/enterprise` 페이지 사용 (Archive 불필요)
-2. 프롬프트 입력 → Enter → URL 생성
-3. 30초 대기 후 즉시 추출
-4. `supersearchx-body` 클래스 검증
+### Part1/Part2 생성 프로세스
+1. TerminalX 로그인
+2. 리포트 생성 요청
+3. Archive 페이지 모니터링 (30초 간격)
+4. 완료 시 HTML 추출 (`markdown-body` 클래스)
+5. 크기 검증 (>50KB)
 
-### 실행 결과
-- **6개 리포트**: 100% 성공
-- **평균 파일 크기**: 470KB
-- **총 실행 시간**: 2분 57초
-- **저장 위치**: `generated_html/`
+### 폴더 구조
+- `Feno_Docs/`: Part1/Part2 템플릿 및 예제
+- `generated_html/`: 생성된 리포트 HTML
+- `archives/`: 과거 코드 백업
+- `docs/`: 문서
+- `input_data/`: 입력 데이터
+- `secret/`: 로그인 정보
 
 ---
 
 **마지막 업데이트**: 2025-10-08
-**프로젝트 상태**: ✅ 기본 리포트 6개 생성 성공
+**프로젝트 상태**: 🔄 Part1/Part2 리포트 구현 중

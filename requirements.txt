@@ -2,4 +2,3 @@ selenium
 pyperclip
 beautifulsoup4
 Jinja2
-pyperclip

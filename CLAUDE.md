@@ -4,12 +4,30 @@
 
 ## 🎯 프로젝트 핵심
 
-**목표**: TerminalX에서 6개 금융 리포트 자동 생성
-**현재 상태**: ✅ 성공 (2025-10-08 - 6/6 리포트 100% 생성)
+**목표**: TerminalX에서 Part1/Part2 리포트 자동 생성 (각 3개, 총 6개)
+**현재 상태**: 🔄 구현 중 (2025-10-08)
 **성공 이력**:
-- ✅ 2025-08-20 (main_generator.py로 6개 생성 성공)
-- ✅ 2025-10-08 (기본 리포트 즉시 생성 완료 - 6/6 성공, Archive 불필요)
-**해결된 문제**: `generate_simple_report()`로 `/agent/enterprise`에서 즉시 생성
+- ✅ 2025-08-20 (Part1/Part2 리포트 생성 성공)
+- ✅ 2025-10-08 (일반 리포트 6개 생성 완료 - 참고용, Feno_Docs 프롬프트)
+**현재 작업**: Part1/Part2 리포트 생성 (Archive 모니터링 방식)
+
+**⚠️ 중요: 리포트 타입 구분**
+1. **일반 리포트** (Feno_Docs/일반리포트/*.md)
+   - URL: `/agent/enterprise`
+   - 방식: 즉시 생성 (30초), Archive 불필요
+   - 코드: `generate_simple_report(prompt, report, past_day)` in main_generator.py:272-360
+   - **Past Day 설정**: 2025-10-08 구현 완료 (main_generator.py:300-333)
+
+2. **Part1/Part2 리포트** (Feno_Docs/20250829 *.json)
+   - URL: `/agent/enterprise/report/create`
+   - 방식: Archive 큐 → 모니터링 (5-10분) → HTML 추출
+   - 코드: `generate_report_html()` in main_generator.py:362-461
+   - Archive: `ReportBatchManager.monitor_and_retry()` in report_manager.py:53-143
+   - **올바른 실행 순서**:
+     1. Part1/Part2 리포트 생성 요청 (Archive 큐 진입)
+     2. 생성 중인 동안 일반 리포트 6개 생성 (시간 활용)
+     3. Archive 모니터링 → Part1/Part2 완료 확인
+     4. Part1/Part2 HTML 추출 및 저장
 
 ## 📂 작동하는 코드 위치
 
@@ -159,25 +177,124 @@ if 'No documents found' in html:
 **마지막 업데이트**: 2025-10-08
 **독립 Git 프로젝트** - workspace와 별개로 관리됨
 
-## 🎉 프로젝트 완료 (2025-10-08)
+## 📋 Part1/Part2 리포트 구조 (현재 목표)
 
-**최종 성과**:
-- ✅ 6개 리포트 100% 생성 성공
-- ✅ 기본 리포트 즉시 생성 완료 (Archive 불필요)
-- ✅ 실행 시간: 2분 57초
-- ✅ 성공률: 100% (6/6)
+**Part1 리포트** (Sections 1-6):
+1. Executive Summary & Today's Thesis
+2. Market Pulse: Intraday Volatility & Risk Factors
+3. Performance Dashboard: Asset Classes, Sectors, Individual Stocks
+4. Correlation Matrix: Asset Interactions
+5. Wall Street Intelligence: Insights from Experts
+6. Institutional Flows: Large Purchases, Short Selling, ETF Flows
+
+**Part2 리포트** (Sections 7-11):
+7. Sector Rotation & Theme Analysis
+8. Tech Leadership Tracking
+9. Trade Signals & Short-term Strategy
+10. Tomorrow's Catalysts: Economic Indicators, Earnings, Event Calendar
+11. Appendix
+
+**템플릿 위치**:
+- `Feno_Docs/20250829 100x Daily Wrap Part1.json` (612줄, 40KB)
+- `Feno_Docs/20250829 100x Daily Wrap Part2.json` (635줄, 37KB)
+- `Feno_Docs/part1/part1_01-03.json` (예제 3개)
+- `Feno_Docs/part2/part2_01-03.json` (예제 3개)
+
+**핵심 차이점**:
+- 기본 리포트: `supersearchx-body` 클래스, Archive 불필요
+- Part1/Part2: `markdown-body` 클래스, Archive 모니터링 필수
 
 **핵심 파일**:
 - `main_generator.py`: 리포트 생성 + HTML 추출
-- `test_full_6reports.py`: 6개 리포트 배치 테스트
-- `report_configs.json`: 리포트 설정 (prompt, keywords, urls, past_day)
-
-**리포트 유형**:
-- **기본 리포트** (6개 완료): `/agent/enterprise`에서 즉시 생성, Archive 불필요
-- **Part1/Part2 리포트** (미구현): Archive 모니터링 필요
+- `report_manager.py`: Archive 모니터링 + 재시도 로직
 
 ---
 
 **마지막 업데이트**: 2025-10-08
 **독립 Git 프로젝트** - workspace와 별개로 관리됨
+
+## 📌 Claude Integration 워크플로우 (2025-10-08 추가)
+
+**목적**: GEMINI 수동 워크플로우를 Claude Desktop 통합 워크플로우로 대체
+**위치**: `Feno_Docs/Claude_Integration/`
+**소요 시간**: ~40분 (기존 GEMINI 2시간 30분 → 70% 단축)
+
+### 워크플로우 구조 (DL01-DL04)
+
+**DL01: JSON 통합** (`/integrate-json`)
+- 룰북: `Feno_Docs/Claude_Integration/integration_agent.md`
+- 입력: Part1×3, Part2×3, 일반×6 파일
+- 사용자 작업: 품질 선택 지시 (출처 지정 문서)
+- Claude 작업: 오류 데이터 보정 + 인용 제거 + 표준화
+- 출력: 섹션별 출처 요약 + 통합 JSON
+
+**DL02: HTML 생성** (`/generate-html`)
+- 룰북: `Feno_Docs/Claude_Integration/html_generator.md`
+- 입력: 통합 JSON (DL01 결과물)
+- Claude 작업: Section 1-11 매핑 + 한글 번역 + 키워드 강조
+- 출력: 100x Daily Wrap HTML 파일
+
+**DL03: 품질 검토** (`/review-html`)
+- 룰북: `Feno_Docs/Claude_Integration/quality_reviewer.md`
+- 입력: 1차 생성 HTML (DL02 결과물)
+- Claude 작업: 5대 원칙 기반 검토 (데이터 무결성, 구조, 가독성, 시각, 스타일링)
+- 출력: Before/After 코드 조각으로 개선안 제시
+
+**DL04: 인덱스 업데이트** (`/update-index`)
+- 룰북: `Feno_Docs/Claude_Integration/index_manager.md`
+- 입력: 최종 완성 HTML (DL03 결과물)
+- Claude 작업: 메타데이터 추출 + 인덱스 JSON 업데이트
+- 출력: 신규 메타데이터 JSON + 업데이트된 인덱스 JSON
+
+**전체 워크플로우** (`/full-workflow`)
+- 명령: `.claude/commands/full-workflow.md`
+- 실행: DL01 → DL02 → DL03 → DL04 순차 실행
+- 사용자 게이트: DL01 완료 후 품질 선택 지시 필요
+- 사용자 검토: DL03 개선안 검토 및 적용
+
+### 파일 구조
+
+```
+Feno_Docs/Claude_Integration/
+├── integration_agent.md      # DL01 룰북 (JSON 통합)
+├── html_generator.md          # DL02 룰북 (HTML 생성)
+├── quality_reviewer.md        # DL03 룰북 (품질 검토)
+├── index_manager.md           # DL04 룰북 (인덱스 관리)
+└── quality_selection_guide.md # 사용자 가이드 (품질 선택 기준)
+
+.claude/commands/
+├── integrate-json.md          # DL01 슬래시 커맨드
+├── generate-html.md           # DL02 슬래시 커맨드
+├── review-html.md             # DL03 슬래시 커맨드
+├── update-index.md            # DL04 슬래시 커맨드
+└── full-workflow.md           # 전체 워크플로우 커맨드
+```
+
+### 사용 방법
+
+**Step 1: 품질 선택** (사용자 작업, ~30분)
+- 가이드 참조: `Feno_Docs/Claude_Integration/quality_selection_guide.md`
+- Part1×3, Part2×3, 일반×6 파일 읽기
+- 섹션별로 최우수 답변 선택
+- 출처 지정 문서 작성 (Markdown 형식)
+
+**Step 2: 통합 워크플로우 실행** (자동, ~10분)
+```bash
+/full-workflow
+```
+또는 개별 단계 실행:
+```bash
+/integrate-json    # 사용자 출처 지정 문서 제공 필요
+/generate-html
+/review-html       # 개선안 검토 후 적용
+/update-index
+```
+
+### 핵심 개선 사항
+
+1. **시간 절감**: GEMINI 2시간 30분 → Claude 40분 (70% 단축)
+2. **자동화**: 오류 보정, 인용 제거, 표준화 자동 처리
+3. **품질 보장**: 5대 원칙 기반 체계적 검토
+4. **구조화**: 단계별 룰북 + 슬래시 커맨드 시스템
+5. **사용자 중심**: 품질 선택은 사용자, 나머지는 자동화
 
