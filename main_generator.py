@@ -269,6 +269,60 @@ class FenokReportGenerator:
                  h.dispatchEvent(new Event('change',{bubbles:true}));}
         """, date_str, None, is_start)
 
+    def generate_simple_report(self, prompt: str, report: Report):
+        """
+        /agent/enterprise 페이지에서 간단한 일반 리포트 생성
+
+        Args:
+            prompt: 프롬프트 텍스트
+            report: Report 객체 (URL과 상태 저장용)
+
+        Returns:
+            bool: 성공 여부
+        """
+        try:
+            print(f"\n=== 일반 리포트 생성 시작 ===")
+            print(f"프롬프트: {prompt[:100]}...")
+
+            # 1. Enterprise 페이지로 이동
+            self.driver.get('https://theterminalx.com/agent/enterprise')
+            time.sleep(3)
+
+            # 2. Textarea 찾아서 프롬프트 입력
+            textarea = self.driver.find_element(By.TAG_NAME, 'textarea')
+            textarea.clear()
+            textarea.send_keys(prompt)
+            print(f"✅ 프롬프트 입력 완료")
+            time.sleep(1)
+
+            # 3. Enter 키로 제출
+            textarea.send_keys(Keys.RETURN)
+            print(f"⏎ Enter 전송")
+            time.sleep(3)
+
+            # 4. URL 확인 (/answer/ 경로로 이동)
+            current_url = self.driver.current_url
+            print(f"📍 생성된 URL: {current_url}")
+
+            if '/answer/' not in current_url:
+                print(f"❌ 예상치 못한 URL: {current_url}")
+                report.status = "FAILED"
+                return False
+
+            # Report 객체에 URL 저장
+            report.url = current_url
+            report.status = "REQUESTED"
+
+            print(f"✅ 일반 리포트 생성 요청 성공")
+            return True
+
+        except Exception as e:
+            print(f"❌ 일반 리포트 생성 실패: {e}")
+            import traceback
+            traceback.print_exc()
+            report.status = "FAILED"
+            return False
+
     def generate_report_html(self, report: Report, report_date_str: str, ref_date_start_str: str, ref_date_end_str: str):
         """
         TerminalX에서 보고서를 생성하고, 생성 요청 후 URL과 제목을 반환합니다.

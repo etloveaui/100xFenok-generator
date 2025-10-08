@@ -5,51 +5,51 @@
   "failed": 0,
   "reports": [
     {
-      "name": "Crypto Analysis",
-      "url": "https://theterminalx.com/agent/enterprise/report/1342",
-      "title": "Crypto Analysis",
+      "name": "Crypto Market Report",
+      "url": "https://theterminalx.com/agent/enterprise/answer/2025/10/07/analyze-the-latest-cryptocurrency-market-trends-focusing-on-dfaa38d9-f094-4f2a-aa56-b930a257b2d0",
+      "title": "Crypto Market Report",
       "status": "EXTRACTED",
-      "file_size": 127425,
-      "file_path": "generated_html/20251008_Crypto_Analysis.html"
+      "file_size": 420896,
+      "file_path": "generated_html/20251008_Crypto_Market_Report.html"
     },
     {
-      "name": "AI Technology Report",
-      "url": "https://theterminalx.com/agent/enterprise/report/1343",
-      "title": "AI Technology Report",
+      "name": "AI Industry Report",
+      "url": "https://theterminalx.com/agent/enterprise/answer/2025/10/07/provide-a-comprehensive-analysis-of-the-artificial-intellige-522e3b70-0c25-490e-8532-bf1d44a668cb",
+      "title": "AI Industry Report",
       "status": "EXTRACTED",
-      "file_size": 126590,
-      "file_path": "generated_html/20251008_AI_Technology_Report.html"
+      "file_size": 491243,
+      "file_path": "generated_html/20251008_AI_Industry_Report.html"
     },
     {
-      "name": "Stock Market Analysis",
-      "url": "https://theterminalx.com/agent/enterprise/report/1344",
-      "title": "Stock Market Analysis",
+      "name": "Global Stock Market Report",
+      "url": "https://theterminalx.com/agent/enterprise/answer/2025/10/07/analyze-global-stock-market-performance-including-s-p-500-n-f83fa609-5831-4475-a471-4cde00274036",
+      "title": "Global Stock Market Report",
       "status": "EXTRACTED",
-      "file_size": 123199,
-      "file_path": "generated_html/20251008_Stock_Market_Analysis.html"
+      "file_size": 448642,
+      "file_path": "generated_html/20251008_Global_Stock_Market_Report.html"
     },
     {
-      "name": "Tech Innovation Report",
-      "url": "https://theterminalx.com/agent/enterprise/report/1345",
-      "title": "Tech Innovation Report",
+      "name": "Technology Sector Analysis",
+      "url": "https://theterminalx.com/agent/enterprise/answer/2025/10/07/evaluate-the-technology-sector-performance-focusing-on-faan-f3bb4b4e-cc18-4c23-a02e-d562f0a9b021",
+      "title": "Technology Sector Analysis",
       "status": "EXTRACTED",
-      "file_size": 131360,
-      "file_path": "generated_html/20251008_Tech_Innovation_Report.html"
+      "file_size": 613622,
+      "file_path": "generated_html/20251008_Technology_Sector_Analysis.html"
     },
     {
-      "name": "Economic Indicators",
-      "url": "https://theterminalx.com/agent/enterprise/report/1346",
-      "title": "Economic Indicators",
+      "name": "Global Economic Outlook",
+      "url": "https://theterminalx.com/agent/enterprise/answer/2025/10/07/provide-analysis-of-global-economic-conditions-including-gdp-0d088354-4a81-4711-922a-856ceb6b03c2",
+      "title": "Global Economic Outlook",
       "status": "EXTRACTED",
-      "file_size": 135793,
-      "file_path": "generated_html/20251008_Economic_Indicators.html"
+      "file_size": 417114,
+      "file_path": "generated_html/20251008_Global_Economic_Outlook.html"
     },
     {
       "name": "Energy Market Report",
-      "url": "https://theterminalx.com/agent/enterprise/report/1347",
+      "url": "https://theterminalx.com/agent/enterprise/answer/2025/10/07/analyze-energy-markets-including-oil-natural-gas-renewable-0893111c-3e63-467b-bba5-ba8d1a867583",
       "title": "Energy Market Report",
       "status": "EXTRACTED",
-      "file_size": 125773,
+      "file_size": 425668,
       "file_path": "generated_html/20251008_Energy_Market_Report.html"
     }
   ]
